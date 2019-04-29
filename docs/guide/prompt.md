@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-prompt" src="@apex-quickapp/components/prompt/index"></import>
+<import name="my-prompt" src="apex-ui/components/prompt/index"></import>
 ```
 
 ### 示例

@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-navbar" src="@apex-quickapp/components/navbar/index"></import>
+<import name="my-navbar" src="apex-ui/components/navbar/index"></import>
 ```
 
 ### 示例

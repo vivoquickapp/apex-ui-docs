@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件，使用了此组件的checkbox必须传入`group`属性，值为group组件的`id`。
 
 ```html
-<import name="my-checkbox-group" src="@apex-quickapp/components/checkbox-group/index"></import>
+<import name="my-checkbox-group" src="apex-ui/components/checkbox-group/index"></import>
 ```
 
 ### 示例

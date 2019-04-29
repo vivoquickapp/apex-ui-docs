@@ -10,7 +10,7 @@
 ### 使用方法
 
 ```html
-<import name="my-tabbar" src="@apex-quickapp/tabbar/index"></import>
+<import name="my-tabbar" src="apex-ui/tabbar/index"></import>
 ```
 
 

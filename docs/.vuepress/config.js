@@ -14,7 +14,7 @@ module.exports = {
         nav: [
             {text: '首页', link: '/'},
             {text: '文档', link: '/guide/'},
-            {text: 'GitHub', link: 'http://google.com'},
+            {text: 'GitHub', link: 'https://github.com/vivoquickapp/apex-ui.git'},
         ],
         sidebar: [
             {

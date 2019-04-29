@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-divider" src="@apex-quickapp/components/divider/index"></import>
+<import name="my-divider" src="apex-ui/components/divider/index"></import>
 ```
 
 ### 示例

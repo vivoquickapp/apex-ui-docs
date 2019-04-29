@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-checkbox" src="@apex-quickapp/components/checkbox/index"></import>
+<import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
 ```
 
 ### 示例

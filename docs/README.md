@@ -10,5 +10,6 @@ features:
   details: 下载即用，根据说明文档可快速上手。
 - title: 丰富
   details: 组件类型丰富，满足大部分需求和场景。
-footer: MIT Licensed | Copyright © 2019-present vivoFED
+footer: MIT Licensed | Copyright © 2019-present
 ---
+

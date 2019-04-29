@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件，使用了此组件的radio必须传入`group`属性，值为group组件的`id`。
 
 ```html
-<import name="my-radio-group" src="@apex-quickapp/components/radio-group/index"></import>
+<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
 ```
 
 ### 示例

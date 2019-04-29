@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-radio" src="@apex-quickapp/components/radio/index"></import>
+<import name="my-radio" src="apex-ui/components/radio/index"></import>
 ```
 
 ### 示例

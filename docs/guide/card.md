@@ -14,7 +14,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-card" src="@apex-quickapp/components/card/index"></import>
+<import name="my-card" src="apex-ui/components/card/index"></import>
 ```
 
 ### 示例

@@ -11,7 +11,7 @@
 ### 使用方法
 
 ```html
-<import name="my-pagination" src="@apex-quickapp/components/pagination/index"></import>
+<import name="my-pagination" src="apex-ui/components/pagination/index"></import>
 ```
 
 ### 示例

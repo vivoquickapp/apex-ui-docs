@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-input" src="@apex-quickapp/components/input/index"></import>
+<import name="my-input" src="apex-ui/components/input/index"></import>
 ```
 
 ### 示例
