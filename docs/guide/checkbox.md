@@ -97,6 +97,7 @@ export default {
 | checked  | Boolean | false      | 是否处于选中状态                    |
 | disabled | Boolean | false      | 是否处于禁用状态                    |
 | position | String  | left       | 选择器所在位置，可选值有left，right |
+| shape    | String  | circle     | 选择器形状，可选值有circle，square  |
 | value    | String  | -          | 展示选项的值                        |
 | color    | String  | ''#2d8cf0" | 选中状态的选择器的颜色              |
 | group    | String  | -          | 多选框所在组的id值                  |
