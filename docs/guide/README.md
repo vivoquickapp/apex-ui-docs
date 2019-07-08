@@ -8,7 +8,7 @@
 
 使用快应用调试器扫码快速预览组件库效果：
 
-![qrcode]()
+![qrcode](https://github.com/vivoquickapp/apex-ui-docs/blob/master/docs/assets/qrcode.png?raw=true)
 
 ### 使用组件库
 
@@ -49,4 +49,4 @@ yarn add apex-ui # 使用yarn
 
 也可以加微信与我们取得联系。
 
-![技术弟]()
+![技术弟](https://github.com/vivoquickapp/apex-ui-docs/blob/master/docs/assets/vivobro.jpg?raw=true)
