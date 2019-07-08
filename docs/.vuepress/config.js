@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/',
+    base: '/apex-ui-docs/',
     title: 'Apex',
     description: 'Apex Quickapp UI Components Suit',
     markdown: {
