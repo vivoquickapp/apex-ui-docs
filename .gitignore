@@ -5,5 +5,3 @@ node_modules/
 .idea/
 .ide/
 .DS_Store
-
-dist/
