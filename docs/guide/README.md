@@ -6,7 +6,7 @@
 
 ### 快速预览
 
-使用快应用调试器扫码快速预览组件库效果：
+使用[快应用调试器](https://statres.quickapp.cn/quickapp/quickapp/201806/file/quickapp_debugger.apk)扫码快速预览组件库效果：
 
 ![qrcode](https://github.com/vivoquickapp/apex-ui-docs/blob/master/docs/assets/qrcode.png?raw=true)
 

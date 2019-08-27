@@ -2,6 +2,14 @@ module.exports = {
     base: '/apex-ui-docs/',
     title: 'Apex',
     description: 'Apex Quickapp UI Components Suit',
+    plugins: [
+        [
+            '@vuepress/google-analytics',
+            {
+                'ga': 'UA-146469314-1'
+            }
+        ]
+    ],
     markdown: {
         lineNumbers: true
     },
