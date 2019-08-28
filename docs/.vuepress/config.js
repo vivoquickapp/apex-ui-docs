@@ -8,7 +8,8 @@ module.exports = {
             {
                 'ga': 'UA-146469314-1'
             }
-        ]
+        ],
+        '@vuepress/back-to-top'
     ],
     markdown: {
         lineNumbers: true
