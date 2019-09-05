@@ -21,29 +21,60 @@
 
 ```html
 <template>
-    <div class="wrap">
-        <text class="title">默认</text>
-        <my-card title="卡片标题" thumb="/assets/images/logo-d.png" extra="额外内容" footer="卡片底部">
-            <text>卡片内容</text>
-        </my-card>
-        <text class="title">通栏</text>
-        <my-card title="卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题" full="true" thumb="/assets/images/logo-d.png" extra="额外内容" footer="卡片底部">
-            <text class="demo">卡片内容</text>
-        </my-card>
-    </div>
+  <div class="wrap">
+    <text class="title">默认</text>
+    <my-card title="卡片标题" thumb="/images/logo-d.png" extra="额外内容" footer="卡片底部">
+      <text>卡片内容</text>
+    </my-card>
+    <text class="title">通栏</text>
+    <my-card title="卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题卡片标题" full="true" thumb="/images/logo-d.png" extra="额外内容" footer="卡片底部">
+      <text class="demo">卡片内容</text>
+    </my-card>
+    <text class="title">使用slot</text>
+    <my-card use-header-slot="true">
+      <div slot="title">
+        <my-icon type="gift" size="48"></my-icon>
+        <text class="slot-demo-title">礼物清单</text>
+      </div>
+      <div slot="extra" @click="changeRandomGiftList">
+        <my-icon type="refresh" size="48" color="#3086FE"></my-icon>
+        <text style="color:#3086FE ">换一批</text>
+      </div>
+      <list class="slot-demo-list">
+        <list-item class="slot-demo-list-item" type="listItem" for="{{ randomGiftList }}">
+          <text>{{ $item.name }}</text>
+          <text>¥{{ $item.price }}</text>
+        </list-item>
+      </list>
+    </my-card>
+  </div>
 </template>
 ```
 
 ```less
 .wrap {
-    background-color: #f7f7f7;
-    flex-direction: column;
-    .title {
-        padding: 20px;
-    }
+  background-color: #f7f7f7;
+  flex-direction: column;
+  .title {
+    padding: 20px;
+  }
 }
 .demo{
-    font-size: 100px;
+  font-size: 100px;
+}
+.slot-demo-title{
+  font-size: 35px;
+  color: #1c2438;
+}
+.slot-demo-list{
+  height: 300px;
+  &-item{
+    justify-content: space-between;
+    text{
+      font-size: 35px;
+      padding: 5px 0;
+    }
+  }
 }
 ```
 
@@ -58,3 +89,12 @@
 | thumb  | String  | -      | 卡片的图片       |
 | extra  | String  | -      | 卡片的额外信息   |
 | footer | String  | -      | 卡片底部内容     |
+| useHeaderSlot | Boolean  | false | 使用title slot和extra slot时需为true     |
+
+#### slot
+
+| 名称   | 说明    |
+| ------ | ------- |
+| title  | 自定义卡片标题，无法与title、thumb、extra三个属性同用，slot的内容会覆盖属性的内容  |
+| extra  | 额外内容，无法与title、thumb、extra三个属性同用，slot的内容会覆盖属性的内容  |
+| 无 | 卡片主体内容  |
