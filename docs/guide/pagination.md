@@ -11,7 +11,7 @@
 ### 使用方法
 
 ```html
-<import name="my-pagination" src="apex-ui/components/pagination/index"></import>
+<import name="my-page" src="apex-ui/components/pagination/index.ux"></import>
 ```
 
 ### 示例
@@ -21,24 +21,24 @@
     <div class="wrap">
         <div class="line">
             <text>默认文字的按钮</text>
-            <my-page total="{{total}}" current="{{current}}" onchange="changePage"></my-page>
+            <my-page total="{{total}}" current="{{current}}" ontap="clickPage"></my-page>
         </div>
         <div class="line">
             <text>自定义文字和图标</text>
-            <my-page total="{{total}}" current="{{current}}" onchange="changePage" prev-text="< 上一步" next-text="下一步 >">
+            <my-page total="{{total}}" current="{{current}}" ontap="clickPage" prev-text="< 上一步" next-text="下一步 >">
             </my-page>
         </div>
         <div class="line">
             <text>隐藏数字</text>
-            <my-page total="{{total}}" current="{{current}}" onchange="changePage" simple="true"></my-page>
+            <my-page total="{{total}}" current="{{current}}" ontap="clickPage" simple="true"></my-page>
         </div>
         <div class="line">
             <text>只显示数字</text>
-            <my-page total="{{total}}" current="{{current}}" onchange="changePage" type="number"></my-page>
+            <my-page total="{{total}}" current="{{current}}" type="number"></my-page>
         </div>
         <div class="line">
             <text>显示点</text>
-            <my-page total="{{total}}" current="{{current}}" onchange="changePage" type="pointer"></my-page>
+            <my-page total="{{total}}" current="{{current}}" type="pointer"></my-page>
         </div>
     </div>
 </template>
@@ -99,4 +99,4 @@ export default {
 
 | 事件名称 | 事件描述               | 返回值 |
 | -------- | ---------------------- | ------ |
-| click   | 切换页码时触发 | -      |
+| tap   | 切换页码时触发 | -      |
