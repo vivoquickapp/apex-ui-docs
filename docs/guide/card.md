@@ -31,7 +31,7 @@
       <text class="demo">卡片内容</text>
     </my-card>
     <text class="title">使用slot</text>
-    <my-card use-header-slot="true">
+    <my-card>
       <div slot="title">
         <my-icon type="gift" size="48"></my-icon>
         <text class="slot-demo-title">礼物清单</text>
@@ -89,7 +89,6 @@
 | thumb  | String  | -      | 卡片的图片       |
 | extra  | String  | -      | 卡片的额外信息   |
 | footer | String  | -      | 卡片底部内容     |
-| useHeaderSlot | Boolean  | false | 使用title slot和extra slot时需为true     |
 
 #### slot
 

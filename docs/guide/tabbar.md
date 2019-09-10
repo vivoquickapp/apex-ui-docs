@@ -5,7 +5,7 @@
 位于 应用 底部，方便用户在不同功能模块之间进行快速切换。
 
 ### 使用效果
-<div style="text-align: center;margin: 40px;"><img src="../assets/tabbar.jpg" style="width:300px" /></div>
+<div style="text-align: center;margin: 40px;"><img src="../assets/tabbar.gif" style="width:300px" /></div>
 
 ### 使用方法
 
@@ -18,33 +18,43 @@
 
 ```html
 <template>
-  <my-tabbar tabbar="{{tabbarData}}"></my-tabbar>
+  <div class="wrap">
+    <text>页面1</text>
+    <my-tabbar tabbar="{{tabbarData}}"></my-tabbar>
+  </div>
 </template>
 ```
 
 ```js
 export default {
-        data() {
-            return {
-                tabbarData: [
-                    {
-                        iconPath: '/assets/images/logo-d.png',
-                        selectedIconPath: '/assets/images/logo.png',
-                        pagePath: '/pages/home',
-                        text: 'tab',
-                        active: true
-                    },
-                    {
-                        iconPath: '/assets/images/logo-d.png',
-                        selectedIconPath: '/assets/images/logo.png',
-                        pagePath: '/pages/home',
-                        text: 'tab',
-                        active: false
-                    }
-                ]
-            }
+    data() {
+        return {
+            tabbarData: [
+                {
+                    iconPath: '/images/logo-d.png',
+                    selectedIconPath: '/images/logo-d.png',
+                    pagePath: '/pages/tabbar',
+                    text: 'tab1',
+                    active: true
+                },
+                {
+                    iconPath: '/images/logo-d.png',
+                    selectedIconPath: '/images/logo-d.png',
+                    pagePath: '/pages/tabbar/page1',
+                    text: 'tab2',
+                    active: false
+                },
+                {
+                    iconPath: '/images/logo-d.png',
+                    selectedIconPath: '/images/logo-d.png',
+                    pagePath: '/pages/tabbar/page2',
+                    text: 'tab3',
+                    active: false
+                }
+            ]
         }
     }
+}
 ```
 
 
@@ -66,4 +76,3 @@ export default {
 | pagePath         | Path    | 对应的页面路由，必填           |
 | text             | String  | tab文本，必填                  |
 | active           | Boolean | 是否激活，必填                 |
-

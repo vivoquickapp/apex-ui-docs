@@ -11,7 +11,7 @@
 ### 使用方法
 
 ```html
-<import name="my-segmented-control" src="apex-ui/segmented-control/index.ux"></import>
+<import name="my-segmented-control" src="apex-ui/components/segmented-control/index.ux"></import>
 ```
 
 
