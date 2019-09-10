@@ -20,26 +20,26 @@
 
 ```html
 <template>
-    <div style="flex-direction:column;">
-        <my-alert value="An alert info" type="info"></my-alert>
-        <my-alert value="An alert info" type="success"></my-alert>
-        <my-alert value="An alert info" type="warning"></my-alert>
-        <my-alert value="An alert info" type="error"></my-alert>
-        <my-alert value="An alert info" desc="Some description about alert component" type="info"></my-alert>
-        <my-alert value="An alert info" desc="Some description about alert component" type="success"></my-alert>
-        <my-alert value="An alert info" desc="Some description about alert component" type="warning"></my-alert>
-        <my-alert value="An alert info" desc="Some description about alert component" type="error"></my-alert>
-        <my-alert value="An alert info" show-icon="true" type="info"></my-alert>
-        <my-alert value="An alert info" show-icon="true" type="success"></my-alert>
-        <my-alert value="An alert info" show-icon="true" type="warning"></my-alert>
-        <my-alert value="An alert info" show-icon="true" type="error"></my-alert>
-        <my-alert value="An alert info" show-icon="true" desc="Some description about alert component" type="info"></my-alert>
-        <my-alert value="An alert info" show-icon="true" desc="Some description about alert component" type="success"></my-alert>
-        <my-alert value="An alert info" show-icon="true" desc="Some description about alert component" type="warning"></my-alert>
-        <my-alert value="An alert info" show-icon="true" desc="Some description about alert component" type="error"></my-alert>
-        <my-alert value="An alert info" closable="true" type="info"></my-alert>
-        <my-alert value="An alert info" closable="true" show-icon="true" desc="Some description about alert component" type="success"></my-alert>
-    </div>
+  <div class="wrap">
+    <my-alert title="An alert info" type="info"></my-alert>
+    <my-alert title="An alert info" type="success"></my-alert>
+    <my-alert title="An alert info" type="warning"></my-alert>
+    <my-alert title="An alert info" type="error"></my-alert>
+    <my-alert title="An alert info" desc="Some description about alert component" type="info"></my-alert>
+    <my-alert title="An alert info" desc="Some description about alert component" type="success"></my-alert>
+    <my-alert title="An alert info" desc="Some description about alert component" type="warning"></my-alert>
+    <my-alert title="An alert info" desc="Some description about alert component" type="error"></my-alert>
+    <my-alert title="An alert info" show-icon="true" type="info"></my-alert>
+    <my-alert title="An alert info" show-icon="true" type="success"></my-alert>
+    <my-alert title="An alert info" show-icon="true" type="warning"></my-alert>
+    <my-alert title="An alert info" show-icon="true" type="error"></my-alert>
+    <my-alert title="An alert info" show-icon="true" desc="Some description about alert component" type="info"></my-alert>
+    <my-alert title="An alert info" show-icon="true" desc="Some description about alert component" type="success"></my-alert>
+    <my-alert title="An alert info" show-icon="true" desc="Some description about alert component" type="warning"></my-alert>
+    <my-alert title="An alert info" show-icon="true" desc="Some description about alert component" type="error"></my-alert>
+    <my-alert title="An alert info" closable="true" type="info"></my-alert>
+    <my-alert title="An alert info" closable="true" show-icon="true" desc="Some description about alert component" type="success"></my-alert>
+  </div>
 </template>
 ```
 
