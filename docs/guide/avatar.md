@@ -20,31 +20,31 @@
 
 ```html
 <template>
-    <div class="wrap">
-        <text class="title">圆形</text>
-        <div class="group">
-            <my-avatar size="small">张</my-avatar>
-            <my-avatar>张</my-avatar>
-            <my-avatar size="large">张</my-avatar>
-        </div>
-        <text class="title">方形</text>
-        <div class="group">
-            <my-avatar size="small" shape="square">A</my-avatar>
-            <my-avatar shape="square">A</my-avatar>
-            <my-avatar size="large" shape="square">A</my-avatar>
-        </div>
-        <text class="title">图片</text>
-        <div class="group">
-            <my-avatar src="/assets/images/logo-d.png" size="small"></my-avatar>
-            <my-avatar src="/assets/images/logo-d.png" size="default"></my-avatar>
-            <my-avatar src="/assets/images/logo-d.png" size="large"></my-avatar>
-        </div>
-        <div class="group">
-            <my-avatar src="/assets/images/logo-d.png" size="small" shape="square"></my-avatar>
-            <my-avatar src="/assets/images/logo-d.png" size="default" shape="square"></my-avatar>
-            <my-avatar src="/assets/images/logo-d.png" size="large" shape="square"></my-avatar>
-        </div>
+  <div class="wrap">
+    <text class="title">圆形</text>
+    <div class="group">
+      <my-avatar size="small">梁</my-avatar>
+      <my-avatar>梁</my-avatar>
+      <my-avatar size="large">梁</my-avatar>
     </div>
+    <text class="title">方形</text>
+    <div class="group">
+      <my-avatar size="small" shape="square">A</my-avatar>
+      <my-avatar shape="square">A</my-avatar>
+      <my-avatar size="large" shape="square">A</my-avatar>
+    </div>
+    <text class="title">图片</text>
+    <div class="group">
+      <my-avatar src="/images/logo-d.png" size="small"></my-avatar>
+      <my-avatar src="/images/logo-d.png" size="default"></my-avatar>
+      <my-avatar src="/images/logo-d.png" size="large"></my-avatar>
+    </div>
+    <div class="group">
+      <my-avatar src="/images/logo-d.png" size="small" shape="square"></my-avatar>
+      <my-avatar src="/images/logo-d.png" size="default" shape="square"></my-avatar>
+      <my-avatar src="/images/logo-d.png" size="large" shape="square"></my-avatar>
+    </div>
+  </div>
 </template>
 ```
 
