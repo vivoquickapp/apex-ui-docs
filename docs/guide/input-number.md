@@ -20,16 +20,20 @@
 
 ```html
 <template>
-    <div class="wrap">
-        <div class="panel">
-            <text class="title">基础用法</text>
-            <my-input-number min="0" max="100" onchange="changeHandler1"></my-input-number>
-        </div>
-        <div class="panel">
-            <text class="title">小数</text>
-            <my-input-number min="0" max="100" step="0.2" onchange="changeHandler2"></my-input-number>
-        </div>
+  <div class="wrap">
+    <div class="panel">
+      <text class="title">基础用法</text>
+      <my-input-number value="{{value1}}" min="{{0}}" max="{{100}}" onchange="changeHandler1"></my-input-number>
     </div>
+    <div class="panel">
+      <text class="title">小数</text>
+      <my-input-number value="{{value2}}" min="{{0}}" max="{{100}}" step="0.2" onchange="changeHandler2"></my-input-number>
+    </div>
+    <div class="panel">
+      <text class="title">正数模式</text>
+      <my-input-number value="{{value3}}" min="{{0}}" max="{{100}}" positive="{{true}}" onchange="changeHandler3"></my-input-number>
+    </div>
+  </div>
 </template>
 ```
 
@@ -48,7 +52,8 @@ export default {
     data() {
         return {
             value1: 1,
-            value2: 0.1
+            value2: 0.1,
+            value3: 0
         }
     },
     changeHandler1({detail}) {
@@ -58,6 +63,10 @@ export default {
     changeHandler2({detail}) {
         console.log('number changed', detail);
         this.value2 = detail.value;
+    },
+    changeHandler3({detail}) {
+        console.log('number changed', detail);
+        this.value3 = detail.value;
     }
 }
 ```
@@ -72,6 +81,7 @@ export default {
 | min   | Number | -      | 允许的最小值     |
 | max   | Numbe  | -      | 允许的最大值     |
 | step  | Number | 1      | 每次调整变化的值 |
+| positive  | Boolean | false      | 正数模式，该值为true且value<=0时，隐藏minus按钮及输入框 |
 
 #### 组件事件
 
