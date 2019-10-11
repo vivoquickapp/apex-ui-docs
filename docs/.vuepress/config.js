@@ -64,6 +64,7 @@ module.exports = {
                     '/guide/checkbox-group',
                     '/guide/switch',
                     '/guide/rating',
+                    '/guide/calendar',
                 ]
             },
             {
