@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/checkbox.gif" style="width:300px" /></div>
+<div style="text-align: center;margin: 40px;"><img src="../assets/checkbox.gif" alt="checkbox-group" style="width:300px" /></div>
 
 ### 使用方法
 
