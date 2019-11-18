@@ -1,7 +1,7 @@
 module.exports = {
     base: '/apex-ui-docs/',
     title: 'Apex',
-    description: 'Apex Quickapp UI Components Suit',
+    description: 'apex-ui是快应用的一套丰富完整的组件库，可以安装即用，提供了多达50+的组件，帮助开发者快速开发快应用。',
     plugins: [
         [
             '@vuepress/google-analytics',
@@ -15,7 +15,8 @@ module.exports = {
         lineNumbers: true
     },
     head: [
-        ['link', {rel: 'icon', href: 'favicon.ico'}]
+        ['link', {rel: 'icon', href: 'favicon.ico'}],
+        ['meta', {name: 'keywords', content: '快应用 组件库 apex-ui UI组件库 快应用开发'}]
     ],
     themeConfig: {
         displayAllHeaders: true,
@@ -50,6 +51,7 @@ module.exports = {
                     '/guide/pagination',
                     '/guide/segmented-control',
                     '/guide/tabbar',
+                    '/guide/popover',
                 ]
             },
             {
@@ -65,6 +67,7 @@ module.exports = {
                     '/guide/switch',
                     '/guide/rating',
                     '/guide/calendar',
+                    '/guide/textarea',
                 ]
             },
             {
@@ -76,6 +79,9 @@ module.exports = {
                     '/guide/avatar',
                     '/guide/card',
                     '/guide/divider',
+                    '/guide/media',
+                    '/guide/accordion',
+                    '/guide/steps',
                 ]
             },
             {
@@ -84,7 +90,20 @@ module.exports = {
                 children: [
                     '/guide/message',
                     '/guide/toast',
-                    '/guide/load-more'
+                    '/guide/load-more',
+                    '/guide/spin',
+                    '/guide/circle',
+                    '/guide/dialog',
+                    '/guide/gallery',
+                ]
+            },
+            {
+                title: '拓展组件',
+                collapsable: false,
+                children: [
+                    '/guide/barcode',
+                    '/guide/qrcode',
+                    '/guide/vcode'
                 ]
             },
         ]
