@@ -60,12 +60,12 @@
     }
     .title{
         height:100px;
-        width:100%,
-        background-color:'#ffff00',
+        width:100%;
+        background-color: #ffff00;
         text{
-            width:100%,
-            text-align:center,
-            font-size:40px
+            width:100%;
+            text-align:center;
+            font-size:40px;
         }
     }
 }

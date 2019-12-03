@@ -5,3 +5,9 @@ node_modules/
 .idea/
 .ide/
 .DS_Store
+.vscode
+src/.DS_Store
+src/images/.DS_Store
+
+build/
+dist
