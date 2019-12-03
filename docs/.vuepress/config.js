@@ -68,6 +68,8 @@ module.exports = {
                     '/guide/rating',
                     '/guide/calendar',
                     '/guide/textarea',
+                    '/guide/search-bar',
+                    '/guide/upload',
                 ]
             },
             {
@@ -79,9 +81,14 @@ module.exports = {
                     '/guide/avatar',
                     '/guide/card',
                     '/guide/divider',
-                    '/guide/media',
                     '/guide/accordion',
                     '/guide/steps',
+                    '/guide/countdown',
+                    '/guide/counter',
+                    '/guide/media',
+                    '/guide/sticky',
+                    '/guide/index-item',
+                    '/guide/fab-button',
                 ]
             },
             {
@@ -95,6 +102,9 @@ module.exports = {
                     '/guide/circle',
                     '/guide/dialog',
                     '/guide/gallery',
+                    '/guide/action-sheet',
+                    '/guide/mask',
+                    '/guide/popup',
                 ]
             },
             {
@@ -103,7 +113,10 @@ module.exports = {
                 children: [
                     '/guide/barcode',
                     '/guide/qrcode',
-                    '/guide/vcode'
+                    '/guide/vcode',
+                    '/guide/keyboard',
+                    '/guide/result',
+                    '/guide/filterbar',
                 ]
             },
         ]
