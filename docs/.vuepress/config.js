@@ -70,6 +70,7 @@ module.exports = {
                     '/guide/textarea',
                     '/guide/search-bar',
                     '/guide/upload',
+                    '/guide/slider',
                 ]
             },
             {
