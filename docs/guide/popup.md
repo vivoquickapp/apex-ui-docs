@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="my-toast" src="apex-ui/components/popup/index"></import>
+<import name="my-popup" src="apex-ui/components/popup/index"></import>
 ```
 
 ### 示例
@@ -35,6 +35,9 @@
       onclosed="onclosed('Center Popup')"
     >
       <my-button type="success" ontap="handleClickClose('popupCenter')">确定</my-button>
+      <div class="icon-close" slot="close">
+        <my-icon type="close-circle-outline" size="40" color="#2c3e50"></my-icon>
+      </div>
     </my-popup>
 
     <my-popup 
@@ -64,8 +67,12 @@
 
 ```less
 .wrap {
-    flex-direction: column;
-    justify-content: center;
+  flex-direction: column;
+  justify-content: center;
+  .icon-close {
+    padding-top: 31px;
+    padding-right: 30px;
+  }
 }
 ```
 
@@ -135,3 +142,4 @@ export default {
 | header  | 自定义 header 内容 |
 | default | 自定义 body 内容   |
 | footer  | 自定义 footer 内容 |
+| close   | 自定义 close icon |
