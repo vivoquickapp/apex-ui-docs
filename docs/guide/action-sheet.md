@@ -13,7 +13,7 @@
 在 `.ux` 文件中引入组件
 
 ``` html
-<import name="my-popover" src="apex-ui/components/actionSheet/index"></import>
+<import name="my-action-sheet" src="apex-ui/components/actionSheet/index"></import>
 ```
 
 ### 示例
