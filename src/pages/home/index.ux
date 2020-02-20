@@ -90,6 +90,7 @@
       <div class="item"><a href="/pages/keyboard">数字键盘 keyboard</a></div>
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
+      <div class="item"><a href="/pages/charts">图表 charts</a></div>
     </div>
   </div>
 </template>
