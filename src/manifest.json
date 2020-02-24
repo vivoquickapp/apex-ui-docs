@@ -189,6 +189,9 @@
       },
       "pages/select": {
         "component": "index"
+      },
+      "pages/charts": {
+        "component": "index"
       }
     }
   },
@@ -403,6 +406,10 @@
       },
       "pages/select": {
         "titleBarText": "下拉框 select",
+        "menu": false
+      },
+      "pages/charts": {
+        "titleBarText": "图表 charts",
         "menu": false
       }
     }
