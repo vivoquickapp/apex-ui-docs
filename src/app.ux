@@ -3,6 +3,8 @@
  * 应用级别的配置，供所有页面公用
  */
 import util from "./util";
+const injectRef = Object.getPrototypeOf(global) || global;
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator');
 
 export default {
   showMenu: util.showMenu,
