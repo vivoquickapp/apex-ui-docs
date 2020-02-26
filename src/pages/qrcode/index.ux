@@ -2,7 +2,7 @@
 <import src="apex-ui/components/input/index" name="my-input"></import>
 <template>
   <div class="wrap">
-    <text class="note">请输入文字，即使输入即时生成</text>
+    <text class="note">请输入文字，即时输入即时生成</text>
     <my-input
       value="{{content}}"
       placeholder="请输入要生成二维码的内容"
