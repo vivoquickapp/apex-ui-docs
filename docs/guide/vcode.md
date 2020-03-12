@@ -66,6 +66,7 @@
 | fontColor | String  | -                    | 画布字体颜色   |
 | hasPoint  | Boolean | true                 | 是否显示干扰点 |
 | hasLine   | Boolean | true                 | 是否显示干扰线 |
+| id        | String  | 'canvasId'           | canvas id,使用华为引擎时必传                    |
 
 #### 组件事件
 

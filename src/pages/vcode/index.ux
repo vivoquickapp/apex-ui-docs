@@ -10,7 +10,7 @@
           placeholder="请输入验证码"
           onchange="changeHandler()"
         ></my-input>
-        <my-vcode onchange="changeHandler()"></my-vcode>
+        <my-vcode onchange="changeHandler()" id="vcode1"></my-vcode>
       </div>
       <div class="row">
         <my-input
@@ -19,7 +19,7 @@
           placeholder="请输入验证码"
           onchange="changeHandler()"
         ></my-input>
-        <my-vcode onchange="changeHandler()"></my-vcode>
+        <my-vcode onchange="changeHandler()" id="vcode2"></my-vcode>
       </div>
       <text>tips:点击验证码可刷新</text>
     </div>

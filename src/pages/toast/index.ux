@@ -23,7 +23,6 @@
 </style>
 <script>
 export default {
-  data() {},
   handleText() {
     this.$child("toast").showToast({
       content: "这是文本提示"

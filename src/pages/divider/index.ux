@@ -2,7 +2,10 @@
 <template>
   <div class="wrap">
     <text class="title">基本用法</text>
-    <my-divider content="加载已经完成,没有其他数据"></my-divider>
+    <my-divider
+      bg-color="#ffffff"
+      content="加载已经完成,没有其他数据"
+    ></my-divider>
     <my-divider
       content="加载已经完成,没有其他数据"
       color="#2d8cf0"
@@ -34,6 +37,7 @@
 <style lang="less">
 .wrap {
   flex-direction: column;
+  background-color: #fff;
   flex-wrap: wrap;
   .title {
     margin: 20px;

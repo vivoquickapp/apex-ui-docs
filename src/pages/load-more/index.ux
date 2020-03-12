@@ -1,7 +1,7 @@
 <import name="my-load-more" src="apex-ui/components/load-more/index"></import>
 <template>
   <div class="wrap">
-    <my-load-more></my-load-more>
+    <my-load-more bg-color="#ffffff"></my-load-more>
     <my-load-more tip="暂无数据" loading="{{ false }}"></my-load-more>
     <my-load-more loading="{{ false }}"></my-load-more>
   </div>
@@ -9,6 +9,7 @@
 <style lang="less">
 .wrap {
   flex-direction: column;
+  background-color: #fff;
   padding: 20px;
   .title {
     margin: 20px;
