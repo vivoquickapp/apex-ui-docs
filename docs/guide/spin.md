@@ -109,6 +109,7 @@ export default {
 | loading | Boolean | true    | 是否显示加载中组件                      |
 | nested  | Boolean | false   | 是否包含内容                           |
 | size    | String  | default | 组件大小，可选值有large, default, small |
+| custom  | Boolean | false   | 是否使用自定义加载中样式, 使用custom slot时需设置为true |
 
 #### slot
 

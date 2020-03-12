@@ -27,7 +27,7 @@
     </div>
     <text class="title">自定义加载样式</text>
     <div class="group">
-      <my-spin>
+      <my-spin custom="{{true}}">
         <div slot="custom">
           <text>loading...</text>
         </div>

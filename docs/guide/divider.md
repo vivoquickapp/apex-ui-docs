@@ -55,3 +55,4 @@
 | color     | String | '#80848f' | 分割线文字颜色 |
 | lineColor | String | '#e9eaec' | 分割线线的颜色 |
 | size      | Number | 24        | 提示文字大小   |
+| bgColor   | String | #ffffff   | 分割线文字背景色|

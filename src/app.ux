@@ -4,7 +4,7 @@
  */
 import util from "./util";
 const injectRef = Object.getPrototypeOf(global) || global;
-injectRef.regeneratorRuntime = require('@babel/runtime/regenerator');
+injectRef.regeneratorRuntime = require("@babel/runtime/regenerator");
 
 export default {
   showMenu: util.showMenu,

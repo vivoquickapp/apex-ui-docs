@@ -6,13 +6,13 @@
   <div class="wrap">
     <text class="title">基本用法</text>
     <div class="group">
-      <my-circle percent="80" size="200">
+      <my-circle percent="80" size="200" id="circle1">
         <text class="basic-use-text">80%</text>
       </my-circle>
-      <my-circle percent="100" stroke-color="#19be6b" size="200">
+      <my-circle percent="100" stroke-color="#19be6b" size="200" id="circle2">
         <my-icon type="checkmark" size="80" color="#19be6b"></my-icon>
       </my-circle>
-      <my-circle percent="75" stroke-color="#ed3f14" size="200">
+      <my-circle percent="75" stroke-color="#ed3f14" size="200" id="circle3">
         <my-icon type="close" size="80" color="#ed3f14"></my-icon>
       </my-circle>
     </div>
@@ -25,18 +25,35 @@
         stroke-width="30"
         trail-width="10"
         trail-color="#ed3f14"
+        id="circle4"
       ></my-circle>
-      <my-circle percent="80" size="200" show-trail="{{false}}"></my-circle>
+      <my-circle
+        percent="80"
+        size="200"
+        show-trail="{{false}}"
+        id="circle5"
+      ></my-circle>
     </div>
     <text class="title">起始角度及旋转方向</text>
     <div class="group">
-      <my-circle percent="80" size="200" anticlockwise="{{true}}"></my-circle>
-      <my-circle percent="80" size="200" s-angle="{{90}}"></my-circle>
+      <my-circle
+        percent="80"
+        size="200"
+        anticlockwise="{{true}}"
+        id="circle6"
+      ></my-circle>
+      <my-circle
+        percent="80"
+        size="200"
+        s-angle="{{90}}"
+        id="circle7"
+      ></my-circle>
       <my-circle
         percent="80"
         size="200"
         anticlockwise="{{true}}"
         s-angle="{{90}}"
+        id="circle8"
       ></my-circle>
     </div>
     <text class="title">与外部组件配合</text>
@@ -45,6 +62,7 @@
         percent="{{percent}}"
         stroke-color="{{color}}"
         s-angle="{{270}}"
+        id="circle9"
       >
         <div>
           <my-icon

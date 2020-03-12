@@ -132,6 +132,7 @@ export default {
 | showTrail     | Boolean | true      | 是否显示背景环                                  |
 | sAngle        | Number  | 0         | 旋转开始角度，0为三点钟方向，90为六点钟方向，以此类推 |
 | anticlockwise | Boolean | false     | 旋转方向，默认为顺时针                           |
+| id            | String  | 'canvasId'| canvas id,使用华为引擎时必传                    |
 
 #### slot
 

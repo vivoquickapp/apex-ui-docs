@@ -46,3 +46,4 @@
 | ------- | ------- | ------ | ---------- |
 | loading | Boolean | true   | 显示加载中 |
 | tip     | String  | -      | 提示文字   |
+| bgColor | String  | #ffffff| 文字背景色 |

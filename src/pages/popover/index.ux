@@ -144,16 +144,16 @@
 </template>
 
 <script>
-import prompt from "@system.prompt";
+// import prompt from "@system.prompt";
 export default {
   data: {
     btn: [200, 80]
-  },
-  jump(type) {
-    prompt.showToast({
-      message: type
-    });
   }
+  // jump(type) {
+  //   prompt.showToast({
+  //     message: type
+  //   });
+  // }
 };
 </script>
 
@@ -188,9 +188,6 @@ export default {
         border-radius: 12px;
         text-align: center;
         background-color: #fff;
-      }
-      .btn:active {
-        background-color: #e4e4e4;
       }
     }
     .right {
