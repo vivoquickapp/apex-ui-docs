@@ -192,6 +192,9 @@
       },
       "pages/charts": {
         "component": "index"
+      },
+      "pages/city-cascader": {
+        "component": "index"
       }
     }
   },
@@ -410,6 +413,10 @@
       },
       "pages/charts": {
         "titleBarText": "图表 charts",
+        "menu": false
+      },
+      "pages/city-cascader": {
+        "titleBarText": "城市级联选择器 city-cascader",
         "menu": false
       }
     }

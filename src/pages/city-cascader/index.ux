@@ -1,0 +1,15 @@
+<import name="my-city-cascader" src="apex-ui/components/city-cascader/index.ux"></import>
+
+<template>
+  <my-city-cascader></my-city-cascader>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
