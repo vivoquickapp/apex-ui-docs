@@ -1,15 +1,139 @@
-<import name="my-city-cascader" src="apex-ui/components/city-cascader/index.ux"></import>
+<import
+  name="my-city-cascader"
+  src="apex-ui/components/city-cascader/index.ux"
+></import>
 
 <template>
-  <my-city-cascader></my-city-cascader>
+  <div class="wrap">
+    <div class="line" onclick="handle1">
+      <text class="left">默认(区县级)</text>
+      <text class="right">{{ text1 }}</text>
+    </div>
+    <div class="line" onclick="handle2">
+      <text class="left">市级</text>
+      <text class="right">{{ text2 }}</text>
+    </div>
+    <div class="line" onclick="handle3">
+      <text class="left">省级</text>
+      <text class="right">{{ text3 }}</text>
+    </div>
+    <my-city-cascader id="cascader1" oncascader="cascader1"></my-city-cascader>
+    <my-city-cascader
+      id="cascader2"
+      level="{{2}}"
+      oncascader="cascader2"
+      default="{{default}}"
+    ></my-city-cascader>
+    <my-city-cascader
+      id="cascader3"
+      level="{{1}}"
+      oncascader="cascader3"
+    ></my-city-cascader>
+  </div>
 </template>
 
 <script>
 export default {
+  data: {
+    result1: [],
+    text1: "",
+    result2: [],
+    text2: "陕西省/咸阳市",
+    result3: [],
+    text3: "",
+    default: {
+      province: {
+        label: "陕西省",
+        value: "610000"
+      },
+      city: {
+        label: "咸阳市",
+        value: "610400"
+      }
+    }
+  },
 
-}
+  handle1() {
+    this.$child("cascader1").show();
+  },
+
+  cascader1(e) {
+    this.result1 = [];
+    if (e.detail.province) {
+      this.result1.push(e.detail.province);
+    }
+    if (e.detail.city) {
+      this.result1.push(e.detail.city);
+    }
+    if (e.detail.area) {
+      this.result1.push(e.detail.area);
+    }
+    this.text1 = `${this.result1[0].label}/${this.result1[1].label}${
+      this.result1[2].label ? "/" : ""
+    }${this.result1[2].label ? this.result1[2].label : ""}`;
+  },
+
+  handle2() {
+    this.$child("cascader2").show();
+  },
+
+  cascader2(e) {
+    this.result2 = [];
+    if (e.detail.province) {
+      this.result2.push(e.detail.province);
+    }
+    if (e.detail.city) {
+      this.result2.push(e.detail.city);
+    }
+    this.text2 = `${this.result2[0].label}/${this.result2[1].label}`;
+  },
+
+  handle3() {
+    this.$child("cascader3").show();
+  },
+
+  cascader3(e) {
+    this.result3 = [];
+    if (e.detail.province) {
+      this.result3.push(e.detail.province);
+    }
+    this.text3 = `${this.result3[0].label}`;
+  }
+};
 </script>
 
-<style>
+<style lang="less">
+.wrap {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
+  .line {
+    width: 680px;
+    height: 80px;
+    margin: 15px 30px;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    background-color: #eee;
+    justify-content: space-between;
+    .left {
+      margin-left: 10px;
+      color: #666666;
+      font-size: 30px;
+    }
+    .right {
+      width: 450px;
+      height: 80px;
+      line-height: 80px;
+      margin-right: 10px;
+      font-size: 30px;
+      color: #ff2828;
+      lines: 1;
+      text-overflow: ellipsis;
+      text-align: right;
+    }
+  }
+}
 </style>

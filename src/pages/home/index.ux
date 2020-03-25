@@ -39,7 +39,9 @@
       <div class="item"><a href="/pages/calendar">日历 calendar</a></div>
       <div class="item"><a href="/pages/search-bar">搜索栏 searchBar</a></div>
       <div class="item"><a href="/pages/upload">上传 upload</a></div>
-      <div class="item"><a href="/pages/city-cascader">城市级联选择器 city-cascader</a></div>
+      <div class="item">
+        <a href="/pages/city-cascader">城市级联选择器 city-cascader</a>
+      </div>
     </div>
     <div class="type">
       <text>数据展示</text>
