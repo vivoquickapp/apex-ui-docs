@@ -19,6 +19,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/quickapp": "git+https://github.com/vivoquickapp/quickapp-types.git",
     "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
     "apex-ui": "latest",

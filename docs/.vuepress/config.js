@@ -71,6 +71,7 @@ module.exports = {
                     '/guide/search-bar',
                     '/guide/upload',
                     '/guide/slider',
+                    '/guide/city-cascader',
                 ]
             },
             {
