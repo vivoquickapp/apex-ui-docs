@@ -190,10 +190,19 @@
       "pages/select": {
         "component": "index"
       },
-      "pages/charts": {
+      "pages/city-cascader": {
         "component": "index"
       },
-      "pages/city-cascader": {
+      "pages/charts/chartsBar": {
+        "component": "index"
+      },
+      "pages/charts/chartsLine": {
+        "component": "index"
+      },
+      "pages/charts/chartsPie": {
+        "component": "index"
+      },
+      "pages/charts/chartsRadar": {
         "component": "index"
       }
     }
@@ -411,12 +420,24 @@
         "titleBarText": "下拉框 select",
         "menu": false
       },
-      "pages/charts": {
-        "titleBarText": "图表 charts",
-        "menu": false
-      },
       "pages/city-cascader": {
         "titleBarText": "城市级联选择器 city-cascader",
+        "menu": false
+      },
+      "pages/charts/chartsBar": {
+        "titleBarText": "图表/柱状图 charts/bar",
+        "menu": false
+      },
+      "pages/charts/chartsLine": {
+        "titleBarText": "图表/折线图 charts/line",
+        "menu": false
+      },
+      "pages/charts/chartsPie": {
+        "titleBarText": "图表/饼图 charts/pie",
+        "menu": false
+      },
+      "pages/charts/chartsRadar": {
+        "titleBarText": "图表/雷达图 charts/radar",
         "menu": false
       }
     }
