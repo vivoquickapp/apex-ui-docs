@@ -190,6 +190,9 @@
       "pages/select": {
         "component": "index"
       },
+      "pages/slider": {
+        "component": "index"
+      },
       "pages/city-cascader": {
         "component": "index"
       },
@@ -418,6 +421,10 @@
       },
       "pages/select": {
         "titleBarText": "下拉框 select",
+        "menu": false
+      },
+      "pages/slider": {
+        "titleBarText": "滑动选择器 slider",
         "menu": false
       },
       "pages/city-cascader": {
