@@ -1,0 +1,34 @@
+<import name="chart-line1" src="./components/chartLine1.ux"></import>
+<import name="chart-line2" src="./components/chartLine2.ux"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="page">
+    <chart-line1 id="chart-line1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line1>
+    <chart-line2 id="chart-line2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line2>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    chartWidth: 600,
+    chartHeight: 400,
+  },
+  async onShow() {
+    try {
+      await this.$child('chart-line1').initChart()
+      await this.$child('chart-line2').initChart()
+    } catch (error) {
+      console.error('catch error', error)
+    }
+  },
+}
+</script>
+
+<style lang="less">
+.page {
+  flex-direction: column;
+  align-items: center;
+}
+</style>

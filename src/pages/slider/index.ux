@@ -1,0 +1,76 @@
+<import name="my-slider" src="apex-ui/components/slider/index"></import>
+<import name="my-icon" src="apex-ui/components/icon/index"></import>
+
+<template>
+  <div class="wrap">
+    <text class="title">Default</text>
+    <my-slider onchange="onchange('Default')" onafter-change="onafterChange('Default')"></my-slider>
+
+    <text class="title">Custom tip</text>
+    <my-slider default-value="10" tips-formatter="{d} %" onchange="onchange('Custom tip')" onafter-change="onafterChange('Custom tip')"></my-slider>
+
+    <text class="title">No tip</text>
+    <my-slider default-value="10" show-tips={{false}} onchange="onchange('No tip')" onafter-change="onafterChange('No tip')"></my-slider>
+
+    <text class="title">Disabled</text>
+    <my-slider default-value="10" disabled="{{true}}"></my-slider>
+
+    <text class="title">Default value</text>
+    <my-slider default-value="10" value-type="value" onchange="onchange('Default value')" onafter-change="onafterChange('Default value')"></my-slider>
+
+    <text class="title">Custom icon value</text>
+    <my-slider default-value="10" value-type="custom" onchange="onchange('Custom icon value')" onafter-change="onafterChange('Custom icon value')">
+        <div slot="min">
+          <my-icon type="vol-mute" size="50" color="#888888" ></my-icon>
+        </div>
+        <div slot="max">
+          <my-icon type="vol-high" size="50" color="#888888" ></my-icon>
+        </div>
+    </my-slider>
+
+    <text class="title">Custom image value</text>
+    <my-slider default-value="10" value-type="custom" onchange="onchange('Custom image value')" onafter-change="onafterChange('Custom image value')">
+        <div slot="min">
+          <image src="../../images/logo-d.png" style="width: 50px; height: 50px;"></image>
+        </div>
+        <div slot="max">
+          <image src="../../images/logo-d.png" style="width: 50px; height: 50px;"></image>
+        </div>
+    </my-slider>
+
+    <text class="title">Custom value</text>
+    <my-slider default-value="10" value-type="{{ {min: 'value', max: 'custom'} }}" onchange="onchange('Custom value')" onafter-change="onafterChange('Custom value')">
+        <div slot="max">
+          <my-icon type="vol-high" size="50" color="#888888" ></my-icon>
+        </div>
+    </my-slider>
+
+    <text class="title">Step = 10</text>
+    <my-slider default-value="10" value-type="value" step="10" onchange="onchange('Step = 10')" onafter-change="onafterChange('Step = 10')"></my-slider>
+
+    <text class="title">Custom style</text>
+    <my-slider default-value="10" style-object="{{ {'color': 'blue', 'selected-color': 'red', 'block-color': 'yellow', 'padding-left': '50px', 'padding-right': '50px'} }}" onchange="onchange('Custom style')" onafter-change="onafterChange('Custom style')"></my-slider>
+  </div>
+</template>
+<style lang="less">
+  .wrap {
+    flex-direction: column;
+    padding: 0 40px 50px;
+    .title{
+      padding: 50px 0 20px;
+    }
+  }
+</style>
+<script>
+  export default {
+    data() {
+      return {}
+    },
+    onchange(slider,e){
+      console.log(`${slider} onchange, currentValue = ${e.detail.currentValue}`,)
+    },
+    onafterChange(slider,e){
+      console.log(`${slider} onafterChange, currentValue = ${e.detail.currentValue}`)
+    }
+  } 
+</script>

@@ -39,6 +39,7 @@
       <div class="item"><a href="/pages/calendar">日历 calendar</a></div>
       <div class="item"><a href="/pages/search-bar">搜索栏 searchBar</a></div>
       <div class="item"><a href="/pages/upload">上传 upload</a></div>
+      <div class="item"><a href="/pages/slider">滑动选择器 slider</a></div>
       <div class="item">
         <a href="/pages/city-cascader">城市级联选择器 city-cascader</a>
       </div>
@@ -93,7 +94,10 @@
       <div class="item"><a href="/pages/keyboard">数字键盘 keyboard</a></div>
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
-      <div class="item"><a href="/pages/charts">图表 charts</a></div>
+      <div class="item"><a href="/pages/charts/chartsBar">图表/柱状图 charts/bar</a></div>
+      <div class="item"><a href="/pages/charts/chartsLine">图表/折线图 charts/line</a></div>
+      <div class="item"><a href="/pages/charts/chartsPie">图表/饼图 charts/pie</a></div>
+      <div class="item"><a href="/pages/charts/chartsRadar">图表/雷达图 charts/radar</a></div>
     </div>
   </div>
 </template>

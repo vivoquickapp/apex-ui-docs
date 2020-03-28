@@ -1,0 +1,232 @@
+<import name="my-popup" src="apex-ui/components/popup/index"></import>
+<import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
+<import name="my-radio" src="apex-ui/components/radio/index"></import>
+<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
+
+<template>
+  <div class="chart-wrap">
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+
+    <div class="btn-row">
+      <text class="btn btn-default" @click="openEditConfig">配置参数</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-reset" @click="initChart">初始化图表</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-primary" @click="updateChart">修改参数</text>
+    </div>
+
+    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+      <list class="config-wrap">
+        <list-item type="list-item" class="config-item">
+          <text class="config-item-title">opts</text>
+          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="backgroundColor"
+            position="right"
+            shape="square"
+            checked="{{config.backgroundColor}}"
+            onchange="changeConfig('backgroundColor')"
+          ></my-checkbox>
+          <my-checkbox value="legend" position="right" shape="square" checked="{{config.legend}}" onchange="changeConfig('legend')"></my-checkbox>
+          <my-checkbox value="label" position="right" shape="square" checked="{{config.label}}" onchange="changeConfig('label')"></my-checkbox>
+          <text class="config-item-title">series</text>
+          <my-radio-group id="radius" current="{{config.seriesRadius}}" onchange="changeConfig('seriesRadius')">
+            <my-radio group="radius" position="right" value="{{$item.name}}" for="{{radiusArr}}"></my-radio>
+          </my-radio-group>
+          <my-checkbox value="label" position="right" shape="square" checked="{{config.seriesLabel}}" onchange="changeConfig('seriesLabel')"></my-checkbox>
+          <my-checkbox
+            value="disablePieStroke"
+            position="right"
+            shape="square"
+            checked="{{config.seriesDisablePieStroke}}"
+            onchange="changeConfig('seriesDisablePieStroke')"
+          ></my-checkbox>
+        </list-item>
+      </list>
+
+      <div class="config-btn btn-row">
+        <text class="btn btn-reset" @click="resetConfig">重置参数</text>
+        <text class="btn btn-default" @click="closeEditConfig">关闭</text>
+      </div>
+    </my-popup>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts.js'
+// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {
+      config: {
+        animation: true,
+        backgroundColor: true,
+        legend: true,
+        label: true,
+        seriesRadius: "radius: [0, '80%']",
+        seriesLabel: true,
+        seriesDisablePieStroke: true,
+      },
+      radiusArr: [
+        {
+          id: 1,
+          name: "radius: [0, '80%']",
+          checked: true,
+        },
+        {
+          id: 2,
+          name: "radius: ['60%', '80%']",
+          checked: false,
+        },
+      ],
+    }
+  },
+  resetConfig() {
+    this.config = {
+      animation: true,
+      backgroundColor: true,
+      legend: true,
+      label: true,
+      seriesRadius: "radius: [0, '80%']",
+      seriesLabel: true,
+      seriesDisablePieStroke: true,
+    }
+  },
+  getMockData() {
+    let mockData = this.$app.$def.getMockData(5, 0, 1000, 0)
+
+    mockData = mockData.map((dataItem, dataIndex) => {
+      return {
+        name: `cat${dataIndex + 1}`,
+        value: dataItem,
+      }
+    })
+
+    return mockData
+  },
+  changeConfig(key, { detail }) {
+    if (key == 'seriesRadius') {
+      this.config[key] = detail.value
+    } else {
+      this.config[key] = detail.current
+    }
+  },
+  openEditConfig() {
+    this.$child('popup').show()
+  },
+  closeEditConfig() {
+    this.$child('popup').hide()
+  },
+  updateChart(type) {
+    if (!$chart) return
+
+    let mockData = this.getMockData()
+
+    let opts = {
+      animation: this.config.animation,
+      backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+      legend: {
+        show: this.config.legend,
+      },
+      label: {
+        show: this.config.label,
+      },
+      series: [
+        {
+          radius: this.config.seriesRadius == "radius: [0, '80%']" ? [0, '80%'] : ['60%', '80%'],
+          disablePieStroke: this.config.seriesDisablePieStroke,
+          label: {
+            show: this.config.seriesLabel,
+          },
+          data: mockData,
+        },
+      ],
+    }
+
+    $chart.updateData(opts)
+  },
+  initChart() {
+    this.resetConfig()
+
+    let mockData = this.getMockData()
+
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chart'),
+        type: 'pie',
+        width: this.width,
+        height: this.height,
+        backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+        animation: this.config.animation,
+        animationDuration: 1000,
+        animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
+        padding: [20, 20, 20, 20],
+        legend: {
+          show: this.config.legend,
+          type: 'default',
+          marginTop: 8,
+          itemGap: 15,
+          shapeWidth: 15,
+          shapeHeight: 15,
+          textStyle: {
+            fontSize: 15,
+            color: '#333333',
+            padding: 5,
+          },
+        },
+        label: {
+          show: this.config.label,
+          fontSize: 15,
+          color: 'auto',
+          margin: 2,
+        },
+        series: [
+          {
+            center: ['50%', '50%'],
+            radius: this.config.seriesRadius == "radius: [0, '80%']" ? [0, '80%'] : ['60%', '80%'],
+            offsetAngle: 0,
+            disablePieStroke: this.config.seriesDisablePieStroke,
+            labelLine: {
+              lineDotRadius: 3,
+              lineWidth: 1,
+              length1: 25,
+              length2: 15,
+            },
+            label: {
+              show: this.config.seriesLabel,
+              fontSize: 15,
+              color: 'auto',
+              margin: 2,
+            },
+            data: mockData,
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartPie2 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartPie2 touchstart`)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

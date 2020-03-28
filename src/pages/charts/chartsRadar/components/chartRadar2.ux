@@ -1,0 +1,378 @@
+<import name="my-popup" src="apex-ui/components/popup/index"></import>
+<import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
+<import name="my-radio" src="apex-ui/components/radio/index"></import>
+<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
+
+<template>
+  <div class="chart-wrap">
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+
+    <div class="btn-row">
+      <text class="btn btn-default" @click="openEditConfig">配置参数</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-reset" @click="initChart">初始化图表</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-primary" @click="updateChart">修改参数</text>
+    </div>
+
+    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+      <list class="config-wrap">
+        <list-item type="list-item" class="config-item">
+          <text class="config-item-title">data</text>
+          <my-radio-group id="dataType" current="{{config.dataType}}" onchange="changeConfig('dataType')">
+            <my-radio group="dataType" position="right" name="{{$item.name}}" value="{{$item.name}}" for="{{dataTypeArr}}"></my-radio>
+          </my-radio-group>
+          <my-checkbox value="浮点数据" position="right" shape="square" checked="{{config.dataFloating}}" onchange="changeConfig('dataFloating')"></my-checkbox>
+          <my-checkbox value="多数据" position="right" shape="square" checked="{{config.dataMore}}" onchange="changeConfig('dataMore')"></my-checkbox>
+          <text class="config-item-title">opts</text>
+          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="backgroundColor"
+            position="right"
+            shape="square"
+            checked="{{config.backgroundColor}}"
+            onchange="changeConfig('backgroundColor')"
+          ></my-checkbox>
+          <my-checkbox value="legend" position="right" shape="square" checked="{{config.legend}}" onchange="changeConfig('legend')"></my-checkbox>
+          <text class="config-item-title">radarAxis</text>
+          <my-radio-group id="shape" current="{{config.shape}}" onchange="changeConfig('shape')">
+            <my-radio group="shape" position="right" value="{{$item.name}}" for="{{shapeArr}}"></my-radio>
+          </my-radio-group>
+          <my-checkbox value="axisName" position="right" shape="square" checked="{{config.axisName}}" onchange="changeConfig('axisName')"></my-checkbox>
+          <my-checkbox value="axisLine" position="right" shape="square" checked="{{config.axisLine}}" onchange="changeConfig('axisLine')"></my-checkbox>
+          <my-checkbox value="splitLine" position="right" shape="square" checked="{{config.splitLine}}" onchange="changeConfig('splitLine')"></my-checkbox>
+          <my-checkbox
+            value="splitAreaOdd"
+            position="right"
+            shape="square"
+            checked="{{config.splitAreaOdd}}"
+            onchange="changeConfig('splitAreaOdd')"
+          ></my-checkbox>
+          <my-checkbox
+            value="splitAreaEven"
+            position="right"
+            shape="square"
+            checked="{{config.splitAreaEven}}"
+            onchange="changeConfig('splitAreaEven')"
+          ></my-checkbox>
+          <text class="config-item-title">series</text>
+          <my-checkbox value="line" position="right" shape="square" checked="{{config.seriesLine}}" onchange="changeConfig('seriesLine')"></my-checkbox>
+          <my-checkbox value="symbol" position="right" shape="square" checked="{{config.seriesSymbol}}" onchange="changeConfig('seriesSymbol')"></my-checkbox>
+          <my-checkbox value="area" position="right" shape="square" checked="{{config.seriesArea}}" onchange="changeConfig('seriesArea')"></my-checkbox>
+        </list-item>
+      </list>
+
+      <div class="config-btn btn-row">
+        <text class="btn btn-reset" @click="resetConfig">重置参数</text>
+        <text class="btn btn-default" @click="closeEditConfig">关闭</text>
+      </div>
+    </my-popup>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts.js'
+// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {
+      mockCategories: [],
+      mockSeries: [],
+      config: {
+        dataType: '正数',
+        dataFloating: false,
+        dataMore: false,
+        animation: true,
+        backgroundColor: true,
+        legend: true,
+        shape: "shape: 'polygon'",
+        axisName: true,
+        axisLine: true,
+        splitLine: true,
+        splitAreaOdd: true,
+        splitAreaEven: true,
+        seriesLine: true,
+        seriesSymbol: true,
+        seriesArea: true,
+      },
+      dataTypeArr: [
+        {
+          id: 1,
+          name: '正数',
+          checked: true,
+        },
+        {
+          id: 2,
+          name: '负数',
+          checked: false,
+        },
+        {
+          id: 3,
+          name: '正负数',
+          checked: false,
+        },
+      ],
+      shapeArr: [
+        {
+          id: 1,
+          name: "shape: 'polygon'",
+          checked: true,
+        },
+        {
+          id: 2,
+          name: "shape: 'circle'",
+          checked: false,
+        },
+      ],
+    }
+  },
+  resetConfig() {
+    this.config = {
+      dataType: '正数',
+      dataFloating: false,
+      dataMore: false,
+      animation: true,
+      backgroundColor: true,
+      legend: true,
+      shape: "shape: 'polygon'",
+      axisName: true,
+      axisLine: true,
+      splitLine: true,
+      splitAreaOdd: true,
+      splitAreaEven: true,
+      seriesLine: true,
+      seriesSymbol: true,
+      seriesArea: true,
+    }
+  },
+  changeConfig(key, { detail }) {
+    if (key == 'dataType' || key == 'shape') {
+      this.config[key] = detail.value
+    } else {
+      this.config[key] = detail.current
+    }
+  },
+  openEditConfig() {
+    this.$child('popup').show()
+  },
+  closeEditConfig() {
+    this.$child('popup').hide()
+  },
+  getMockData() {
+    let categoriesLen = 7
+    let digits = this.config.dataFloating ? 2 : 0
+    let seriesLen = this.config.dataMore ? 2 : 1
+
+    let mockCategories = Array.from(new Array(7).keys(), item => item + 1)
+    let mockSeries = []
+
+    for (let i = 0; i < seriesLen; i++) {
+      switch (this.config.dataType) {
+        case '正数':
+          mockSeries.push({
+            name: `正数${i + 1}`,
+            data: this.$app.$def.getMockData(categoriesLen, 50, 100, digits),
+          })
+          break
+        case '负数':
+          mockSeries.push({
+            name: `负数${i + 1}`,
+            data: this.$app.$def.getMockData(categoriesLen, -100, -50, digits),
+          })
+          break
+        case '正负数':
+          mockSeries.push({
+            name: `正负数${i + 1}`,
+            data: this.$app.$def.getMockData(categoriesLen, -50, 50, digits),
+          })
+          break
+      }
+    }
+
+    return {
+      mockCategories,
+      mockSeries,
+    }
+  },
+  updateChart(type) {
+    if (!$chart) return
+
+    let { mockCategories, mockSeries } = this.getMockData()
+
+    mockSeries = mockSeries.map(seriesItem => {
+      seriesItem.line = {
+        show: this.config.seriesLine,
+      }
+      seriesItem.symbol = {
+        show: this.config.seriesSymbol,
+      }
+      seriesItem.area = {
+        show: this.config.seriesArea,
+      }
+
+      return seriesItem
+    })
+
+    let opts = {
+      animation: this.config.animation,
+      backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+      legend: {
+        show: this.config.legend,
+      },
+      radarAxis: {
+        shape: this.config.shape == "shape: 'polygon'" ? 'polygon' : 'circle',
+        axisName: {
+          show: this.config.axisName,
+        },
+        axisLine: {
+          show: this.config.axisLine,
+        },
+        splitLine: {
+          show: this.config.splitLine,
+        },
+        splitArea: {
+          odd: {
+            show: this.config.splitAreaOdd,
+          },
+          even: {
+            show: this.config.splitAreaEven,
+          },
+        },
+      },
+      categories: mockCategories,
+      series: mockSeries,
+    }
+
+    $chart.updateData(opts)
+  },
+  initChart() {
+    this.resetConfig()
+
+    let { mockCategories, mockSeries } = this.getMockData()
+
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chart'),
+        type: 'radar',
+        width: this.width,
+        height: this.height,
+        backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+        animation: this.config.animation,
+        animationDuration: 1000,
+        animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
+        padding: [20, 20, 20, 20],
+        legend: {
+          show: this.config.legend,
+          type: 'default',
+          marginTop: 8,
+          itemGap: 15,
+          shapeWidth: 15,
+          shapeHeight: 15,
+          textStyle: {
+            fontSize: 15,
+            color: '#333333',
+            padding: 5,
+          },
+        },
+        label: {
+          show: this.config.label,
+          fontSize: 15,
+          color: 'auto',
+          margin: 2,
+        },
+        radarAxis: {
+          shape: this.config.shape == "shape: 'polygon'" ? 'polygon' : 'circle', // polygon. circle
+          center: ['50%', '50%'],
+          radius: '80%',
+          max: 'auto',
+          splitNumber: 4,
+          axisName: {
+            show: this.config.axisName,
+            textStyle: {
+              fontSize: 15,
+              color: '#666',
+              margin: 10,
+            },
+          },
+          axisLine: {
+            show: this.config.axisLine,
+            lineStyle: {
+              lineWidth: 2,
+              color: '#ccc',
+              opacity: 1,
+            },
+          },
+          splitLine: {
+            show: this.config.splitLine,
+            lineStyle: {
+              lineWidth: 1,
+              color: '#ccc',
+              opacity: 1,
+            },
+          },
+          splitArea: {
+            odd: {
+              show: this.config.splitAreaOdd,
+              color: '#f5f5f5', // 奇数区域颜色与背景色相同
+              opacity: 1,
+            },
+            even: {
+              show: this.config.splitAreaEven,
+              color: '#e6e6e6', // 奇数区域颜色与背景色相同
+              opacity: 1,
+            },
+          },
+        },
+        categories: mockCategories,
+        series: [
+          {
+            name: mockSeries[0].name,
+            data: mockSeries[0].data,
+            line: {
+              show: this.config.seriesLine,
+              lineWidth: 2,
+              color: 'auto',
+              opacity: 1,
+            },
+            symbol: {
+              show: this.config.seriesSymbol,
+              type: 'circle', // circle
+              size: 7,
+              color: 'auto',
+            },
+            area: {
+              show: this.config.seriesArea,
+              color: 'auto',
+              opacity: 0.5,
+            },
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartRadar2 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartRadar2 touchstart`)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

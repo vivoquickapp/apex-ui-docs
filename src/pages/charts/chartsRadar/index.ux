@@ -1,0 +1,34 @@
+<import name="chart-radar1" src="./components/chartRadar1.ux"></import>
+<import name="chart-radar2" src="./components/chartRadar2.ux"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="page">
+    <chart-radar1 id="chart-radar1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar1>
+    <chart-radar2 id="chart-radar2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar2>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    chartWidth: 600,
+    chartHeight: 400,
+  },
+  async onShow() {
+    try {
+      await this.$child('chart-radar1').initChart()
+      await this.$child('chart-radar2').initChart()
+    } catch (error) {
+      console.error('catch error', error)
+    }
+  },
+}
+</script>
+
+<style lang="less">
+.page {
+  flex-direction: column;
+  align-items: center;
+}
+</style>
