@@ -45,8 +45,8 @@
       position="bottom"
       title="提示"
       content="确定关闭吗???"
-      onclose="onclose('Right Popup')"
-      onclosed="onclosed('Right Popup')"
+      onclose="onclose('Bottom Popup')"
+      onclosed="onclosed('Bottom Popup')"
     >
       <my-button type="success" ontap="handleClickClose('popupBottom')"
         >确定</my-button
