@@ -115,7 +115,7 @@ export default {
 | closable     | Boolean | false  | 是否显示关闭按钮                                             |
 | mask         | Boolean | true   | 是否显示蒙层                                                |
 | maskClosable | Boolean | true   | 点击蒙层是否允许关闭                                         |
-| zIndex       | Number  | 1000   | 设置蒙层的 z-index                                          |
+| zIndex       | Number  | 1000   | z-index                                                    |
 | hasHeader    | Boolean | true   | 是否显示头部内容                                             |
 | hasFooter    | Boolean | true   | 是否显示底部内容                                             |
 
