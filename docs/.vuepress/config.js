@@ -119,7 +119,17 @@ module.exports = {
                     '/guide/keyboard',
                     '/guide/result',
                     '/guide/filterbar',
+                ]
+            },
+            {
+                title: '图表组件',
+                collapsable: false,
+                children: [
                     '/guide/charts',
+                    '/guide/chartsBar',
+                    '/guide/chartsLine',
+                    '/guide/chartsPie',
+                    '/guide/chartsRadar',
                 ]
             },
         ]
