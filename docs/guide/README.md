@@ -40,7 +40,6 @@ yarn add apex-ui # 使用yarn
 ### 项目仓库
 
 - [文档](https://github.com/vivoquickapp/apex-ui-docs.git)
-- [示例](https://github.com/vivoquickapp/apex-ui-sample.git)
 - [组件库](https://github.com/vivoquickapp/apex-ui.git)
 
 ### 反馈交流
