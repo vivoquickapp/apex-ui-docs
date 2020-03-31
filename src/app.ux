@@ -8,6 +8,7 @@ injectRef.regeneratorRuntime = require("@babel/runtime/regenerator");
 
 export default {
   showMenu: util.showMenu,
-  createShortcut: util.createShortcut
+  createShortcut: util.createShortcut,
+  getMockData: util.getMockData,
 };
 </script>

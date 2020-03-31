@@ -66,7 +66,27 @@ function createShortcut () {
   })
 }
 
+/**
+ * @param {Number} categoriesLenth
+ * @param {Number} min // 最小值
+ * @param {Number} max // 最大值
+ * @param {Number} digits // 小数点后数字的个数
+ */
+function getMockData(categoriesLenth = 7, min = 0, max = 1000, digits = 0) {
+  let data = []
+
+  for (let i = 0; i < categoriesLenth; i++) {
+    let randomNumber = Math.random() * (max - min) + min
+    randomNumber = randomNumber.toFixed(digits)
+    randomNumber = Number(randomNumber)
+    data.push(randomNumber)
+  }
+
+  return data
+}
+
 export default {
   showMenu,
-  createShortcut
+  createShortcut,
+  getMockData
 }
