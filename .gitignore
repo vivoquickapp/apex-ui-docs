@@ -10,4 +10,5 @@ src/.DS_Store
 src/images/.DS_Store
 
 build/
-dist
+docs/*/dist/
+com.apex.ui.quickapp.debug.rpk
