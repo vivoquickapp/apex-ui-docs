@@ -61,6 +61,7 @@ export default {
 
 | 属性        | 类型    | 默认值 | 说明              |
 | ----------- | ------- | ----- | ----------------- |
+| animation   | Boolean | true | 是否开启动画        |
 | transparent | Boolean | false | 是否显示透明蒙层   |
 | zIndex      | Number  | 1000  | 设置蒙层的 z-index |
 

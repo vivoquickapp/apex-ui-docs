@@ -5,7 +5,7 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas id="chartPie2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -137,7 +137,7 @@ export default {
 
     let opts = {
       animation: this.config.animation,
-      backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
       legend: {
         show: this.config.legend,
       },
@@ -165,11 +165,11 @@ export default {
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chart'),
+        element: this.$element('chartPie2'),
         type: 'pie',
         width: this.width,
         height: this.height,
-        backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
         animation: this.config.animation,
         animationDuration: 1000,
         animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
