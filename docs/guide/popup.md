@@ -108,6 +108,7 @@ export default {
 
 | 属性         | 类型     | 默认值  | 说明                                                      |
 | ------------ | ------- | ------ | ---------------------------------------------------------- |
+| background   | String  | '#ffffff'| 背景颜色                                                 |
 | title        | String  | -      | 标题                                                       |
 | content      | String  | -      | 内容                                                       |
 | extra        | String  | -      | 底部内容                                                    |
