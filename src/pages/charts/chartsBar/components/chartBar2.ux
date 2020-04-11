@@ -5,7 +5,7 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas id="chartBar2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -263,7 +263,7 @@ export default {
 
     let opts = {
       animation: this.config.animation,
-      backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
       legend: {
         show: this.config.legend,
       },
@@ -322,11 +322,11 @@ export default {
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chart'),
+        element: this.$element('chartBar2'),
         type: 'bar',
         width: this.width,
         height: this.height,
-        backgroundColor: this.config.backgroundColor ? '#eee' : '#fff',
+        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
         animation: this.config.animation,
         animationDuration: 1000,
         animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
@@ -361,7 +361,7 @@ export default {
             text: 'x轴名称',
             gap: 10,
             textStyle: {
-              color: '#666',
+              color: '#666666',
               fontSize: 15,
               align: 'center',
             },
@@ -371,7 +371,7 @@ export default {
             rotate: Number(this.config.xAxisLabelRotate),
             gap: 5,
             textStyle: {
-              color: '#666',
+              color: '#666666',
               fontSize: 12,
             },
           },
@@ -381,21 +381,21 @@ export default {
             length: 5,
             lineStyle: {
               lineWidth: 1,
-              color: '#666',
+              color: '#666666',
             },
           },
           axisLine: {
             show: this.config.xAxisLine,
             lineStyle: {
               lineWidth: 1,
-              color: '#666',
+              color: '#666666',
             },
           },
           axisSplitLine: {
             show: this.config.xAxisSplitLine,
             lineStyle: {
               lineWidth: 1,
-              color: '#ddd',
+              color: '#dddddd',
             },
           },
         },
@@ -412,7 +412,7 @@ export default {
             text: 'y轴名称',
             gap: 10,
             textStyle: {
-              color: '#666',
+              color: '#666666',
               fontSize: 15,
               align: 'center',
             },
@@ -421,7 +421,7 @@ export default {
             show: this.config.yAxisLabel,
             gap: 5,
             textStyle: {
-              color: '#666',
+              color: '#666666',
               fontSize: 12,
             },
           },
@@ -430,21 +430,21 @@ export default {
             length: 5,
             lineStyle: {
               lineWidth: 1,
-              color: '#666',
+              color: '#666666',
             },
           },
           axisLine: {
             show: this.config.yAxisLine,
             lineStyle: {
               lineWidth: 1,
-              color: '#666',
+              color: '#666666',
             },
           },
           axisSplitLine: {
             show: this.config.yAxisSplitLine,
             lineStyle: {
               lineWidth: 1,
-              color: '#ddd',
+              color: '#dddddd',
             },
           },
         },

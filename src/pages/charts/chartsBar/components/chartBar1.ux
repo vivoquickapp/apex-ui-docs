@@ -1,6 +1,6 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas id="chartBar1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default {
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chart'),
+        element: this.$element('chartBar1'),
         type: 'bar',
         width: this.width,
         height: this.height,
