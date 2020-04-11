@@ -84,6 +84,7 @@ module.exports = {
                     '/guide/card',
                     '/guide/divider',
                     '/guide/accordion',
+                    '/guide/select',
                     '/guide/steps',
                     '/guide/countdown',
                     '/guide/counter',
