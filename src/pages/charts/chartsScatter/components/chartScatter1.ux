@@ -1,0 +1,104 @@
+<template>
+  <div class="chart-wrap">
+    <canvas id="chartScatter1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts.js'
+import { scatter } from './scatter.js'
+// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {
+      myScatter: scatter.arr,
+    }
+  },
+  initChart() {
+    //获取男性身高与体重的模拟数据
+    const male = []
+    this.myScatter.forEach(item => {
+      if (item.gender === 'male') {
+        male.push({
+          x: item.x,
+          y: item.y,
+        })
+      }
+    })
+    //获取女性身高与体重的模拟数据
+    const female = []
+    this.myScatter.forEach(item => {
+      if (item.gender === 'female') {
+        female.push({
+          x: item.x,
+          y: item.y,
+        })
+      }
+    })
+
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartScatter1'),
+        type: 'scatter',
+        width: this.width,
+        height: this.height,
+        label: {
+          show: false,
+        },
+        yAxis: {
+          type: 'value',
+          max: 120,
+          min: 40,
+          splitNumber: 4,
+          axisName: {
+            text: '体重/kg',
+          },
+        },
+        xAxis: {
+          type: 'value',
+          max: 210,
+          min: 135,
+          splitNumber: 5,
+          axisName: {
+            text: '身高/cm',
+          },
+        },
+        series: [
+          {
+            name: 'male',
+            data: male,
+            radius: 5,
+          },
+          {
+            name: 'female',
+            data: female,
+            radius: 5,
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartScatter1 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartScatter1 touchstart`)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

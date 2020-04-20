@@ -1,31 +1,18 @@
-## 雷达图 radar
+# 雷达图 Radar
 
-### 使用效果
+## 基础雷达图
 
-<div style="text-align: center;margin: 40px;">
-  <img src="../assets/charts-radar-1.jpg" alt="charts-radar-1" style="width:300px" />
+<div style="text-align: center; margin: 40px;">
+  <img src="../assets/charts-radar-a-1.jpg" alt="charts-radar-a-1" style="width:300px" />
+  <img src="../assets/charts-radar-a-2.jpg" alt="charts-radar-a-2" style="width:300px" />
 </div>
 
-### 使用方法
-
-在 script 中引入方法
-
-```html
-<script>
-  import Charts from "apex-ui/components/charts/qacharts-min.js";
-</script>
-```
-
-### 示例
+### 示例代码
 
 ```html
 <template>
   <div class="chart-wrap">
-    <canvas
-      id="chart"
-      style="width: {{width}}px; height: {{height}}px;"
-      ontouchstart="ontouchstart"
-    ></canvas>
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;"></canvas>
   </div>
 </template>
 
@@ -33,7 +20,7 @@
   // import Charts from 'apex/components/charts/qacharts.js'
   import Charts from "apex/components/charts/qacharts-min.js";
 
-  let $chart = null;
+  let $chart;
 
   export default {
     data() {
@@ -46,7 +33,7 @@
           type: "radar",
           width: 600,
           height: 400,
-          categories: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+          category: [1,2,3,4,5,6,7]
           series: [
             {
               name: "数据",
@@ -59,9 +46,116 @@
           }
         });
       });
+    }
+  };
+</script>
+```
+
+## 圆形面积图
+
+<div style="text-align: center; margin: 40px;">
+  <img src="../assets/charts-radar-a-3.jpg" alt="charts-radar-a-3" style="width:300px" />
+</div>
+
+### 示例代码
+
+```html
+<template>
+  <div class="chart-wrap">
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;"></canvas>
+  </div>
+</template>
+
+<script>
+  // import Charts from 'apex/components/charts/qacharts.js'
+  import Charts from "apex/components/charts/qacharts-min.js";
+
+  let $chart;
+
+  export default {
+    data() {
+      return {};
     },
-    ontouchstart(e) {
-      console.log(`chartRadar touchstart`);
+    initChart() {
+      return new Promise((resolve, reject) => {
+        $chart = new Charts({
+          element: this.$element("chart"),
+          type: "radar",
+          width: 600,
+          height: 400,
+          radarAxis: {
+            shape: 'circle'
+          },
+          category: [1,2,3,4,5,6,7]
+          series: [
+            {
+              name: "数据",
+              data: [820, 932, 901, 934, 1290, 1330, 1320],
+              area: {
+                show: true
+              }
+            }
+          ],
+          onRenderComplete: () => {
+            console.log("chartRadar renderComplete");
+            resolve();
+          }
+        });
+      });
+    }
+  };
+</script>
+```
+
+## 雷达面积图
+
+<div style="text-align: center; margin: 40px;">
+  <img src="../assets/charts-radar-b-1.jpg" alt="charts-radar-b-1" style="width:300px" />
+  <img src="../assets/charts-radar-b-2.jpg" alt="charts-radar-b-2" style="width:300px" />
+</div>
+
+### 示例代码
+
+```html
+<template>
+  <div class="chart-wrap">
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;"></canvas>
+  </div>
+</template>
+
+<script>
+  // import Charts from 'apex/components/charts/qacharts.js'
+  import Charts from "apex/components/charts/qacharts-min.js";
+
+  let $chart;
+
+  export default {
+    data() {
+      return {};
+    },
+    initChart() {
+      return new Promise((resolve, reject) => {
+        $chart = new Charts({
+          element: this.$element("chart"),
+          type: "radar",
+          width: 600,
+          height: 400,
+          category: [1,2,3,4,5,6,7]
+          series: [
+            {
+              name: "数据",
+              data: [820, 932, 901, 934, 1290, 1330, 1320],
+              area: {
+                show: true
+              }
+            }
+          ],
+          onRenderComplete: () => {
+            console.log("chartRadar renderComplete");
+            resolve();
+          }
+        });
+      });
     }
   };
 </script>

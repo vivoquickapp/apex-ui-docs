@@ -1,7 +1,7 @@
 <import name="my-popup" src="apex-ui/components/popup/index"></import>
 <import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
-<import name="my-radio" src="apex-ui/components/radio/index"></import>
-<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
+<import name="my-select" src="apex-ui/components/select/index"></import>
+<import name="my-icon" src="apex-ui/components/icon/index"></import>
 
 <template>
   <div class="chart-wrap">
@@ -21,11 +21,20 @@
       <list class="config-wrap">
         <list-item type="list-item" class="config-item">
           <text class="config-item-title">data</text>
-          <my-radio-group id="dataType" current="{{config.dataType}}" onchange="changeConfig('dataType')">
-            <my-radio group="dataType" position="right" name="{{$item.name}}" value="{{$item.name}}" for="{{dataTypeArr}}"></my-radio>
-          </my-radio-group>
-          <my-checkbox value="浮点数据" position="right" shape="square" checked="{{config.dataFloating}}" onchange="changeConfig('dataFloating')"></my-checkbox>
-          <my-checkbox value="多数据" position="right" shape="square" checked="{{config.dataMore}}" onchange="changeConfig('dataMore')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectDataType')">
+            <text>数据类型</text>
+            <div>
+              <text>{{ config.dataType }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectSeriesLength')">
+            <text>数据数量</text>
+            <div>
+              <text>{{ config.seriesLength }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <text class="config-item-title">opts</text>
           <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
           <my-checkbox
@@ -35,32 +44,73 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend" position="right" shape="square" checked="{{config.legend}}" onchange="changeConfig('legend')"></my-checkbox>
+          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
+          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
           <text class="config-item-title">radarAxis</text>
-          <my-radio-group id="shape" current="{{config.shape}}" onchange="changeConfig('shape')">
-            <my-radio group="shape" position="right" value="{{$item.name}}" for="{{shapeArr}}"></my-radio>
-          </my-radio-group>
-          <my-checkbox value="axisName" position="right" shape="square" checked="{{config.axisName}}" onchange="changeConfig('axisName')"></my-checkbox>
-          <my-checkbox value="axisLine" position="right" shape="square" checked="{{config.axisLine}}" onchange="changeConfig('axisLine')"></my-checkbox>
-          <my-checkbox value="splitLine" position="right" shape="square" checked="{{config.splitLine}}" onchange="changeConfig('splitLine')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectAxisShape')">
+            <text>shape</text>
+            <div>
+              <text>{{ config.axisShape }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <my-checkbox
-            value="splitAreaOdd"
+            value="axisName.show"
             position="right"
             shape="square"
-            checked="{{config.splitAreaOdd}}"
-            onchange="changeConfig('splitAreaOdd')"
+            checked="{{config.axisNameShow}}"
+            onchange="changeConfig('axisNameShow')"
           ></my-checkbox>
           <my-checkbox
-            value="splitAreaEven"
+            value="axisLine.show"
             position="right"
             shape="square"
-            checked="{{config.splitAreaEven}}"
-            onchange="changeConfig('splitAreaEven')"
+            checked="{{config.axisLineShow}}"
+            onchange="changeConfig('axisLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="splitLine.show"
+            position="right"
+            shape="square"
+            checked="{{config.axisSplitLineShow}}"
+            onchange="changeConfig('axisSplitLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="splitAreaOdd.show"
+            position="right"
+            shape="square"
+            checked="{{config.splitAreaOddShow}}"
+            onchange="changeConfig('splitAreaOddShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="splitAreaEven.show"
+            position="right"
+            shape="square"
+            checked="{{config.splitAreaEvenShow}}"
+            onchange="changeConfig('splitAreaEvenShow')"
           ></my-checkbox>
           <text class="config-item-title">series</text>
-          <my-checkbox value="line" position="right" shape="square" checked="{{config.seriesLine}}" onchange="changeConfig('seriesLine')"></my-checkbox>
-          <my-checkbox value="symbol" position="right" shape="square" checked="{{config.seriesSymbol}}" onchange="changeConfig('seriesSymbol')"></my-checkbox>
-          <my-checkbox value="area" position="right" shape="square" checked="{{config.seriesArea}}" onchange="changeConfig('seriesArea')"></my-checkbox>
+          <my-checkbox
+            value="line.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemLineShow}}"
+            onchange="changeConfig('seriesItemLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="symbol.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemSymbolShow}}"
+            onchange="changeConfig('seriesItemSymbolShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="area.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemAreaShow}}"
+            onchange="changeConfig('seriesItemAreaShow')"
+          ></my-checkbox>
         </list-item>
       </list>
 
@@ -69,6 +119,10 @@
         <text class="btn btn-default" @click="closeEditConfig">关闭</text>
       </div>
     </my-popup>
+
+    <my-select id="selectDataType" oncomfirm="selectClose('dataType')"></my-select>
+    <my-select id="selectSeriesLength" oncomfirm="selectClose('seriesLength')"></my-select>
+    <my-select id="selectAxisShape" oncomfirm="selectClose('axisShape')"></my-select>
   </div>
 </template>
 
@@ -89,81 +143,54 @@ export default {
   },
   data() {
     return {
-      mockCategories: [],
-      mockSeries: [],
       config: {
         dataType: '正数',
-        dataFloating: false,
-        dataMore: false,
+        seriesLength: '1',
+
         animation: true,
         backgroundColor: true,
-        legend: true,
-        shape: "shape: 'polygon'",
-        axisName: true,
-        axisLine: true,
-        splitLine: true,
-        splitAreaOdd: true,
-        splitAreaEven: true,
-        seriesLine: true,
-        seriesSymbol: true,
-        seriesArea: true,
+        legendShow: true,
+        labelShow: true,
+
+        axisShape: 'polygon',
+        axisNameShow: true,
+        axisLineShow: true,
+        axisSplitLineShow: true,
+        splitAreaOddShow: true,
+        splitAreaEvenShow: true,
+
+        seriesItemLineShow: true,
+        seriesItemSymbolShow: true,
+        seriesItemAreaShow: false,
+        seriesItemLabelShow: true,
       },
-      dataTypeArr: [
-        {
-          id: 1,
-          name: '正数',
-          checked: true,
-        },
-        {
-          id: 2,
-          name: '负数',
-          checked: false,
-        },
-        {
-          id: 3,
-          name: '正负数',
-          checked: false,
-        },
-      ],
-      shapeArr: [
-        {
-          id: 1,
-          name: "shape: 'polygon'",
-          checked: true,
-        },
-        {
-          id: 2,
-          name: "shape: 'circle'",
-          checked: false,
-        },
-      ],
     }
   },
   resetConfig() {
     this.config = {
       dataType: '正数',
-      dataFloating: false,
-      dataMore: false,
+      seriesLength: '1',
+
       animation: true,
       backgroundColor: true,
-      legend: true,
-      shape: "shape: 'polygon'",
-      axisName: true,
-      axisLine: true,
-      splitLine: true,
-      splitAreaOdd: true,
-      splitAreaEven: true,
-      seriesLine: true,
-      seriesSymbol: true,
-      seriesArea: true,
+      legendShow: true,
+      labelShow: true,
+
+      axisShape: 'polygon',
+      axisNameShow: true,
+      axisLineShow: true,
+      axisSplitLineShow: true,
+      splitAreaOddShow: true,
+      splitAreaEvenShow: true,
+
+      seriesItemLineShow: true,
+      seriesItemSymbolShow: true,
+      seriesItemAreaShow: false,
+      seriesItemLabelShow: true,
     }
   },
   changeConfig(key, { detail }) {
-    if (key == 'dataType' || key == 'shape') {
-      this.config[key] = detail.value
-    } else {
-      this.config[key] = detail.current
-    }
+    this.config[key] = detail.current
   },
   openEditConfig() {
     this.$child('popup').show()
@@ -171,15 +198,43 @@ export default {
   closeEditConfig() {
     this.$child('popup').hide()
   },
+  selectShow(id) {
+    let options
+    switch (id) {
+      case 'selectDataType':
+        options = ['正数', '负数', '正负数']
+        break
+      case 'selectSeriesLength':
+        options = ['1', '2', '3', '4', '5']
+        break
+      case 'selectAxisShape':
+        options = ['polygon', 'circle']
+        break
+    }
+
+    this.$child(id).showSelect({
+      options,
+    })
+  },
+  selectClose(key, event) {
+    this.config[key] = event.detail.data || '请选择'
+    if (key == 'xAxisType') {
+      this.config.yAxisType = this.config.xAxisType == 'category' ? 'value' : 'category'
+      this.config.boundaryGap = true
+    } else if (key == 'yAxisType') {
+      this.config.xAxisType = this.config.yAxisType == 'category' ? 'value' : 'category'
+      this.config.boundaryGap = true
+    }
+  },
   getMockData() {
     let categoriesLen = 7
-    let digits = this.config.dataFloating ? 2 : 0
-    let seriesLen = this.config.dataMore ? 2 : 1
+    let digits = 0
+    let seriesLength = Number(this.config.seriesLength)
 
     let mockCategories = Array.from(new Array(7).keys(), item => item + 1)
     let mockSeries = []
 
-    for (let i = 0; i < seriesLen; i++) {
+    for (let i = 0; i < seriesLength; i++) {
       switch (this.config.dataType) {
         case '正数':
           mockSeries.push({
@@ -214,13 +269,16 @@ export default {
 
     mockSeries = mockSeries.map(seriesItem => {
       seriesItem.line = {
-        show: this.config.seriesLine,
+        show: this.config.seriesItemLineShow,
       }
       seriesItem.symbol = {
-        show: this.config.seriesSymbol,
+        show: this.config.seriesItemSymbolShow,
       }
       seriesItem.area = {
-        show: this.config.seriesArea,
+        show: this.config.seriesItemAreaShow,
+      }
+      seriesItem.label = {
+        show: this.config.seriesItemLabelShow,
       }
 
       return seriesItem
@@ -230,25 +288,25 @@ export default {
       animation: this.config.animation,
       backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
       legend: {
-        show: this.config.legend,
+        show: this.config.legendShow,
       },
       radarAxis: {
-        shape: this.config.shape == "shape: 'polygon'" ? 'polygon' : 'circle',
+        shape: this.config.axisShape,
         axisName: {
-          show: this.config.axisName,
+          show: this.config.axisNameShow,
         },
         axisLine: {
-          show: this.config.axisLine,
+          show: this.config.axisLineShow,
         },
         splitLine: {
-          show: this.config.splitLine,
+          show: this.config.axisSplitLineShow,
         },
         splitArea: {
           odd: {
-            show: this.config.splitAreaOdd,
+            show: this.config.splitAreaOddShow,
           },
           even: {
-            show: this.config.splitAreaEven,
+            show: this.config.splitAreaEvenShow,
           },
         },
       },
@@ -275,7 +333,7 @@ export default {
         animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
-          show: this.config.legend,
+          show: this.config.legendShow,
           type: 'default',
           marginTop: 8,
           itemGap: 15,
@@ -288,19 +346,19 @@ export default {
           },
         },
         label: {
-          show: this.config.label,
+          show: this.config.labelShow,
           fontSize: 15,
           color: 'auto',
           margin: 2,
         },
         radarAxis: {
-          shape: this.config.shape == "shape: 'polygon'" ? 'polygon' : 'circle', // polygon. circle
+          shape: this.config.shape, // polygon. circle
           center: ['50%', '50%'],
           radius: '80%',
           max: 'auto',
           splitNumber: 4,
           axisName: {
-            show: this.config.axisName,
+            show: this.config.axisNameShow,
             textStyle: {
               fontSize: 15,
               color: '#666666',
@@ -308,7 +366,7 @@ export default {
             },
           },
           axisLine: {
-            show: this.config.axisLine,
+            show: this.config.axisLineShow,
             lineStyle: {
               lineWidth: 2,
               color: '#cccccc',
@@ -316,7 +374,7 @@ export default {
             },
           },
           splitLine: {
-            show: this.config.splitLine,
+            show: this.config.axisSplitLineShow,
             lineStyle: {
               lineWidth: 1,
               color: '#cccccc',
@@ -325,12 +383,12 @@ export default {
           },
           splitArea: {
             odd: {
-              show: this.config.splitAreaOdd,
+              show: this.config.splitAreaOddShow,
               color: '#f5f5f5', // 奇数区域颜色与背景色相同
               opacity: 1,
             },
             even: {
-              show: this.config.splitAreaEven,
+              show: this.config.splitAreaEvenShow,
               color: '#e6e6e6', // 奇数区域颜色与背景色相同
               opacity: 1,
             },
@@ -342,21 +400,27 @@ export default {
             name: mockSeries[0].name,
             data: mockSeries[0].data,
             line: {
-              show: this.config.seriesLine,
+              show: this.config.seriesItemLineShow,
               lineWidth: 2,
               color: 'auto',
               opacity: 1,
             },
             symbol: {
-              show: this.config.seriesSymbol,
+              show: this.config.seriesItemSymbolShow,
               type: 'circle', // circle
               size: 7,
               color: 'auto',
             },
             area: {
-              show: this.config.seriesArea,
+              show: this.config.seriesItemAreaShow,
               color: 'auto',
               opacity: 0.5,
+            },
+            label: {
+              show: this.config.seriesItemLabelShow,
+              fontSize: 15,
+              color: 'auto',
+              margin: 5,
             },
           },
         ],

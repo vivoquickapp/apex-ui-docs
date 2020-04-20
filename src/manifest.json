@@ -207,6 +207,9 @@
       },
       "pages/charts/chartsRadar": {
         "component": "index"
+      },
+      "pages/charts/chartsScatter": {
+        "component": "index"
       }
     }
   },
@@ -432,19 +435,23 @@
         "menu": false
       },
       "pages/charts/chartsBar": {
-        "titleBarText": "图表/柱状图 charts/bar",
+        "titleBarText": "图表/柱状图 bar",
         "menu": false
       },
       "pages/charts/chartsLine": {
-        "titleBarText": "图表/折线图 charts/line",
+        "titleBarText": "图表/线图 line",
         "menu": false
       },
       "pages/charts/chartsPie": {
-        "titleBarText": "图表/饼图 charts/pie",
+        "titleBarText": "图表/饼图 pie",
         "menu": false
       },
       "pages/charts/chartsRadar": {
-        "titleBarText": "图表/雷达图 charts/radar",
+        "titleBarText": "图表/雷达图 radar",
+        "menu": false
+      },
+      "pages/charts/chartsScatter": {
+        "titleBarText": "图表/点图 scatter",
         "menu": false
       }
     }
