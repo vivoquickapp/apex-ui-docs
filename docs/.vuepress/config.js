@@ -125,14 +125,26 @@ module.exports = {
             {
                 title: '图表组件',
                 collapsable: false,
+                sidebarDepth: 1,
                 children: [
                     '/guide/charts',
                     '/guide/chartsBar',
                     '/guide/chartsLine',
                     '/guide/chartsPie',
                     '/guide/chartsRadar',
+                    '/guide/chartsScatter',
                 ]
             },
+            {
+                title: '图表组件方法及参数说明',
+                collapsable: true,
+                sidebarDepth: 3,
+                children: [
+                    '/guide/chartsApi',
+                    '/guide/chartsEvent',
+                    '/guide/chartsOptions',
+                ]
+            }
         ]
     }
 }

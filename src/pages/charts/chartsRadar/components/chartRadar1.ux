@@ -29,11 +29,15 @@ export default {
         type: 'radar',
         width: this.width,
         height: this.height,
-        categories: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+        categories: ['1', '2', '3', '4', '5', '6', '7'],
         series: [
           {
-            name: '数据',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            name: '数据1',
+            data: [820, 932, 901, 934, 1050, 1000, 1150],
+          },
+          {
+            name: '数据2',
+            data: [1150, 1000, 1050, 934, 901, 932, 820],
           },
         ],
         onRenderComplete: () => {

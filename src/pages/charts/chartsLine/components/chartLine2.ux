@@ -1,7 +1,7 @@
 <import name="my-popup" src="apex-ui/components/popup/index"></import>
 <import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
-<import name="my-radio" src="apex-ui/components/radio/index"></import>
-<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
+<import name="my-select" src="apex-ui/components/select/index"></import>
+<import name="my-icon" src="apex-ui/components/icon/index"></import>
 
 <template>
   <div class="chart-wrap">
@@ -21,11 +21,20 @@
       <list class="config-wrap">
         <list-item type="list-item" class="config-item">
           <text class="config-item-title">data</text>
-          <my-radio-group id="dataType" current="{{config.dataType}}" onchange="changeConfig('dataType')">
-            <my-radio group="dataType" position="right" value="{{$item.name}}" for="{{dataTypeArr}}"></my-radio>
-          </my-radio-group>
-          <my-checkbox value="浮点数据" position="right" shape="square" checked="{{config.dataFloating}}" onchange="changeConfig('dataFloating')"></my-checkbox>
-          <my-checkbox value="多数据" position="right" shape="square" checked="{{config.dataMore}}" onchange="changeConfig('dataMore')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectDataType')">
+            <text>数据类型</text>
+            <div>
+              <text>{{ config.dataType }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectSeriesLength')">
+            <text>数据数量</text>
+            <div>
+              <text>{{ config.seriesLength }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <text class="config-item-title">opts</text>
           <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
           <my-checkbox
@@ -35,64 +44,207 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend" position="right" shape="square" checked="{{config.legend}}" onchange="changeConfig('legend')"></my-checkbox>
-          <my-checkbox value="label" position="right" shape="square" checked="{{config.label}}" onchange="changeConfig('label')"></my-checkbox>
-          <text class="config-item-title">xAxisLabelRotate</text>
-          <my-radio-group id="xAxisLabelRotate" current="{{config.xAxisLabelRotate}}" onchange="changeConfig('xAxisLabelRotate')">
-            <my-radio group="xAxisLabelRotate" position="right" value="{{$item.name}}" for="{{xAxisLabelRotateArr}}"></my-radio>
-          </my-radio-group>
+          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
+          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
+          <text class="config-item-title">yAxis</text>
+          <my-checkbox value="show" position="right" shape="square" checked="{{config.yAxisShow}}" onchange="changeConfig('yAxisShow')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectYAxisType')">
+            <text>type</text>
+            <div>
+              <text>{{ config.yAxisType }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectYAxisMax')" show="{{config.yAxisType=='value'}}">
+            <text>max</text>
+            <div>
+              <text>{{ config.yAxisMax }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectYAxisMin')" show="{{config.yAxisType=='value'}}">
+            <text>min</text>
+            <div>
+              <text>{{ config.yAxisMin }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <my-checkbox
+            value="axisName.show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisNameShow}}"
+            onchange="changeConfig('yAxisNameShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisLabel.show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisLabelShow}}"
+            onchange="changeConfig('yAxisLabelShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisTick.show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisTickShow}}"
+            onchange="changeConfig('yAxisTickShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisTick.alignWithLabel"
+            position="right"
+            shape="square"
+            checked="{{config.axisTickAlignWithLabel}}"
+            onchange="changeConfig('axisTickAlignWithLabel')"
+            show="{{config.yAxisType=='category'}}"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisLine.show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisLineShow}}"
+            onchange="changeConfig('yAxisLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisSplitLine.show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisSplitLineShow}}"
+            onchange="changeConfig('yAxisSplitLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisSplitLine.alignWithLabel"
+            position="right"
+            shape="square"
+            checked="{{config.axisSplitLineAlignWithLabel}}"
+            onchange="changeConfig('axisSplitLineAlignWithLabel')"
+            show="{{config.yAxisType=='category'}}"
+          ></my-checkbox>
           <text class="config-item-title">xAxis</text>
-          <my-checkbox value="xAxis" position="right" shape="square" checked="{{config.xAxis}}" onchange="changeConfig('xAxis')"></my-checkbox>
+          <my-checkbox value="show" position="right" shape="square" checked="{{config.xAxisShow}}" onchange="changeConfig('xAxisShow')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectXAxisType')">
+            <text>type</text>
+            <div>
+              <text>{{ config.xAxisType }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectXAxisMax')" show="{{config.xAxisType=='value'}}">
+            <text>max</text>
+            <div>
+              <text>{{ config.xAxisMax }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectXAxisMin')" show="{{config.xAxisType=='value'}}">
+            <text>min</text>
+            <div>
+              <text>{{ config.xAxisMin }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <my-checkbox
             value="boundaryGap"
             position="right"
             shape="square"
-            checked="{{config.boundaryGap}}"
-            onchange="changeConfig('boundaryGap')"
+            checked="{{config.axisBoundaryGap}}"
+            onchange="changeConfig('axisBoundaryGap')"
+            show="{{config.xAxisType=='category'}}"
           ></my-checkbox>
-          <my-checkbox value="xAxisName" position="right" shape="square" checked="{{config.xAxisName}}" onchange="changeConfig('xAxisName')"></my-checkbox>
-          <my-checkbox value="xAxisLabel" position="right" shape="square" checked="{{config.xAxisLabel}}" onchange="changeConfig('xAxisLabel')"></my-checkbox>
-          <my-checkbox value="xAxisTick" position="right" shape="square" checked="{{config.xAxisTick}}" onchange="changeConfig('xAxisTick')"></my-checkbox>
           <my-checkbox
-            value="alignWithLabel"
+            value="axisName.show"
             position="right"
             shape="square"
-            checked="{{config.alignWithLabel}}"
-            onchange="changeConfig('alignWithLabel')"
+            checked="{{config.xAxisNameShow}}"
+            onchange="changeConfig('xAxisNameShow')"
           ></my-checkbox>
-          <my-checkbox value="xAxisLine" position="right" shape="square" checked="{{config.xAxisLine}}" onchange="changeConfig('xAxisLine')"></my-checkbox>
           <my-checkbox
-            value="xAxisSplitLine"
+            value="axisLabel.show"
             position="right"
             shape="square"
-            checked="{{config.xAxisSplitLine}}"
-            onchange="changeConfig('xAxisSplitLine')"
+            checked="{{config.xAxisLabelShow}}"
+            onchange="changeConfig('xAxisLabelShow')"
           ></my-checkbox>
-          <text class="config-item-title">yAxis</text>
-          <my-checkbox value="yAxis" position="right" shape="square" checked="{{config.yAxis}}" onchange="changeConfig('yAxis')"></my-checkbox>
-          <my-checkbox value="yAxisName" position="right" shape="square" checked="{{config.yAxisName}}" onchange="changeConfig('yAxisName')"></my-checkbox>
-          <my-checkbox value="yAxisLabel" position="right" shape="square" checked="{{config.yAxisLabel}}" onchange="changeConfig('yAxisLabel')"></my-checkbox>
-          <my-checkbox value="yAxisTick" position="right" shape="square" checked="{{config.yAxisTick}}" onchange="changeConfig('yAxisTick')"></my-checkbox>
-          <my-checkbox value="yAxisLine" position="right" shape="square" checked="{{config.yAxisLine}}" onchange="changeConfig('yAxisLine')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectXAxisLabelRotate')">
+            <text>axisLabel.rotate</text>
+            <div>
+              <text>{{ config.xAxisLabelRotate }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <my-checkbox
-            value="yAxisSplitLine"
+            value="axisTick.show"
             position="right"
             shape="square"
-            checked="{{config.yAxisSplitLine}}"
-            onchange="changeConfig('yAxisSplitLine')"
+            checked="{{config.xAxisTickShow}}"
+            onchange="changeConfig('xAxisTickShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisTick.alignWithLabel"
+            position="right"
+            shape="square"
+            checked="{{config.axisTickAlignWithLabel}}"
+            onchange="changeConfig('axisTickAlignWithLabel')"
+            show="{{config.xAxisType=='category'}}"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisLine.show"
+            position="right"
+            shape="square"
+            checked="{{config.xAxisLineShow}}"
+            onchange="changeConfig('xAxisLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisSplitLine.show"
+            position="right"
+            shape="square"
+            checked="{{config.xAxisSplitLineShow}}"
+            onchange="changeConfig('xAxisSplitLineShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="axisSplitLine.alignWithLabel"
+            position="right"
+            shape="square"
+            checked="{{config.axisSplitLineAlignWithLabel}}"
+            onchange="changeConfig('axisSplitLineAlignWithLabel')"
+            show="{{config.xAxisType=='category'}}"
           ></my-checkbox>
           <text class="config-item-title">series</text>
-          <my-checkbox value="smooth" position="right" shape="square" checked="{{config.seriesSmooth}}" onchange="changeConfig('seriesSmooth')"></my-checkbox>
+          <my-checkbox
+            value="smooth"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemSmooth}}"
+            onchange="changeConfig('seriesItemSmooth')"
+          ></my-checkbox>
           <my-checkbox
             value="connectNulls"
             position="right"
             shape="square"
-            checked="{{config.seriesConnectNulls}}"
-            onchange="changeConfig('seriesConnectNulls')"
+            checked="{{config.seriesItemConnectNulls}}"
+            onchange="changeConfig('seriesItemConnectNulls')"
           ></my-checkbox>
-          <my-checkbox value="symbol" position="right" shape="square" checked="{{config.seriesSymbol}}" onchange="changeConfig('seriesSymbol')"></my-checkbox>
-          <my-checkbox value="area" position="right" shape="square" checked="{{config.seriesArea}}" onchange="changeConfig('seriesArea')"></my-checkbox>
-          <my-checkbox value="label" position="right" shape="square" checked="{{config.seriesLabel}}" onchange="changeConfig('seriesLabel')"></my-checkbox>
+          <my-checkbox
+            value="symbol.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemSymbolShow}}"
+            onchange="changeConfig('seriesItemSymbolShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="area.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemAreaShow}}"
+            onchange="changeConfig('seriesItemAreaShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="label.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesItemLabelShow}}"
+            onchange="changeConfig('seriesItemLabelShow')"
+          ></my-checkbox>
         </list-item>
       </list>
 
@@ -101,6 +253,16 @@
         <text class="btn btn-default" @click="closeEditConfig">关闭</text>
       </div>
     </my-popup>
+
+    <my-select id="selectDataType" oncomfirm="selectClose('dataType')"></my-select>
+    <my-select id="selectSeriesLength" oncomfirm="selectClose('seriesLength')"></my-select>
+    <my-select id="selectXAxisLabelRotate" oncomfirm="selectClose('xAxisLabelRotate')"></my-select>
+    <my-select id="selectXAxisType" oncomfirm="selectClose('xAxisType')"></my-select>
+    <my-select id="selectYAxisType" oncomfirm="selectClose('yAxisType')"></my-select>
+    <my-select id="selectYAxisMax" oncomfirm="selectClose('yAxisMax')"></my-select>
+    <my-select id="selectYAxisMin" oncomfirm="selectClose('yAxisMin')"></my-select>
+    <my-select id="selectXAxisMax" oncomfirm="selectClose('xAxisMax')"></my-select>
+    <my-select id="selectXAxisMin" oncomfirm="selectClose('xAxisMin')"></my-select>
   </div>
 </template>
 
@@ -122,107 +284,91 @@ export default {
   data() {
     return {
       config: {
+        axisBoundaryGap: true,
+        axisTickAlignWithLabel: false,
+        axisSplitLineAlignWithLabel: false,
+
         dataType: '正数',
-        dataFloating: false,
-        dataMore: false,
+        seriesLength: '1',
+
         animation: true,
         backgroundColor: true,
-        legend: true,
-        label: true,
-        xAxis: true,
-        boundaryGap: true,
-        xAxisName: true,
-        xAxisLabel: true,
+        legendShow: true,
+        labelShow: true,
+
+        yAxisShow: true,
+        yAxisType: 'value',
+        yAxisMax: 'auto',
+        yAxisMin: 'auto',
+        yAxisNameShow: true,
+        yAxisLabelShow: true,
+        yAxisTickShow: true,
+        yAxisLineShow: true,
+        yAxisSplitLineShow: true,
+
+        xAxisShow: true,
+        xAxisType: 'category',
+        xAxisMax: 'auto',
+        xAxisMin: 'auto',
+        xAxisNameShow: true,
+        xAxisLabelShow: true,
         xAxisLabelRotate: '0',
-        xAxisTick: true,
-        alignWithLabel: false,
-        xAxisLine: true,
-        xAxisSplitLine: true,
-        yAxis: true,
-        yAxisName: true,
-        yAxisLabel: true,
-        yAxisTick: true,
-        yAxisLine: true,
-        yAxisSplitLine: true,
-        seriesSmooth: false,
-        seriesConnectNulls: false,
-        seriesSymbol: true,
-        seriesArea: false,
-        seriesLabel: true,
+        xAxisTickShow: true,
+        xAxisLineShow: true,
+        xAxisSplitLineShow: true,
+
+        seriesItemSmooth: false,
+        seriesItemConnectNulls: false,
+        seriesItemSymbolShow: true,
+        seriesItemAreaShow: false,
+        seriesItemLabelShow: true,
       },
-      dataTypeArr: [
-        {
-          id: 1,
-          name: '正数',
-          checked: true,
-        },
-        {
-          id: 2,
-          name: '负数',
-          checked: false,
-        },
-        {
-          id: 3,
-          name: '正负数',
-          checked: false,
-        },
-      ],
-      xAxisLabelRotateArr: [
-        {
-          id: 1,
-          name: '0',
-          checked: true,
-        },
-        {
-          id: 2,
-          name: '45',
-          checked: false,
-        },
-        {
-          id: 3,
-          name: '-45',
-          checked: false,
-        },
-      ],
     }
   },
   resetConfig() {
     this.config = {
+      axisBoundaryGap: true,
+      axisTickAlignWithLabel: false,
+      axisSplitLineAlignWithLabel: false,
+
       dataType: '正数',
-      dataFloating: false,
-      dataMore: false,
+      seriesLength: '1',
+
       animation: true,
       backgroundColor: true,
-      legend: true,
-      label: true,
-      xAxis: true,
-      boundaryGap: true,
-      xAxisName: true,
-      xAxisLabel: true,
+      legendShow: true,
+      labelShow: true,
+
+      yAxisShow: true,
+      yAxisType: 'value',
+      yAxisMax: 'auto',
+      yAxisMin: 'auto',
+      yAxisNameShow: true,
+      yAxisLabelShow: true,
+      yAxisTickShow: true,
+      yAxisLineShow: true,
+      yAxisSplitLineShow: true,
+
+      xAxisShow: true,
+      xAxisType: 'category',
+      xAxisMax: 'auto',
+      xAxisMin: 'auto',
+      xAxisNameShow: true,
+      xAxisLabelShow: true,
       xAxisLabelRotate: '0',
-      xAxisTick: true,
-      alignWithLabel: false,
-      xAxisLine: true,
-      xAxisSplitLine: true,
-      yAxis: true,
-      yAxisName: true,
-      yAxisLabel: true,
-      yAxisTick: true,
-      yAxisLine: true,
-      yAxisSplitLine: true,
-      seriesSmooth: false,
-      seriesConnectNulls: false,
-      seriesSymbol: true,
-      seriesArea: false,
-      seriesLabel: true,
+      xAxisTickShow: true,
+      xAxisLineShow: true,
+      xAxisSplitLineShow: true,
+
+      seriesItemSmooth: false,
+      seriesItemConnectNulls: false,
+      seriesItemSymbolShow: true,
+      seriesItemAreaShow: false,
+      seriesItemLabelShow: true,
     }
   },
   changeConfig(key, { detail }) {
-    if (key == 'dataType' || key == 'xAxisLabelRotate') {
-      this.config[key] = detail.value
-    } else {
-      this.config[key] = detail.current
-    }
+    this.config[key] = detail.current
   },
   openEditConfig() {
     this.$child('popup').show()
@@ -230,15 +376,61 @@ export default {
   closeEditConfig() {
     this.$child('popup').hide()
   },
+  selectShow(id) {
+    let options
+    switch (id) {
+      case 'selectDataType':
+        options = ['正数', '负数', '正负数']
+        break
+      case 'selectSeriesLength':
+        options = ['1', '2', '3', '4', '5']
+        break
+      case 'selectLabelRotate':
+        options = ['0', '-45', '45']
+        break
+      case 'selectXAxisType':
+        options = ['category', 'value']
+        break
+      case 'selectYAxisType':
+        options = ['category', 'value']
+        break
+      case 'selectXAxisMax':
+        options = ['400', '300', 'auto', '-300', '-400']
+        break
+      case 'selectXAxisMin':
+        options = ['400', '300', 'auto', '-300', '-400']
+        break
+      case 'selectYAxisMax':
+        options = ['400', '300', 'auto', '-300', '-400']
+        break
+      case 'selectYAxisMin':
+        options = ['400', '300', 'auto', '-300', '-400']
+        break
+    }
+
+    this.$child(id).showSelect({
+      options,
+    })
+  },
+  selectClose(key, event) {
+    this.config[key] = event.detail.data || '请选择'
+    if (key == 'xAxisType') {
+      this.config.yAxisType = this.config.xAxisType == 'category' ? 'value' : 'category'
+      this.config.boundaryGap = true
+    } else if (key == 'yAxisType') {
+      this.config.xAxisType = this.config.yAxisType == 'category' ? 'value' : 'category'
+      this.config.boundaryGap = true
+    }
+  },
   getMockData() {
     let categoriesLen = 7
-    let digits = this.config.dataFloating ? 2 : 0
-    let seriesLen = this.config.dataMore ? 2 : 1
+    let digits = 0
+    let seriesLength = Number(this.config.seriesLength)
 
     let mockCategories = Array.from(new Array(7).keys(), item => item + 1)
     let mockSeries = []
 
-    for (let i = 0; i < seriesLen; i++) {
+    for (let i = 0; i < seriesLength; i++) {
       switch (this.config.dataType) {
         case '正数':
           mockSeries.push({
@@ -272,16 +464,16 @@ export default {
     let { mockCategories, mockSeries } = this.getMockData()
 
     mockSeries = mockSeries.map(seriesItem => {
-      seriesItem.smooth = this.config.seriesSmooth
-      seriesItem.seriesConnectNulls = this.config.seriesConnectNulls
+      seriesItem.smooth = this.config.seriesItemSmooth
+      seriesItem.seriesItemConnectNulls = this.config.seriesItemConnectNulls
       seriesItem.symbol = {
-        show: this.config.seriesSymbol,
+        show: this.config.seriesItemSymbolShow,
       }
       seriesItem.area = {
-        show: this.config.seriesArea,
+        show: this.config.seriesItemAreaShow,
       }
       seriesItem.label = {
-        show: this.config.seriesLabel,
+        show: this.config.seriesItemLabelShow,
       }
 
       return seriesItem
@@ -291,48 +483,61 @@ export default {
       animation: this.config.animation,
       backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
       legend: {
-        show: this.config.legend,
+        show: this.config.legendShow,
       },
       label: {
-        show: this.config.label,
+        show: this.config.labelShow,
       },
-      xAxis: {
-        show: this.config.xAxis,
-        boundaryGap: this.config.boundaryGap,
+      yAxis: {
+        show: this.config.yAxisShow,
+        type: this.config.yAxisType,
+        data: mockCategories,
+        max: this.config.yAxisMax,
+        min: this.config.yAxisMin,
+        boundaryGap: this.config.axisBoundaryGap,
         axisName: {
-          show: this.config.xAxisName,
+          show: this.config.yAxisNameShow,
         },
         axisLabel: {
-          show: this.config.xAxisLabel,
+          show: this.config.yAxisLabelShow,
+        },
+        axisTick: {
+          show: this.config.yAxisTickShow,
+          alignWithLabel: this.config.axisTickAlignWithLabel,
+        },
+        axisLine: {
+          show: this.config.yAxisLineShow,
+        },
+        axisSplitLine: {
+          show: this.config.yAxisSplitLineShow,
+          alignWithLabel: this.config.axisSplitLineAlignWithLabel,
+        },
+      },
+      xAxis: {
+        show: this.config.xAxisShow,
+        type: this.config.xAxisType,
+        data: mockCategories,
+        max: this.config.xAxisMax,
+        min: this.config.xAxisMin,
+        boundaryGap: this.config.axisBoundaryGap,
+        splitNumber: 4,
+        axisName: {
+          show: this.config.xAxisNameShow,
+        },
+        axisLabel: {
+          show: this.config.xAxisLabelShow,
           rotate: Number(this.config.xAxisLabelRotate),
         },
         axisTick: {
-          show: this.config.xAxisTick,
-          alignWithLabel: this.config.alignWithLabel,
+          show: this.config.xAxisTickShow,
+          alignWithLabel: this.config.axisTickAlignWithLabel,
         },
         axisLine: {
-          show: this.config.xAxisLine,
+          show: this.config.xAxisLineShow,
         },
         axisSplitLine: {
-          show: this.config.xAxisSplitLine,
-        },
-      },
-      yAxis: {
-        show: this.config.yAxis,
-        axisName: {
-          show: this.config.yAxisName,
-        },
-        axisLabel: {
-          show: this.config.yAxisLabel,
-        },
-        axisTick: {
-          show: this.config.yAxisTick,
-        },
-        axisLine: {
-          show: this.config.yAxisLine,
-        },
-        axisSplitLine: {
-          show: this.config.yAxisSplitLine,
+          show: this.config.xAxisSplitLineShow,
+          alignWithLabel: this.config.axisSplitLineAlignWithLabel,
         },
       },
       categories: mockCategories,
@@ -358,7 +563,7 @@ export default {
         animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
-          show: this.config.legend,
+          show: this.config.legendShow,
           type: 'default',
           marginTop: 8,
           itemGap: 15,
@@ -371,73 +576,21 @@ export default {
           },
         },
         label: {
-          show: this.config.label,
+          show: this.config.labelShow,
           fontSize: 15,
           color: 'auto',
-          margin: 2,
-        },
-        xAxis: {
-          show: this.config.xAxis,
-          boundaryGap: this.config.boundaryGap,
-          format: function(val) {
-            return `周${val}`
-          },
-          axisName: {
-            show: this.config.xAxisName,
-            text: 'x轴名称',
-            gap: 10,
-            textStyle: {
-              color: '#666666',
-              fontSize: 15,
-              align: 'center',
-            },
-          },
-          axisLabel: {
-            show: this.config.xAxisLabel,
-            // showIndex: [2,4], // 控制显示的下标数组
-            rotate: Number(this.config.xAxisLabelRotate),
-            gap: 5,
-            textStyle: {
-              color: '#666666',
-              fontSize: 12,
-            },
-          },
-          axisTick: {
-            show: this.config.xAxisTick,
-            // showIndex: [2,4], // 控制显示的下标数组
-            alignWithLabel: this.config.alignWithLabel,
-            length: 5,
-            lineStyle: {
-              lineWidth: 1,
-              color: '#666666',
-            },
-          },
-          axisLine: {
-            show: this.config.xAxisLine,
-            lineStyle: {
-              lineWidth: 1,
-              color: '#666666',
-            },
-          },
-          axisSplitLine: {
-            show: this.config.xAxisSplitLine,
-            // showIndex: [0,2,4,6], // 控制显示的下标数组
-            lineStyle: {
-              lineWidth: 1,
-              color: '#dddddd',
-            },
-          },
+          margin: 5,
         },
         yAxis: {
-          show: this.config.yAxis,
-          max: 'auto',
-          min: 'auto',
+          show: this.config.yAxisShow,
+          type: this.config.yAxisType,
+          data: mockCategories,
+          max: this.config.yAxisMax,
+          min: this.config.yAxisMin,
+          boundaryGap: this.config.axisBoundaryGap,
           splitNumber: 4,
-          format: function(val) {
-            return `${val}万`
-          },
           axisName: {
-            show: this.config.yAxisName,
+            show: this.config.yAxisNameShow,
             text: 'y轴名称',
             gap: 10,
             textStyle: {
@@ -447,7 +600,7 @@ export default {
             },
           },
           axisLabel: {
-            show: this.config.yAxisLabel,
+            show: this.config.yAxisLabelShow,
             gap: 5,
             textStyle: {
               color: '#666666',
@@ -455,7 +608,8 @@ export default {
             },
           },
           axisTick: {
-            show: this.config.yAxisTick,
+            show: this.config.yAxisTickShow,
+            alignWithLabel: this.config.axisTickAlignWithLabel,
             length: 5,
             lineStyle: {
               lineWidth: 1,
@@ -463,46 +617,97 @@ export default {
             },
           },
           axisLine: {
-            show: this.config.yAxisLine,
+            show: this.config.yAxisLineShow,
             lineStyle: {
               lineWidth: 1,
               color: '#666666',
             },
           },
           axisSplitLine: {
-            show: this.config.yAxisSplitLine,
+            show: this.config.yAxisSplitLineShow,
+            alignWithLabel: this.config.axisSplitLineAlignWithLabel,
             lineStyle: {
               lineWidth: 1,
               color: '#dddddd',
             },
           },
         },
-        categories: mockCategories,
+        xAxis: {
+          show: this.config.xAxisShow,
+          type: this.config.xAxisType,
+          data: mockCategories,
+          max: this.config.xAxisMax,
+          min: this.config.xAxisMin,
+          boundaryGap: this.config.axisBoundaryGap,
+          splitNumber: 4,
+          axisName: {
+            show: this.config.xAxisNameShow,
+            text: 'x轴名称',
+            gap: 10,
+            textStyle: {
+              color: '#666666',
+              fontSize: 15,
+              align: 'center',
+            },
+          },
+          axisLabel: {
+            show: this.config.xAxisLabelShow,
+            rotate: Number(this.config.xAxisLabelRotate),
+            gap: 5,
+            textStyle: {
+              color: '#666666',
+              fontSize: 12,
+            },
+          },
+          axisTick: {
+            show: this.config.xAxisTickShow,
+            alignWithLabel: this.config.axisTickAlignWithLabel,
+            length: 5,
+            lineStyle: {
+              lineWidth: 1,
+              color: '#666666',
+            },
+          },
+          axisLine: {
+            show: this.config.xAxisLineShow,
+            lineStyle: {
+              lineWidth: 1,
+              color: '#666666',
+            },
+          },
+          axisSplitLine: {
+            show: this.config.xAxisSplitLineShow,
+            alignWithLabel: this.config.axisSplitLineAlignWithLabel,
+            lineStyle: {
+              lineWidth: 1,
+              color: '#dddddd',
+            },
+          },
+        },
         series: [
           {
-            // showIndex: [0,6], // 控制显示的下标数组，可控制只显示最大值和最小值
             name: mockSeries[0].name,
             data: mockSeries[0].data,
-            smooth: this.config.seriesSmooth,
-            connectNulls: this.config.seriesConnectNulls,
+            smooth: this.config.seriesItemSmooth,
+            connectNulls: this.config.seriesItemConnectNulls,
             lineStyle: {
               lineWidth: 2,
               color: 'auto',
               opacity: 1,
             },
             symbol: {
-              show: this.config.seriesSymbol,
+              show: this.config.seriesItemSymbolShow,
               type: 'circle', // circle
               size: 7,
               color: 'auto',
             },
             area: {
-              show: this.config.seriesArea,
+              show: this.config.seriesItemAreaShow,
               color: 'auto',
               opacity: 0.5,
             },
             label: {
-              show: this.config.seriesLabel,
+              show: this.config.seriesItemLabelShow,
               fontSize: 15,
               color: 'auto',
               margin: 5,

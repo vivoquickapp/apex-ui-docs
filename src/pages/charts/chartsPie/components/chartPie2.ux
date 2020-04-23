@@ -1,7 +1,7 @@
 <import name="my-popup" src="apex-ui/components/popup/index"></import>
 <import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
-<import name="my-radio" src="apex-ui/components/radio/index"></import>
-<import name="my-radio-group" src="apex-ui/components/radio-group/index"></import>
+<import name="my-select" src="apex-ui/components/select/index"></import>
+<import name="my-icon" src="apex-ui/components/icon/index"></import>
 
 <template>
   <div class="chart-wrap">
@@ -29,19 +29,36 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend" position="right" shape="square" checked="{{config.legend}}" onchange="changeConfig('legend')"></my-checkbox>
-          <my-checkbox value="label" position="right" shape="square" checked="{{config.label}}" onchange="changeConfig('label')"></my-checkbox>
+          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
+          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
           <text class="config-item-title">series</text>
-          <my-radio-group id="radius" current="{{config.seriesRadius}}" onchange="changeConfig('seriesRadius')">
-            <my-radio group="radius" position="right" value="{{$item.name}}" for="{{radiusArr}}"></my-radio>
-          </my-radio-group>
-          <my-checkbox value="label" position="right" shape="square" checked="{{config.seriesLabel}}" onchange="changeConfig('seriesLabel')"></my-checkbox>
+          <div class="select" onclick="selectShow('selectSeriesDataLength')">
+            <text>dataLength</text>
+            <div>
+              <text>{{ config.seriesDataLength }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('selectSeriesRadius')">
+            <text>radius</text>
+            <div>
+              <text>{{ config.seriesRadius }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
           <my-checkbox
             value="disablePieStroke"
             position="right"
             shape="square"
             checked="{{config.seriesDisablePieStroke}}"
             onchange="changeConfig('seriesDisablePieStroke')"
+          ></my-checkbox>
+          <my-checkbox
+            value="label.show"
+            position="right"
+            shape="square"
+            checked="{{config.seriesLabelShow}}"
+            onchange="changeConfig('seriesLabelShow')"
           ></my-checkbox>
         </list-item>
       </list>
@@ -51,6 +68,9 @@
         <text class="btn btn-default" @click="closeEditConfig">关闭</text>
       </div>
     </my-popup>
+
+    <my-select id="selectSeriesDataLength" oncomfirm="selectClose('seriesDataLength')"></my-select>
+    <my-select id="selectSeriesRadius" oncomfirm="selectClose('seriesRadius')"></my-select>
   </div>
 </template>
 
@@ -74,39 +94,56 @@ export default {
       config: {
         animation: true,
         backgroundColor: true,
-        legend: true,
-        label: true,
-        seriesRadius: "radius: [0, '80%']",
-        seriesLabel: true,
+        legendShow: true,
+        labelShow: true,
+        seriesDataLength: '5',
+        seriesRadius: '0,80%',
         seriesDisablePieStroke: true,
+        seriesLabelShow: true,
       },
-      radiusArr: [
-        {
-          id: 1,
-          name: "radius: [0, '80%']",
-          checked: true,
-        },
-        {
-          id: 2,
-          name: "radius: ['60%', '80%']",
-          checked: false,
-        },
-      ],
     }
   },
   resetConfig() {
     this.config = {
       animation: true,
       backgroundColor: true,
-      legend: true,
-      label: true,
-      seriesRadius: "radius: [0, '80%']",
-      seriesLabel: true,
+      legendShow: true,
+      labelShow: true,
+      seriesDataLength: '5',
+      seriesRadius: '0,80%',
       seriesDisablePieStroke: true,
+      seriesLabelShow: true,
     }
   },
+  changeConfig(key, { detail }) {
+    this.config[key] = detail.current
+  },
+  openEditConfig() {
+    this.$child('popup').show()
+  },
+  closeEditConfig() {
+    this.$child('popup').hide()
+  },
+  selectShow(id) {
+    let options
+    switch (id) {
+      case 'selectSeriesDataLength':
+        options = ['2', '3', '4', '5', '6', '7', '8', '9']
+        break
+      case 'selectSeriesRadius':
+        options = ['0,80%', '60%,80%']
+        break
+    }
+
+    this.$child(id).showSelect({
+      options,
+    })
+  },
+  selectClose(key, event) {
+    this.config[key] = event.detail.data || '请选择'
+  },
   getMockData() {
-    let mockData = this.$app.$def.getMockData(5, 0, 1000, 0)
+    let mockData = this.$app.$def.getMockData(Number(this.config.seriesDataLength), 0, 1000, 0)
 
     mockData = mockData.map((dataItem, dataIndex) => {
       return {
@@ -117,19 +154,7 @@ export default {
 
     return mockData
   },
-  changeConfig(key, { detail }) {
-    if (key == 'seriesRadius') {
-      this.config[key] = detail.value
-    } else {
-      this.config[key] = detail.current
-    }
-  },
-  openEditConfig() {
-    this.$child('popup').show()
-  },
-  closeEditConfig() {
-    this.$child('popup').hide()
-  },
+
   updateChart(type) {
     if (!$chart) return
 
@@ -139,14 +164,14 @@ export default {
       animation: this.config.animation,
       backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
       legend: {
-        show: this.config.legend,
+        show: this.config.legendShow,
       },
       label: {
-        show: this.config.label,
+        show: this.config.labelShow,
       },
       series: [
         {
-          radius: this.config.seriesRadius == "radius: [0, '80%']" ? [0, '80%'] : ['60%', '80%'],
+          radius: this.config.seriesRadius.split(','),
           disablePieStroke: this.config.seriesDisablePieStroke,
           label: {
             show: this.config.seriesLabel,
@@ -175,7 +200,7 @@ export default {
         animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
-          show: this.config.legend,
+          show: this.config.legendShow,
           type: 'default',
           marginTop: 8,
           itemGap: 15,
@@ -188,7 +213,7 @@ export default {
           },
         },
         label: {
-          show: this.config.label,
+          show: this.config.labelShow,
           fontSize: 15,
           color: 'auto',
           margin: 2,
@@ -196,7 +221,7 @@ export default {
         series: [
           {
             center: ['50%', '50%'],
-            radius: this.config.seriesRadius == "radius: [0, '80%']" ? [0, '80%'] : ['60%', '80%'],
+            radius: this.config.seriesRadius.split(','),
             offsetAngle: 0,
             disablePieStroke: this.config.seriesDisablePieStroke,
             labelLine: {
