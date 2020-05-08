@@ -4,7 +4,6 @@
 
 <div style="text-align: center; margin: 40px;">
   <img src="../assets/charts-radar-a-1.jpg" alt="charts-radar-a-1" style="width:300px" />
-  <img src="../assets/charts-radar-a-2.jpg" alt="charts-radar-a-2" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -23,6 +22,14 @@
   let $chart;
 
   export default {
+    props: {
+      width: {
+        default: 600,
+      },
+      height: {
+        default: 400,
+      },
+    },
     data() {
       return {};
     },
@@ -31,8 +38,8 @@
         $chart = new Charts({
           element: this.$element("chart"),
           type: "radar",
-          width: 600,
-          height: 400,
+          width: this.width,
+          height: this.height,
           category: [1,2,3,4,5,6,7]
           series: [
             {
@@ -73,6 +80,14 @@
   let $chart;
 
   export default {
+    props: {
+      width: {
+        default: 600,
+      },
+      height: {
+        default: 400,
+      },
+    },
     data() {
       return {};
     },
@@ -81,8 +96,8 @@
         $chart = new Charts({
           element: this.$element("chart"),
           type: "radar",
-          width: 600,
-          height: 400,
+          width: this.width,
+          height: this.height,
           radarAxis: {
             shape: 'circle'
           },
@@ -111,7 +126,6 @@
 
 <div style="text-align: center; margin: 40px;">
   <img src="../assets/charts-radar-b-1.jpg" alt="charts-radar-b-1" style="width:300px" />
-  <img src="../assets/charts-radar-b-2.jpg" alt="charts-radar-b-2" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -130,6 +144,14 @@
   let $chart;
 
   export default {
+    props: {
+      width: {
+        default: 600,
+      },
+      height: {
+        default: 400,
+      },
+    },
     data() {
       return {};
     },
@@ -138,8 +160,8 @@
         $chart = new Charts({
           element: this.$element("chart"),
           type: "radar",
-          width: 600,
-          height: 400,
+          width: this.width,
+          height: this.height,
           category: [1,2,3,4,5,6,7]
           series: [
             {

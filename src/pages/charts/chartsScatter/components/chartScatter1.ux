@@ -62,6 +62,7 @@ export default {
           min: 40,
           splitNumber: 4,
           axisName: {
+            show: false,
             text: '体重/kg',
           },
         },
@@ -71,6 +72,7 @@ export default {
           min: 135,
           splitNumber: 5,
           axisName: {
+            show: false,
             text: '身高/cm',
           },
         },
@@ -79,11 +81,13 @@ export default {
             name: 'male',
             data: male,
             radius: 5,
+            opacity: 0.6,
           },
           {
             name: 'female',
             data: female,
             radius: 5,
+            opacity: 0.6,
           },
         ],
         onRenderComplete: () => {

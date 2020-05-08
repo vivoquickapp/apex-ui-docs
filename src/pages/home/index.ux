@@ -98,6 +98,8 @@
       <div class="item"><a href="/pages/charts/chartsLine">图表/折线图 charts/line</a></div>
       <div class="item"><a href="/pages/charts/chartsPie">图表/饼图 charts/pie</a></div>
       <div class="item"><a href="/pages/charts/chartsRadar">图表/雷达图 charts/radar</a></div>
+      <div class="item"><a href="/pages/charts/chartsScatter">图表/点图 charts/scatter</a></div>
+      <div class="item"><a href="/pages/charts/chartsFunnel">图表/漏斗图 charts/funnel</a></div>
     </div>
   </div>
 </template>

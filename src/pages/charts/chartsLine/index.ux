@@ -1,11 +1,15 @@
 <import name="chart-line1" src="./components/chartLine1.ux"></import>
 <import name="chart-line2" src="./components/chartLine2.ux"></import>
+<import name="chart-line3" src="./components/chartLine3.ux"></import>
+<import name="chart-line4" src="./components/chartLine4.ux"></import>
 
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
     <chart-line1 id="chart-line1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line1>
     <chart-line2 id="chart-line2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line2>
+    <chart-line3 id="chart-line3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line3>
+    <chart-line4 id="chart-line4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-line4>
   </div>
 </template>
 
@@ -19,6 +23,8 @@ export default {
     try {
       await this.$child('chart-line1').initChart()
       await this.$child('chart-line2').initChart()
+      await this.$child('chart-line3').initChart()
+      await this.$child('chart-line4').initChart()
     } catch (error) {
       console.error('catch error', error)
     }

@@ -1,0 +1,258 @@
+<import name="my-popup" src="apex-ui/components/popup/index"></import>
+<import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
+<import name="my-select" src="apex-ui/components/select/index"></import>
+<import name="my-icon" src="apex-ui/components/icon/index"></import>
+
+<template>
+  <div class="chart-wrap">
+    <canvas id="chartFunnel3" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+
+    <div class="btn-row">
+      <text class="btn btn-default" @click="openEditConfig">配置参数</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-reset" @click="initChart">初始化图表</text>
+    </div>
+    <div class="btn-row">
+      <text class="btn btn-primary" @click="updateChart">修改参数</text>
+    </div>
+
+    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+      <list class="config-wrap">
+        <list-item type="list-item" class="config-item">
+          <text class="config-item-title">opts</text>
+          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="backgroundColor"
+            position="right"
+            shape="square"
+            checked="{{config.backgroundColor}}"
+            onchange="changeConfig('backgroundColor')"
+          ></my-checkbox>
+          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
+          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
+          <text class="config-item-title">series</text>
+          <div class="select" onclick="selectShow('seriesShape')">
+            <text>shape</text>
+            <div>
+              <text>{{ config.seriesShape }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('seriesSort')">
+            <text>sort</text>
+            <div>
+              <text>{{ config.seriesSort }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('seriesFunnelAlign')">
+            <text>funnelAlign</text>
+            <div>
+              <text>{{ config.seriesFunnelAlign }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+          <div class="select" onclick="selectShow('seriesLabelPosition')">
+            <text>label.position</text>
+            <div>
+              <text>{{ config.seriesLabelPosition }}</text>
+              <my-icon type="arrow-fwd" size="40"></my-icon>
+            </div>
+          </div>
+        </list-item>
+      </list>
+
+      <div class="config-btn btn-row">
+        <text class="btn btn-reset" @click="resetConfig">重置参数</text>
+        <text class="btn btn-default" @click="closeEditConfig">关闭</text>
+      </div>
+    </my-popup>
+
+    <my-select id="seriesShape" oncomfirm="selectClose('seriesShape')"></my-select>
+    <my-select id="seriesSort" oncomfirm="selectClose('seriesSort')"></my-select>
+    <my-select id="seriesFunnelAlign" oncomfirm="selectClose('seriesFunnelAlign')"></my-select>
+    <my-select id="seriesLabelPosition" oncomfirm="selectClose('seriesLabelPosition')"></my-select>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts.js'
+// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {
+      config: {
+        animation: true,
+        backgroundColor: true,
+        legendShow: true,
+        labelShow: true,
+        seriesShape: 'funnel',
+        seriesSort: 'descending',
+        seriesFunnelAlign: 'center',
+        seriesLabelPosition: 'inside',
+      },
+    }
+  },
+  resetConfig() {
+    this.config = {
+      animation: true,
+      backgroundColor: true,
+      legendShow: true,
+      labelShow: true,
+      seriesShape: 'funnel',
+      seriesSort: 'descending',
+      seriesFunnelAlign: 'center',
+      seriesLabelPosition: 'inside',
+    }
+  },
+  changeConfig(key, { detail }) {
+    this.config[key] = detail.current
+  },
+  openEditConfig() {
+    this.$child('popup').show()
+  },
+  closeEditConfig() {
+    this.$child('popup').hide()
+  },
+  selectShow(id) {
+    let options
+    switch (id) {
+      case 'seriesShape':
+        options = ['funnel', 'pyramid']
+        break
+      case 'seriesSort':
+        options = ['descending', 'ascending']
+        break
+      case 'seriesFunnelAlign':
+        options = ['left', 'center', 'right']
+        break
+      case 'seriesLabelPosition':
+        options = ['inside', 'outside']
+        break
+    }
+
+    this.$child(id).showSelect({
+      options,
+    })
+  },
+  selectClose(key, event) {
+    this.config[key] = event.detail.data || '请选择'
+  },
+  updateChart(type) {
+    if (!$chart) return
+
+    let opts = {
+      animation: this.config.animation,
+      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+      legend: {
+        show: this.config.legendShow,
+      },
+      label: {
+        show: this.config.labelShow,
+      },
+      series: [
+        {
+          shape: this.config.seriesShape, // funnel, pyramid
+          sort: this.config.seriesSort, // descending, ascending
+          funnelAlign: this.config.seriesFunnelAlign, // left, center, right
+          label: {
+            position: this.config.seriesLabelPosition, // inside, outside
+          },
+        },
+      ],
+    }
+
+    $chart.updateData(opts)
+  },
+  initChart() {
+    this.resetConfig()
+
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartFunnel3'),
+        type: 'funnel',
+        width: this.width,
+        height: this.height,
+        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+        animation: this.config.animation,
+        animationDuration: 1000,
+        animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
+        padding: [20, 20, 20, 20],
+        legend: {
+          show: this.config.legendShow,
+          type: 'default',
+          marginTop: 8,
+          itemGap: 15,
+          shapeWidth: 15,
+          shapeHeight: 15,
+          textStyle: {
+            fontSize: 15,
+            color: '#333333',
+            padding: 5,
+          },
+        },
+        label: {
+          show: this.config.labelShow,
+          fontSize: 10,
+          color: 'auto',
+          margin: 2,
+        },
+        series: [
+          {
+            name: '数据',
+            width: 'auto',
+            height: 'auto',
+            top: '0%',
+            left: '10%',
+            right: '10%',
+            bottom: '10%',
+            max: 100,
+            min: 0,
+            gap: 5,
+            shape: this.config.seriesShape, // funnel, pyramid
+            sort: this.config.seriesSort, // descending, ascending
+            funnelAlign: this.config.seriesFunnelAlign, // left, center, right
+            label: {
+              position: this.config.seriesLabelPosition, // inside, outside
+            },
+            itemStyle: {
+              borderColor: '#ffffff',
+              borderWidth: 1,
+            },
+            data: [
+              { value: 60, name: '访问' },
+              { value: 40, name: '咨询' },
+              { value: 20, name: '订单' },
+              { value: 80, name: '点击' },
+              { value: 100, name: '展现' },
+            ],
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartFunnel3 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartFunnel3 touchstart`)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

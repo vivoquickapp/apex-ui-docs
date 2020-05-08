@@ -1,9 +1,9 @@
-# 饼图 pie
+# 漏斗图 funnel
 
-## 饼图
+## 漏斗图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-pie-a-1.jpg" alt="charts-pie-a-1" style="width:300px" />
+  <img src="../assets/charts-funnel-a-1.jpg" alt="charts-funnel-a-1" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,37 +37,26 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'pie',
+          type: 'funnel',
           width: this.width,
           height: this.height,
           series: [
             {
+              name: '数据',
+              left: '10%',
+              right: '10%',
+              bottom: '10%',
               data: [
-                {
-                  name: 'cat1',
-                  value: 50,
-                },
-                {
-                  name: 'cat2',
-                  value: 30,
-                },
-                {
-                  name: 'cat3',
-                  value: 1,
-                },
-                {
-                  name: 'cat4',
-                  value: 1,
-                },
-                {
-                  name: 'cat5',
-                  value: 46,
-                },
+                { value: 60, name: '访问' },
+                { value: 40, name: '咨询' },
+                { value: 20, name: '订单' },
+                { value: 80, name: '点击' },
+                { value: 100, name: '展现' },
               ],
             },
           ],
           onRenderComplete: () => {
-            console.log('chartPie renderComplete')
+            console.log('chartLine renderComplete')
             resolve()
           },
         })
@@ -77,10 +66,10 @@
 </script>
 ```
 
-## 环形图
+## 金字塔图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-pie-b-1.jpg" alt="charts-pie-b-1" style="width:300px" />
+  <img src="../assets/charts-funnel-b-1.jpg" alt="charts-funnel-b-1" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -94,9 +83,9 @@
 
 <script>
   // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from 'apex/components/charts/qacharts-min.js'
 
-  let $chart;
+  let $chart
 
   export default {
     props: {
@@ -108,49 +97,38 @@
       },
     },
     data() {
-      return {};
+      return {}
     },
     initChart() {
       return new Promise((resolve, reject) => {
         $chart = new Charts({
-          element: this.$element("chart"),
-          type: "pie",
+          element: this.$element('chart'),
+          type: 'funnel',
           width: this.width,
           height: this.height,
           series: [
             {
-              radius: ['60%', '80%']
+              name: '数据',
+              left: '10%',
+              right: '10%',
+              bottom: '10%',
+              shape: 'pyramid',
               data: [
-                {
-                  name: 'cat1',
-                  value: 50,
-                },
-                {
-                  name: 'cat2',
-                  value: 30,
-                },
-                {
-                  name: 'cat3',
-                  value: 1,
-                },
-                {
-                  name: 'cat4',
-                  value: 1,
-                },
-                {
-                  name: 'cat5',
-                  value: 46,
-                },
+                { value: 60, name: '访问' },
+                { value: 40, name: '咨询' },
+                { value: 20, name: '订单' },
+                { value: 80, name: '点击' },
+                { value: 100, name: '展现' },
               ],
-            }
+            },
           ],
           onRenderComplete: () => {
-            console.log("chartPie renderComplete");
-            resolve();
-          }
-        });
-      });
-    }
-  };
+            console.log('chartLine renderComplete')
+            resolve()
+          },
+        })
+      })
+    },
+  }
 </script>
 ```

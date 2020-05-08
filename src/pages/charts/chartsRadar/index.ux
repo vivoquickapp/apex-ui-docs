@@ -1,11 +1,13 @@
 <import name="chart-radar1" src="./components/chartRadar1.ux"></import>
 <import name="chart-radar2" src="./components/chartRadar2.ux"></import>
+<import name="chart-radar3" src="./components/chartRadar3.ux"></import>
 
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
     <chart-radar1 id="chart-radar1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar1>
     <chart-radar2 id="chart-radar2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar2>
+    <chart-radar3 id="chart-radar3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar3>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ export default {
     try {
       await this.$child('chart-radar1').initChart()
       await this.$child('chart-radar2').initChart()
+      await this.$child('chart-radar3').initChart()
     } catch (error) {
       console.error('catch error', error)
     }

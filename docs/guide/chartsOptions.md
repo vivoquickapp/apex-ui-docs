@@ -1699,10 +1699,17 @@ $chart = new Charts({
 
 ### seriesItem.radius
 
-- 参数类型：Number
+- 参数类型：Number/Array
 - 是否必填：否
 - 默认值：`10`
-- 描述：散点图点半径
+- 描述：散点图点半径，值为数组时可设置半径最小值最大值
+
+### seriesItem.itemStyle.color
+
+- 参数类型：String/Array
+- 是否必填：否
+- 默认值：`auto`
+- 描述：散点图颜色，值为数组时可设置颜色区间，仅支持使用量对比图
 
 ### seriesItem.opacity
 
@@ -1710,3 +1717,148 @@ $chart = new Charts({
 - 是否必填：否
 - 默认值：`1`
 - 描述：散点图点透明度
+
+## 漏斗图 series
+
+```js
+$chart = new Charts({
+    series: [
+        {
+            name: '数据',
+            width: 'auto',
+            height: 'auto',
+            top: '0%',
+            left: '0%',
+            right: '0%',
+            bottom: '0%',
+            max: 100,
+            min: 0,
+            gap: 5,
+            shape: 'funnel', // funnel, pyramid
+            sort: 'descending', // descending, ascending
+            funnelAlign: 'center', // left, center, right
+                label: {
+                position: 'inside', // inside, outside
+            },
+            itemStyle: {
+                borderColor: '#ffffff',
+                borderWidth: 1,
+            },
+            data: [
+                { value: 60, name: '访问' },
+                { value: 40, name: '咨询' },
+                { value: 20, name: '订单' },
+                { value: 80, name: '点击' },
+                { value: 100, name: '展现' },
+            ],
+        },
+    ],
+    ...
+    ...
+})
+```
+
+### seriesItem.width
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`auto`
+- 描述：漏斗图宽度
+
+### seriesItem.height
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`auto`
+- 描述：漏斗图高度
+
+### seriesItem.top
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`0%`
+- 描述：漏斗图上间距
+
+### seriesItem.left
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`0%`
+- 描述：漏斗图左间距
+
+### seriesItem.right
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`0%`
+- 描述：漏斗图右间距
+
+### seriesItem.bottom
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`0%`
+- 描述：漏斗图下间距
+
+### seriesItem.shape
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`funnel`
+- 描述：漏斗图形状，可选值：funnel, pyramid
+
+### seriesItem.sort
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`descending`
+- 描述：漏斗图数据排序，可选值：descending, ascending
+
+### seriesItem.funnelAlign
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`center`
+- 描述：漏斗图水平对齐，可选值：left, center, right
+
+### seriesItem.max
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`100`
+- 描述：漏斗图最大比例
+
+### seriesItem.min
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`0`
+- 描述：漏斗图最小比例
+
+### seriesItem.gap
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：漏斗图各层之间的间距
+
+### seriesItem.label.position
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`inside`
+- 描述：漏斗图标签位置，可选值：inside, outside
+
+### seriesItem.label.itemStyle.borderColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ffffff`
+- 描述：漏斗图各层边框颜色
+
+### seriesItem.label.itemStyle.borderWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：漏斗图各层边框线宽

@@ -210,6 +210,9 @@
       },
       "pages/charts/chartsScatter": {
         "component": "index"
+      },
+      "pages/charts/chartsFunnel": {
+        "component": "index"
       }
     }
   },
@@ -452,6 +455,10 @@
       },
       "pages/charts/chartsScatter": {
         "titleBarText": "图表/点图 scatter",
+        "menu": false
+      },
+      "pages/charts/chartsFunnel": {
+        "titleBarText": "图表/漏斗图 funnel",
         "menu": false
       }
     }
