@@ -133,6 +133,7 @@ module.exports = {
                     '/guide/chartsPie',
                     '/guide/chartsRadar',
                     '/guide/chartsScatter',
+                    '/guide/chartsFunnel',
                 ]
             },
             {

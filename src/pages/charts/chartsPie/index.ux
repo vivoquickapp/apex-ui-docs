@@ -1,11 +1,13 @@
 <import name="chart-pie1" src="./components/chartPie1.ux"></import>
 <import name="chart-pie2" src="./components/chartPie2.ux"></import>
+<import name="chart-pie3" src="./components/chartPie3.ux"></import>
 
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
     <chart-pie1 id="chart-pie1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie1>
     <chart-pie2 id="chart-pie2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie2>
+    <chart-pie3 id="chart-pie3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie3>
   </div>
 </template>
 
@@ -19,6 +21,7 @@ export default {
     try {
       await this.$child('chart-pie1').initChart()
       await this.$child('chart-pie2').initChart()
+      await this.$child('chart-pie3').initChart()
     } catch (error) {
       console.error('catch error', error)
     }
