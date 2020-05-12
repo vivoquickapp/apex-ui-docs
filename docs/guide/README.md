@@ -33,7 +33,7 @@
 使用下面两种方式均可安装组件库到项目依赖中。比起手动安装，在需要自定义修改组件以适应自己项目的业务需求方面没有那么方便。
 
 ```sh
-npm install apex-ui --save-dev  # 使用npm
+npm install apex-ui --save  # 使用npm
 yarn add apex-ui # 使用yarn
 ```
 
