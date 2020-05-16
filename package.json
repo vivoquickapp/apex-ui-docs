@@ -25,6 +25,7 @@
     "apex-ui": "latest",
     "babel-eslint": "^10.0.1",
     "clipboard": "^2.0.4",
+    "copy-webpack-plugin": "^5.1.1",
     "eslint": "^5.12.1",
     "eslint-plugin-hybrid": "0.0.5",
     "hap-toolkit": "0.6.15",

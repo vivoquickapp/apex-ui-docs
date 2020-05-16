@@ -12,3 +12,5 @@ src/images/.DS_Store
 build/
 docs/*/dist/
 com.apex.ui.quickapp.debug.rpk
+
+quickapp.config.js
