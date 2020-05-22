@@ -66,7 +66,7 @@ export default {
 | select                    | Boolean  | false             | 选中文本框的全部文本                                                              |
 | selection-start           | Number   | -                 | 光标起始位置，自动聚集时有效，需与selection-end搭配使用                             |
 | selection-end             | Number   | -                 | 光标结束位置，自动聚集时有效，需与selection-start搭配使用                           |
-| enterkeytype              | String   | 'default'         | 设置软键盘 Enter 按钮的显示文本,可选值: default | send | search | next | go | done |
+| enterkeytype              | String   | 'default'         | 设置软键盘 Enter 按钮的显示文本,可选值: default \| send \| search \| next \| go \| done |
 
 #### 组件事件
 
