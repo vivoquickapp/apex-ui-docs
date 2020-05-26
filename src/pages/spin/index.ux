@@ -36,7 +36,7 @@
     <text class="title">nested</text>
     <div style="flex-direction: column;">
       <my-spin tip="加载中..." nested="{{true}}" loading="{{loading}}">
-        <div slot="nested" style="flex-direction: column;">
+        <div slot="nested" style="flex-direction: column; width: 100%;">
           <text
             >参考文本参考文本参考文本参考文本参考文本参考文本参考文本参考文本参考文本参考文本参考文本参考文本</text
           >
