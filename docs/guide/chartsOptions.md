@@ -1862,3 +1862,35 @@ $chart = new Charts({
 - 是否必填：否
 - 默认值：`1`
 - 描述：漏斗图各层边框线宽
+
+## 热力图 series
+
+```js
+$chart = new Charts({
+    series: [{
+        name: '热力图',
+        type: 'heatmap',
+        data: [],
+        itemStyle: {
+            color: ['#BAE7FF', '#0050B3'],
+            useSplit: false,
+        }
+    }],
+    ...
+    ...
+})
+```
+
+### seriesItem.itemStyle.color
+
+- 参数类型：Array
+- 是否必填：是
+- 默认值：['#BAE7FF', '#0050B3']
+- 描述：热力图颜色区间
+
+### seriesItem.itemStyle.useSplit
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：false
+- 描述：是否显示热力图分割线

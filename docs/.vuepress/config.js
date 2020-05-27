@@ -134,6 +134,7 @@ module.exports = {
                     '/guide/chartsRadar',
                     '/guide/chartsScatter',
                     '/guide/chartsFunnel',
+                    '/guide/chartsHeatmap',
                 ]
             },
             {
