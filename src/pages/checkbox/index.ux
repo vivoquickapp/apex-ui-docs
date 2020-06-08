@@ -1,4 +1,5 @@
 <import name="my-checkbox" src="apex-ui/components/checkbox/index"></import>
+<import name="my-checkbox-button" src="apex-ui/components/checkbox-button/index"></import>
 <import
   name="my-checkbox-group"
   src="apex-ui/components/checkbox-group/index"
@@ -20,6 +21,20 @@
       ></my-checkbox>
     </my-checkbox-group>
     <my-button onclick="handleClick" type="ghost">切换复选框位置</my-button>
+    <text class="title">组合 选项卡</text>
+    <my-checkbox-group 
+      id="myGroup2" 
+      current="{{ current }}" 
+      onchange="handleFruitChange"
+    >
+      <block for="{{fruit}}">
+        <my-checkbox-button 
+          group="myGroup2"  
+          position="{{position}}" 
+          value="{{$item.name}}"
+        ></my-checkbox-button>
+      </block>
+    </my-checkbox-group>
     <text class="title">单个</text>
     <my-checkbox
       value="{{animal}}"
