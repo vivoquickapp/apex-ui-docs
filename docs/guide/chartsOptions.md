@@ -7,18 +7,18 @@
 
 ```html
 <script>
-  import Charts from 'apex-ui/components/charts/qacharts-min.js'
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-  let $chart
+  let $chart;
 
   export default {
     onShow() {
-      this.initChart()
+      this.initChart();
     },
     initChart() {
-      $chart = new Charts(options)
-    },
-  }
+      $chart = new Charts(options);
+    }
+  };
 </script>
 ```
 
@@ -36,13 +36,6 @@ $chart = new Charts({
     ...
 })
 ```
-
-## type
-
-- 参数类型：String
-- 是否必填：是
-- 默认值：`null`
-- 描述：图表类型，可选值：bar，line，pie，radar，scatter
 
 ## width
 
@@ -1222,6 +1215,13 @@ $chart = new Charts({
 })
 ```
 
+## seriesItem.type
+
+- 参数类型：String
+- 是否必填：是
+- 默认值：`null`
+- 描述：图表类型，可选值：bar，line，pie，radar，scatter，funnel，candlestick，k，heatmap，treemap，tagCloud
+
 ### seriesItem.name
 
 - 参数类型：String
@@ -1863,6 +1863,259 @@ $chart = new Charts({
 - 默认值：`1`
 - 描述：漏斗图各层边框线宽
 
+## 蜡烛图 series
+
+```js
+$chart = new Charts({
+    series: [{
+        name: '蜡烛图',
+        type: 'candlestick',
+        data: [],
+        barMaxWidth: 20,
+        barMinWidth: 1,
+        barWidth: 'auto',
+        itemStyle: {
+            color: '#ec0000',
+            bordercolor: '#ec0000',
+            opacity: 1,
+            color0: '#00da3c',
+            bordercolor0: '#00da3c',
+            opacity0: 1,
+            borderWidth: 1,
+        },
+        highLine: {
+            show: false,
+            lineStyle: {
+                color: '#ec0000',
+                lineWidth: 1,
+                lineDash: [10, 15],
+                opacity: 1,
+            },
+        },
+        lowLine: {
+            show: false,
+            lineStyle: {
+                color: '#ec0000',
+                lineWidth: 1,
+                lineDash: [10, 15],
+                opacity: 1,
+            },
+        },
+        bar: {
+            show: false,
+            height: 50,
+            margin: 15,
+            itemStyle: {
+                color: 'auto',
+                opacity: 1,
+            },
+            lineStyle: {
+                lineWidth: 1,
+                lineColor: '#666666',
+            },
+        },
+    }],
+    ...
+    ...
+})
+```
+
+### seriesItem.barMaxWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`20`
+- 描述：蜡烛柱体最大宽度
+
+### seriesItem.barMinWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：蜡烛柱体最小宽度
+
+### seriesItem.barWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`auto`
+- 描述：蜡烛柱体宽度
+
+### seriesItem.itemStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ec0000`
+- 描述：阳线颜色
+
+### seriesItem.itemStyle.bordercolor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ec0000`
+- 描述：阳线边框颜色
+
+### seriesItem.itemStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：阳线透明度
+
+### seriesItem.itemStyle.color0
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#00da3c`
+- 描述：阴线颜色
+
+### seriesItem.itemStyle.bordercolor0
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#00da3c`
+- 描述：阴线边框颜色
+
+### seriesItem.itemStyle.opacity0
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：阴线透明度
+
+### seriesItem.itemStyle.borderWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：柱体边框线宽
+
+### seriesItem.highLine.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否显示最高价线
+
+### seriesItem.highLine.lineStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ec0000`
+- 描述：最高价线颜色
+
+### seriesItem.highLine.lineStyle.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：最高价线线宽
+
+### seriesItem.highLine.lineStyle.lineDash
+
+- 参数类型：Array
+- 是否必填：否
+- 默认值：`[10, 15]`
+- 描述：最高价线虚线配置
+
+### seriesItem.highLine.lineStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：最高价线透明度
+
+### seriesItem.lowLine.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否显示最低价线
+
+### seriesItem.lowLine.lineStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ec0000`
+- 描述：最低价线颜色
+
+### seriesItem.lowLine.lineStyle.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：最低价线线宽
+
+### seriesItem.lowLine.lineStyle.lineDash
+
+- 参数类型：Array
+- 是否必填：否
+- 默认值：`[10, 15]`
+- 描述：最低价线虚线配置
+
+### seriesItem.lowLine.lineStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：最低价线透明度
+
+### seriesItem.bar.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否显示成交量柱体
+
+### seriesItem.bar.data
+
+- 参数类型：Array
+- 是否必填：否
+- 默认值：`[]`
+- 描述：成交量数据
+
+### seriesItem.bar.height
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`50`
+- 描述：成交量柱体最大高度
+
+### seriesItem.bar.margin
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`15`
+- 描述：成交量柱体距离蜡烛图距离
+
+### seriesItem.bar.itemStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`auto`
+- 描述：成交量柱体颜色
+
+### seriesItem.bar.itemStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：成交量柱体透明度
+
+### seriesItem.bar.lineStyle.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：成交量柱体边框线框
+
+### seriesItem.bar.lineStyle.lineColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#666666`
+- 描述：成交量柱体边框颜色
+
 ## 热力图 series
 
 ```js
@@ -1885,12 +2138,112 @@ $chart = new Charts({
 
 - 参数类型：Array
 - 是否必填：是
-- 默认值：['#BAE7FF', '#0050B3']
+- 默认值：`['#BAE7FF', '#0050B3']`
 - 描述：热力图颜色区间
 
 ### seriesItem.itemStyle.useSplit
 
 - 参数类型：Boolean
 - 是否必填：否
-- 默认值：false
+- 默认值：`false`
 - 描述：是否显示热力图分割线
+
+## 矩形树图 series
+
+```js
+$chart = new Charts({
+    series: [{
+        name: '矩形树图',
+        type: 'treemap',
+        splitLine: {
+            show: true,
+            lineWidth: 5,
+            color: '#ffffff',
+        },
+    }],
+    ...
+    ...
+})
+```
+
+### seriesItem.splitLine.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`true`
+- 描述：是否显示矩形树图分割线
+
+### seriesItem.splitLine.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：矩形树图分割线线宽
+
+### seriesItem.splitLine.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ffffff`
+- 描述：矩形树图分割线颜色
+
+## 词云图 series
+
+```js
+$chart = new Charts({
+    series: [{
+        name: '词云图',
+        type: 'tagCloud',
+        padding: 1,
+        timeInterval: 500,
+        font: 'Serif',
+        fontSize: 15,
+        rotate: 0,
+        spiral: 'archimedean', // archimedean rectangular {function}
+    }],
+    ...
+    ...
+})
+```
+
+### seriesItem.padding
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：词云图字体间隔
+
+### seriesItem.timeInterval
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`500`
+- 描述：词云图计算时间间隔
+
+### seriesItem.font
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`Serif`
+- 描述：词云图字体
+
+### seriesItem.fontSize
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`15`
+- 描述：词云图字体大小
+
+### seriesItem.rotate
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`0`
+- 描述：词云图字体旋转角度
+
+### seriesItem.imageMask
+
+- 参数类型：Object
+- 是否必填：否
+- 默认值：`null`
+- 描述：词云图图形图片对象

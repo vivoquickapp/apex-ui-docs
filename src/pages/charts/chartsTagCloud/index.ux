@@ -1,0 +1,35 @@
+<import name="chart-tag-cloud" src="./components/chartTagCloud.ux"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="page">
+    <chart-tag-cloud
+      id="chart-tag-cloud"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-tag-cloud>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    chartWidth: 375,
+    chartHeight: 260
+  },
+  async onShow() {
+    try {
+      await this.$child("chart-tag-cloud").initChart();
+    } catch (error) {
+      console.error("catch error", error);
+    }
+  }
+};
+</script>
+
+<style lang="less">
+.page {
+  flex-direction: column;
+  align-items: center;
+}
+</style>

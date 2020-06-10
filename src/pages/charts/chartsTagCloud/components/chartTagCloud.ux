@@ -1,0 +1,101 @@
+<template>
+  <div class="chart-wrap">
+    <canvas
+      id="chartTagCloud"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from "apex-ui/components/charts/qacharts.js";
+// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import worldPopulation from "./world-population.js";
+
+let $chart = null;
+
+export default {
+  props: {
+    width: {
+      default: 600
+    },
+    height: {
+      default: 400
+    }
+  },
+  data() {
+    return {};
+  },
+  initChart() {
+    const range = worldPopulation.concat([]).sort((a, b) => {
+      return a.value - b.value;
+    });
+    const min = range[0].value;
+    const max = range[range.length - 1].value;
+    const MAX_FONTSIZE = 36; // 最大的字体
+    const MIN_FONTSIZE = 12; // 最小的字体
+
+    return new Promise((resolve, reject) => {
+      let canvas = this.$element("chartTagCloud");
+      let imageMask = new Image();
+      imageMask.crossOrigin = "";
+      imageMask.src =
+        "https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ";
+      imageMask.onload = () => {
+        $chart = new Charts({
+          element: this.$element("chartTagCloud"),
+          width: this.width,
+          height: this.height,
+          animation: false,
+          backgroundColor: "#eeeeee",
+          legend: {
+            show: false
+          },
+          series: [
+            {
+              name: "词云图",
+              type: "tagCloud",
+              padding: 0,
+              timeInterval: 5000,
+              font: "Serif",
+              spiral: "archimedean",
+              imageMask,
+              rotate: function rotate() {
+                let random = ~~(Math.random() * 4) % 4;
+                if (random === 2) {
+                  random = 0;
+                }
+                return random * 90; // 0, 90, 270
+              },
+              fontSize: function fontSize(d) {
+                if (d.value) {
+                  return (
+                    ((d.value - min) / (max - min)) *
+                      (MAX_FONTSIZE - MIN_FONTSIZE) +
+                    MIN_FONTSIZE
+                  );
+                }
+                return 0;
+              },
+              data: worldPopulation
+            }
+          ],
+          onRenderComplete: () => {
+            console.log("chartTagCloud renderComplete");
+            resolve();
+          }
+        });
+      };
+    });
+  },
+  ontouchstart(e) {
+    console.log(`chartTagCloud touchstart`);
+  }
+};
+</script>
+
+<style lang="less">
+@import "../../../../common/styles/common.less";
+</style>

@@ -15,15 +15,20 @@
 ## 使用效果
 
 <div style="text-align: center;margin: 40px;">
-  <img src="../assets/charts-bar-a-1.jpg" alt="charts-bar-a-1" style="width:200px" />
-  <img src="../assets/charts-bar-b-1.jpg" alt="charts-bar-b-1" style="width:200px" />
-  <img src="../assets/charts-line-a-1.jpg" alt="charts-line-a-1" style="width:200px" />
-  <img src="../assets/charts-line-c-1.jpg" alt="charts-line-c-1" style="width:200px" />
-  <img src="../assets/charts-pie-a-1.jpg" alt="charts-pie-a-1" style="width:200px" />
-  <img src="../assets/charts-pie-b-1.jpg" alt="charts-pie-b-1" style="width:200px" />
-  <img src="../assets/charts-radar-a-1.jpg" alt="charts-radar-a-1" style="width:200px" />
-  <img src="../assets/charts-radar-b-1.jpg" alt="charts-radar-b-1" style="width:200px" />
-  <img src="../assets/charts-scatter-a-1.jpg" alt="charts-scatter-a-1" style="width:200px" />
+  <img src="../assets/charts-bar-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-bar-b-1.jpg" style="width:200px" />
+  <img src="../assets/charts-line-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-line-c-1.jpg" style="width:200px" />
+  <img src="../assets/charts-pie-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-pie-b-1.jpg" style="width:200px" />
+  <img src="../assets/charts-radar-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-radar-b-1.jpg" style="width:200px" />
+  <img src="../assets/charts-scatter-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-funnel-a-1.jpg" style="width:200px" />
+  <img src="../assets/charts-candlestick.jpg" style="width:200px" />
+  <img src="../assets/charts-heatmap.jpg" style="width:200px" />
+  <img src="../assets/charts-treemap.jpg" style="width:200px" />
+  <img src="../assets/charts-tagcloud.jpg" style="width:200px" />
 </div>
 
 ## 使用方法

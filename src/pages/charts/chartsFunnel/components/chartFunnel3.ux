@@ -5,7 +5,12 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chartFunnel3" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartFunnel3"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -17,11 +22,22 @@
       <text class="btn btn-primary" @click="updateChart">修改参数</text>
     </div>
 
-    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+    <my-popup
+      id="popup"
+      position="right"
+      mask="{{true}}"
+      onclose="closeEditConfig"
+    >
       <list class="config-wrap">
         <list-item type="list-item" class="config-item">
           <text class="config-item-title">opts</text>
-          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="animation"
+            position="right"
+            shape="square"
+            checked="{{config.animation}}"
+            onchange="changeConfig('animation')"
+          ></my-checkbox>
           <my-checkbox
             value="backgroundColor"
             position="right"
@@ -29,8 +45,20 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
-          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
+          <my-checkbox
+            value="legend.show"
+            position="right"
+            shape="square"
+            checked="{{config.legendShow}}"
+            onchange="changeConfig('legendShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="label.show"
+            position="right"
+            shape="square"
+            checked="{{config.labelShow}}"
+            onchange="changeConfig('labelShow')"
+          ></my-checkbox>
           <text class="config-item-title">series</text>
           <div class="select" onclick="selectShow('seriesShape')">
             <text>shape</text>
@@ -69,27 +97,39 @@
       </div>
     </my-popup>
 
-    <my-select id="seriesShape" oncomfirm="selectClose('seriesShape')"></my-select>
-    <my-select id="seriesSort" oncomfirm="selectClose('seriesSort')"></my-select>
-    <my-select id="seriesFunnelAlign" oncomfirm="selectClose('seriesFunnelAlign')"></my-select>
-    <my-select id="seriesLabelPosition" oncomfirm="selectClose('seriesLabelPosition')"></my-select>
+    <my-select
+      id="seriesShape"
+      oncomfirm="selectClose('seriesShape')"
+    ></my-select>
+    <my-select
+      id="seriesSort"
+      oncomfirm="selectClose('seriesSort')"
+    ></my-select>
+    <my-select
+      id="seriesFunnelAlign"
+      oncomfirm="selectClose('seriesFunnelAlign')"
+    ></my-select>
+    <my-select
+      id="seriesLabelPosition"
+      oncomfirm="selectClose('seriesLabelPosition')"
+    ></my-select>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts.js'
+import Charts from "apex-ui/components/charts/qacharts.js";
 // import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
     return {
@@ -98,12 +138,12 @@ export default {
         backgroundColor: true,
         legendShow: true,
         labelShow: true,
-        seriesShape: 'funnel',
-        seriesSort: 'descending',
-        seriesFunnelAlign: 'center',
-        seriesLabelPosition: 'inside',
-      },
-    }
+        seriesShape: "funnel",
+        seriesSort: "descending",
+        seriesFunnelAlign: "center",
+        seriesLabelPosition: "inside"
+      }
+    };
   },
   resetConfig() {
     this.config = {
@@ -111,113 +151,131 @@ export default {
       backgroundColor: true,
       legendShow: true,
       labelShow: true,
-      seriesShape: 'funnel',
-      seriesSort: 'descending',
-      seriesFunnelAlign: 'center',
-      seriesLabelPosition: 'inside',
-    }
+      seriesShape: "funnel",
+      seriesSort: "descending",
+      seriesFunnelAlign: "center",
+      seriesLabelPosition: "inside"
+    };
   },
   changeConfig(key, { detail }) {
-    this.config[key] = detail.current
+    this.config[key] = detail.current;
   },
   openEditConfig() {
-    this.$child('popup').show()
+    this.$child("popup").show();
   },
   closeEditConfig() {
-    this.$child('popup').hide()
+    this.$child("popup").hide();
   },
   selectShow(id) {
-    let options
+    let options;
     switch (id) {
-      case 'seriesShape':
-        options = ['funnel', 'pyramid']
-        break
-      case 'seriesSort':
-        options = ['descending', 'ascending']
-        break
-      case 'seriesFunnelAlign':
-        options = ['left', 'center', 'right']
-        break
-      case 'seriesLabelPosition':
-        options = ['inside', 'outside']
-        break
+      case "seriesShape":
+        options = ["funnel", "pyramid"];
+        break;
+      case "seriesSort":
+        options = ["descending", "ascending"];
+        break;
+      case "seriesFunnelAlign":
+        options = ["left", "center", "right"];
+        break;
+      case "seriesLabelPosition":
+        options = ["inside", "outside"];
+        break;
     }
 
     this.$child(id).showSelect({
-      options,
-    })
+      options
+    });
   },
   selectClose(key, event) {
-    this.config[key] = event.detail.data || '请选择'
+    this.config[key] = event.detail.data || "请选择";
   },
   updateChart(type) {
-    if (!$chart) return
+    if (!$chart) return;
 
     let opts = {
       animation: this.config.animation,
-      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+      backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
       legend: {
-        show: this.config.legendShow,
+        show: this.config.legendShow
       },
       label: {
-        show: this.config.labelShow,
+        show: this.config.labelShow
       },
       series: [
         {
+          name: "数据",
+          type: "funnel",
+          width: "auto",
+          height: "auto",
+          top: "0%",
+          left: "10%",
+          right: "10%",
+          bottom: "10%",
+          max: 100,
+          min: 0,
+          gap: 5,
           shape: this.config.seriesShape, // funnel, pyramid
           sort: this.config.seriesSort, // descending, ascending
           funnelAlign: this.config.seriesFunnelAlign, // left, center, right
           label: {
-            position: this.config.seriesLabelPosition, // inside, outside
+            position: this.config.seriesLabelPosition // inside, outside
           },
-        },
-      ],
-    }
+          data: [
+            { value: 60, name: "访问" },
+            { value: 40, name: "咨询" },
+            { value: 20, name: "订单" },
+            { value: 80, name: "点击" },
+            { value: 100, name: "展现" }
+          ]
+        }
+      ]
+    };
 
-    $chart.updateData(opts)
+    $chart.updateData(opts);
   },
   initChart() {
-    this.resetConfig()
+    this.resetConfig();
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartFunnel3'),
-        type: 'funnel',
+        element: this.$element("chartFunnel3"),
         width: this.width,
         height: this.height,
-        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+        backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
         animation: this.config.animation,
         animationDuration: 1000,
-        animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
+        animationTiming: "easeInOut", // easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
           show: this.config.legendShow,
-          type: 'default',
+          type: "default",
           marginTop: 8,
           itemGap: 15,
-          shapeWidth: 15,
+          shapeWidth: 30,
           shapeHeight: 15,
           textStyle: {
             fontSize: 15,
-            color: '#333333',
-            padding: 5,
-          },
+            color: "#333333",
+            padding: 5
+          }
         },
         label: {
           show: this.config.labelShow,
           fontSize: 10,
-          color: 'auto',
-          margin: 2,
+          color: "auto",
+          margin: 2
         },
         series: [
           {
-            name: '数据',
-            width: 'auto',
-            height: 'auto',
-            top: '0%',
-            left: '10%',
-            right: '10%',
-            bottom: '10%',
+            name: "数据",
+            type: "funnel",
+            width: "auto",
+            height: "auto",
+            top: "0%",
+            left: "10%",
+            right: "10%",
+            bottom: "10%",
             max: 100,
             min: 0,
             gap: 5,
@@ -225,34 +283,34 @@ export default {
             sort: this.config.seriesSort, // descending, ascending
             funnelAlign: this.config.seriesFunnelAlign, // left, center, right
             label: {
-              position: this.config.seriesLabelPosition, // inside, outside
+              position: this.config.seriesLabelPosition // inside, outside
             },
             itemStyle: {
-              borderColor: '#ffffff',
-              borderWidth: 1,
+              borderColor: "#ffffff",
+              borderWidth: 1
             },
             data: [
-              { value: 60, name: '访问' },
-              { value: 40, name: '咨询' },
-              { value: 20, name: '订单' },
-              { value: 80, name: '点击' },
-              { value: 100, name: '展现' },
-            ],
-          },
+              { value: 60, name: "访问" },
+              { value: 40, name: "咨询" },
+              { value: 20, name: "订单" },
+              { value: 80, name: "点击" },
+              { value: 100, name: "展现" }
+            ]
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartFunnel3 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartFunnel3 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartFunnel3 touchstart`)
-  },
-}
+    console.log(`chartFunnel3 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

@@ -134,7 +134,10 @@ module.exports = {
                     '/guide/chartsRadar',
                     '/guide/chartsScatter',
                     '/guide/chartsFunnel',
+                    '/guide/chartsCandlestick',
                     '/guide/chartsHeatmap',
+                    '/guide/chartsTreemap',
+                    '/guide/chartsTagCloud'
                 ]
             },
             {

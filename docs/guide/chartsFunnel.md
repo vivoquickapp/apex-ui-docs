@@ -3,7 +3,7 @@
 ## 漏斗图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-funnel-a-1.jpg" alt="charts-funnel-a-1" style="width:300px" />
+  <img src="../assets/charts-funnel-a-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,12 +37,12 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'funnel',
           width: this.width,
           height: this.height,
           series: [
             {
               name: '数据',
+              type: 'funnel',
               left: '10%',
               right: '10%',
               bottom: '10%',
@@ -69,7 +69,7 @@
 ## 金字塔图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-funnel-b-1.jpg" alt="charts-funnel-b-1" style="width:300px" />
+  <img src="../assets/charts-funnel-b-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -103,12 +103,12 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'funnel',
           width: this.width,
           height: this.height,
           series: [
             {
               name: '数据',
+              type: 'funnel',
               left: '10%',
               right: '10%',
               bottom: '10%',

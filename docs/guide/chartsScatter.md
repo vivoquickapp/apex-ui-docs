@@ -3,8 +3,8 @@
 ## 散点图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-scatter-a-1.jpg" alt="charts-scatter-a-1" style="width:300px" />
-  <img src="../assets/charts-scatter-a-2.jpg" alt="charts-scatter-a-2" style="width:300px" />
+  <img src="../assets/charts-scatter-a-1.jpg" style="width:300px" />
+  <img src="../assets/charts-scatter-a-2.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -38,7 +38,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           yAxis: {
@@ -62,6 +61,7 @@
           series: [
             {
               name: '数据',
+              type: "scatter",
               radius: 5,
               data: [
                 {
@@ -155,7 +155,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           yAxis: {
@@ -177,6 +176,7 @@
           series: [
             {
               name: '数据',
+              type: "scatter",
               radius: 5,
               data: [
                 {
@@ -338,7 +338,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           legend: {
@@ -367,6 +366,7 @@
           series: [
             {
               name: '数据',
+              type: "scatter",
               data: [
                 {
                   name: 'Stripe',

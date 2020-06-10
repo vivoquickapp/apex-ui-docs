@@ -3,7 +3,7 @@
 ## 基础雷达图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-radar-a-1.jpg" alt="charts-radar-a-1" style="width:300px" />
+  <img src="../assets/charts-radar-a-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,13 +37,13 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element("chart"),
-          type: "radar",
           width: this.width,
           height: this.height,
           category: [1,2,3,4,5,6,7]
           series: [
             {
               name: "数据",
+              type: "radar",
               data: [820, 932, 901, 934, 1290, 1330, 1320]
             }
           ],
@@ -95,7 +95,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element("chart"),
-          type: "radar",
           width: this.width,
           height: this.height,
           radarAxis: {
@@ -105,6 +104,7 @@
           series: [
             {
               name: "数据",
+              type: "radar",
               data: [820, 932, 901, 934, 1290, 1330, 1320],
               area: {
                 show: true
@@ -159,13 +159,13 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element("chart"),
-          type: "radar",
           width: this.width,
           height: this.height,
           category: [1,2,3,4,5,6,7]
           series: [
             {
               name: "数据",
+              type: "radar",
               data: [820, 932, 901, 934, 1290, 1330, 1320],
               area: {
                 show: true
