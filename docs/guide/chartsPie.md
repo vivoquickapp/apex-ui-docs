@@ -3,7 +3,7 @@
 ## 饼图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-pie-a-1.jpg" alt="charts-pie-a-1" style="width:300px" />
+  <img src="../assets/charts-pie-a-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,11 +37,12 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'pie',
           width: this.width,
           height: this.height,
           series: [
             {
+              name: "饼图",
+              type: 'pie',
               data: [
                 {
                   name: 'cat1',

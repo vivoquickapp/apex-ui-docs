@@ -3,7 +3,7 @@
 ## 基础折线图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-line-a-1.jpg" alt="charts-line-a-1" style="width:300px" />
+  <img src="../assets/charts-line-a-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,7 +37,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           legend: {
@@ -51,6 +50,7 @@
           series: [
             {
               name: '数据',
+              type: 'line',
               data: [820, 932, 901, 934, 1290, 1330, 1320],
             },
           ],
@@ -102,7 +102,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           legend: {
@@ -117,6 +116,7 @@
           series: [
             {
               name: '数据',
+              type: 'line',
               data: [820, 932, 901, 934, 1290, 1330, 1320],
               smooth: true,
             },
@@ -169,7 +169,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           legend: {
@@ -183,6 +182,7 @@
           series: [
             {
               name: '数据',
+              type: 'line',
               data: [820, 932, 901, 934, 1290, 1330, 1320],
               area: {
                 show: true,
@@ -238,7 +238,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'line',
           width: this.width,
           height: this.height,
           legend: {
@@ -252,6 +251,7 @@
           series: [
             {
               name: '数据',
+              type: 'line',
               connectNulls: true,
               data: [820, 932, null, 934, 1290, 1330, 1320],
             },

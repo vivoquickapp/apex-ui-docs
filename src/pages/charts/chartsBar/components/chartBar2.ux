@@ -1,72 +1,80 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartBar2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartBar2"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts.js'
+import Charts from "apex-ui/components/charts/qacharts.js";
 // import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartBar2'),
-        type: 'bar',
+        element: this.$element("chartBar2"),
         width: this.width,
         height: this.height,
         xAxis: {
-          type: 'category',
-          data: ['1', '2', '3', '4', '5', '6', '7'],
+          type: "category",
+          data: ["1", "2", "3", "4", "5", "6", "7"]
         },
         series: [
           {
-            name: '数据1',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            name: "数据1",
+            type: "bar",
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
           },
           {
-            name: '数据2',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
+            name: "数据2",
+            type: "bar",
+            stack: "堆叠",
+            data: [82, 93, 90, 93, 129, 133, 132]
           },
           {
-            name: '数据3',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
+            name: "数据3",
+            type: "bar",
+            stack: "堆叠",
+            data: [82, 93, 90, 93, 129, 133, 132]
           },
           {
-            name: '数据4',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
-          },
+            name: "数据4",
+            type: "bar",
+            stack: "堆叠",
+            data: [82, 93, 90, 93, 129, 133, 132]
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartBar2 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartBar2 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartBar2 touchstart`)
-  },
-}
+    console.log(`chartBar2 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

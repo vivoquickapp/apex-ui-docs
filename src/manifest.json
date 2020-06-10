@@ -213,6 +213,18 @@
       },
       "pages/charts/chartsFunnel": {
         "component": "index"
+      },
+      "pages/charts/chartsCandlestick": {
+        "component": "index"
+      },
+      "pages/charts/chartsHeatmap": {
+        "component": "index"
+      },
+      "pages/charts/chartsTreemap": {
+        "component": "index"
+      },
+      "pages/charts/chartsTagCloud": {
+        "component": "index"
       }
     }
   },
@@ -459,6 +471,22 @@
       },
       "pages/charts/chartsFunnel": {
         "titleBarText": "图表/漏斗图 funnel",
+        "menu": false
+      },
+      "pages/charts/chartsCandlestick": {
+        "titleBarText": "图表/蜡烛图 candlestick",
+        "menu": false
+      },
+      "pages/charts/chartsHeatmap": {
+        "titleBarText": "图表/热力图 heatmap",
+        "menu": false
+      },
+      "pages/charts/chartsTreemap": {
+        "titleBarText": "图表/矩形树图 treemap",
+        "menu": false
+      },
+      "pages/charts/chartsTagCloud": {
+        "titleBarText": "图表/词云图 tagCloud",
         "menu": false
       }
     }

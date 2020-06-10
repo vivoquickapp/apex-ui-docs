@@ -3,7 +3,7 @@
 ## 基础柱状图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-bar-a-1.jpg" alt="charts-bar-a-1" style="width:300px" />
+  <img src="../assets/charts-bar-a-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -37,7 +37,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'bar',
           width: this.width,
           height: this.height,
           xAxis: {
@@ -47,6 +46,7 @@
           series: [
             {
               name: '数据',
+              type: 'bar',
               data: [820, 932, 901, 934, 1290, 1330, 1320],
             },
           ],
@@ -64,7 +64,7 @@
 ## 条形图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-bar-b-1.jpg" alt="charts-bar-b-1" style="width:300px" />
+  <img src="../assets/charts-bar-b-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -98,7 +98,6 @@
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element('chart'),
-          type: 'bar',
           width: this.width,
           height: this.height,
           yAxis: {
@@ -111,6 +110,7 @@
           series: [
             {
               name: '数据',
+              type: 'bar',
               data: [820, 932, 901, 934, 1290, 1330, 1320],
             },
           ],

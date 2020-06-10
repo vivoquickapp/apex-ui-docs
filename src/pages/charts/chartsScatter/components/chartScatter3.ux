@@ -1,119 +1,124 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartScatter1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartScatter1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts.js'
+import Charts from "apex-ui/components/charts/qacharts.js";
 // import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartScatter1'),
-        type: 'scatter',
+        element: this.$element("chartScatter1"),
         width: this.width,
         height: this.height,
         legend: {
-          show: false,
+          show: false
         },
         yAxis: {
           show: false,
-          type: 'value',
+          type: "value",
           max: 100,
           min: 0,
           splitNumber: 5,
           axisName: {
-            show: false,
-          },
+            show: false
+          }
         },
         xAxis: {
           show: false,
-          type: 'value',
+          type: "value",
           max: 12,
           min: 0,
           splitNumber: 6,
           axisName: {
-            show: false,
-          },
+            show: false
+          }
         },
         series: [
           {
-            name: '数据',
+            name: "数据",
+            type: "scatter",
             data: [
               {
-                name: 'Stripe',
+                name: "Stripe",
                 volumes: 1.5,
                 x: 0.8,
                 y: 50,
-                z: 1.5,
+                z: 1.5
               },
               {
-                name: 'Swipely',
+                name: "Swipely",
                 volumes: 2,
                 x: 2.5,
                 y: 50,
-                z: 2,
+                z: 2
               },
               {
-                name: 'Square',
+                name: "Square",
                 volumes: 30,
                 x: 4.2,
                 y: 50,
-                z: 30,
+                z: 30
               },
               {
-                name: 'Alipay',
+                name: "Alipay",
                 volumes: 150,
                 x: 6.7,
                 y: 50,
-                z: 150,
+                z: 150
               },
               {
-                name: 'Paypal',
+                name: "Paypal",
                 volumes: 180,
                 x: 10.5,
                 y: 50,
-                z: 180,
-              },
+                z: 180
+              }
             ],
             radius: [20, 70],
             itemStyle: {
-              color: ['#BAE7FF', '#0050B3'],
+              color: ["#BAE7FF", "#0050B3"]
             },
             label: {
-              fontSize: 20,
-            },
-          },
+              fontSize: 20
+            }
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartScatter2 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartScatter2 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartScatter2 touchstart`)
-  },
-}
+    console.log(`chartScatter2 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

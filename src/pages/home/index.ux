@@ -94,12 +94,38 @@
       <div class="item"><a href="/pages/keyboard">数字键盘 keyboard</a></div>
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
-      <div class="item"><a href="/pages/charts/chartsBar">图表/柱状图 charts/bar</a></div>
-      <div class="item"><a href="/pages/charts/chartsLine">图表/折线图 charts/line</a></div>
-      <div class="item"><a href="/pages/charts/chartsPie">图表/饼图 charts/pie</a></div>
-      <div class="item"><a href="/pages/charts/chartsRadar">图表/雷达图 charts/radar</a></div>
-      <div class="item"><a href="/pages/charts/chartsScatter">图表/点图 charts/scatter</a></div>
-      <div class="item"><a href="/pages/charts/chartsFunnel">图表/漏斗图 charts/funnel</a></div>
+      <div class="item">
+        <a href="/pages/charts/chartsBar">图表/柱状图 charts/bar</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsLine">图表/折线图 charts/line</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsPie">图表/饼图 charts/pie</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsRadar">图表/雷达图 charts/radar</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsScatter">图表/点图 charts/scatter</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsFunnel">图表/漏斗图 charts/funnel</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsCandlestick"
+          >图表/蜡烛图 charts/candlestick</a
+        >
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsHeatmap">图表/热力图 charts/heatmap</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsTreemap">图表/矩形树图 charts/treemap</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/chartsTagCloud">图表/词云图 charts/tagCloud</a>
+      </div>
     </div>
   </div>
 </template>

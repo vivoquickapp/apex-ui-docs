@@ -5,7 +5,12 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chartScatter2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartScatter2"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -17,7 +22,12 @@
       <text class="btn btn-primary" @click="updateChart">修改参数</text>
     </div>
 
-    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+    <my-popup
+      id="popup"
+      position="right"
+      mask="{{true}}"
+      onclose="closeEditConfig"
+    >
       <list class="config-wrap">
         <list-item type="list-item" class="config-item">
           <text class="config-item-title">data</text>
@@ -43,7 +53,13 @@
             </div>
           </div>
           <text class="config-item-title">opts</text>
-          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="animation"
+            position="right"
+            shape="square"
+            checked="{{config.animation}}"
+            onchange="changeConfig('animation')"
+          ></my-checkbox>
           <my-checkbox
             value="backgroundColor"
             position="right"
@@ -51,10 +67,28 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
-          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
+          <my-checkbox
+            value="legend.show"
+            position="right"
+            shape="square"
+            checked="{{config.legendShow}}"
+            onchange="changeConfig('legendShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="label.show"
+            position="right"
+            shape="square"
+            checked="{{config.labelShow}}"
+            onchange="changeConfig('labelShow')"
+          ></my-checkbox>
           <text class="config-item-title">yAxis</text>
-          <my-checkbox value="show" position="right" shape="square" checked="{{config.yAxisShow}}" onchange="changeConfig('yAxisShow')"></my-checkbox>
+          <my-checkbox
+            value="show"
+            position="right"
+            shape="square"
+            checked="{{config.yAxisShow}}"
+            onchange="changeConfig('yAxisShow')"
+          ></my-checkbox>
           <div class="select" onclick="selectShow('selectYAxisMax')">
             <text>max</text>
             <div>
@@ -105,7 +139,13 @@
             onchange="changeConfig('yAxisSplitLineShow')"
           ></my-checkbox>
           <text class="config-item-title">xAxis</text>
-          <my-checkbox value="show" position="right" shape="square" checked="{{config.xAxisShow}}" onchange="changeConfig('xAxisShow')"></my-checkbox>
+          <my-checkbox
+            value="show"
+            position="right"
+            shape="square"
+            checked="{{config.xAxisShow}}"
+            onchange="changeConfig('xAxisShow')"
+          ></my-checkbox>
           <div class="select" onclick="selectShow('selectXAxisMax')">
             <text>max</text>
             <div>
@@ -134,7 +174,7 @@
             checked="{{config.xAxisLabelShow}}"
             onchange="changeConfig('xAxisLabelShow')"
           ></my-checkbox>
-          <div class="select" onclick="selectShow('selectLabelRotate')">
+          <div class="select" onclick="selectShow('selectXAxisLabelRotate')">
             <text>axisLabel.rotate</text>
             <div>
               <text>{{ config.xAxisLabelRotate }}</text>
@@ -186,40 +226,70 @@
       </div>
     </my-popup>
 
-    <my-select id="selectXDataType" oncomfirm="selectClose('xDataType')"></my-select>
-    <my-select id="selectYDataType" oncomfirm="selectClose('yDataType')"></my-select>
-    <my-select id="selectSeriesLength" oncomfirm="selectClose('seriesLength')"></my-select>
-    <my-select id="selectYAxisMax" oncomfirm="selectClose('yAxisMax')"></my-select>
-    <my-select id="selectYAxisMin" oncomfirm="selectClose('yAxisMin')"></my-select>
-    <my-select id="selectLabelRotate" oncomfirm="selectClose('xAxisLabelRotate')"></my-select>
-    <my-select id="selectXAxisMax" oncomfirm="selectClose('xAxisMax')"></my-select>
-    <my-select id="selectXAxisMin" oncomfirm="selectClose('xAxisMin')"></my-select>
-    <my-select id="selectSeriesItemRadius" oncomfirm="selectClose('seriesItemRadius')"></my-select>
-    <my-select id="selectSeriesItemOpacity" oncomfirm="selectClose('seriesItemOpacity')"></my-select>
+    <my-select
+      id="selectXDataType"
+      oncomfirm="selectClose('xDataType')"
+    ></my-select>
+    <my-select
+      id="selectYDataType"
+      oncomfirm="selectClose('yDataType')"
+    ></my-select>
+    <my-select
+      id="selectSeriesLength"
+      oncomfirm="selectClose('seriesLength')"
+    ></my-select>
+    <my-select
+      id="selectYAxisMax"
+      oncomfirm="selectClose('yAxisMax')"
+    ></my-select>
+    <my-select
+      id="selectYAxisMin"
+      oncomfirm="selectClose('yAxisMin')"
+    ></my-select>
+    <my-select
+      id="selectXAxisLabelRotate"
+      oncomfirm="selectClose('xAxisLabelRotate')"
+    ></my-select>
+    <my-select
+      id="selectXAxisMax"
+      oncomfirm="selectClose('xAxisMax')"
+    ></my-select>
+    <my-select
+      id="selectXAxisMin"
+      oncomfirm="selectClose('xAxisMin')"
+    ></my-select>
+    <my-select
+      id="selectSeriesItemRadius"
+      oncomfirm="selectClose('seriesItemRadius')"
+    ></my-select>
+    <my-select
+      id="selectSeriesItemOpacity"
+      oncomfirm="selectClose('seriesItemOpacity')"
+    ></my-select>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts.js'
+import Charts from "apex-ui/components/charts/qacharts.js";
 // import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
     return {
       config: {
-        xDataType: '正数',
-        yDataType: '正数',
-        seriesLength: '1',
+        xDataType: "正数",
+        yDataType: "正数",
+        seriesLength: "1",
 
         animation: true,
         backgroundColor: true,
@@ -227,8 +297,8 @@ export default {
         labelShow: false,
 
         yAxisShow: true,
-        yAxisMax: 'auto',
-        yAxisMin: 'auto',
+        yAxisMax: "auto",
+        yAxisMin: "auto",
         yAxisNameShow: false,
         yAxisLabelShow: true,
         yAxisTickShow: true,
@@ -236,25 +306,25 @@ export default {
         yAxisSplitLineShow: true,
 
         xAxisShow: true,
-        xAxisMax: 'auto',
-        xAxisMin: 'auto',
+        xAxisMax: "auto",
+        xAxisMin: "auto",
         xAxisNameShow: false,
         xAxisLabelShow: true,
-        xAxisLabelRotate: '0',
+        xAxisLabelRotate: "0",
         xAxisTickShow: true,
         xAxisLineShow: true,
         xAxisSplitLineShow: true,
 
-        seriesItemRadius: '10',
-        seriesItemOpacity: '1',
-      },
-    }
+        seriesItemRadius: "10",
+        seriesItemOpacity: "1"
+      }
+    };
   },
   resetConfig() {
     this.config = {
-      xDataType: '正数',
-      yDataType: '正数',
-      seriesLength: '1',
+      xDataType: "正数",
+      yDataType: "正数",
+      seriesLength: "1",
 
       animation: true,
       backgroundColor: true,
@@ -262,8 +332,8 @@ export default {
       labelShow: false,
 
       yAxisShow: true,
-      yAxisMax: 'auto',
-      yAxisMin: 'auto',
+      yAxisMax: "auto",
+      yAxisMin: "auto",
       yAxisNameShow: false,
       yAxisLabelShow: true,
       yAxisTickShow: true,
@@ -271,346 +341,347 @@ export default {
       yAxisSplitLineShow: true,
 
       xAxisShow: true,
-      xAxisMax: 'auto',
-      xAxisMin: 'auto',
+      xAxisMax: "auto",
+      xAxisMin: "auto",
       xAxisNameShow: false,
       xAxisLabelShow: true,
-      xAxisLabelRotate: '0',
+      xAxisLabelRotate: "0",
       xAxisTickShow: true,
       xAxisLineShow: true,
       xAxisSplitLineShow: true,
 
-      seriesItemRadius: '10',
-      seriesItemOpacity: '1',
-    }
+      seriesItemRadius: "10",
+      seriesItemOpacity: "1"
+    };
   },
   changeConfig(key, { detail }) {
-    this.config[key] = detail.current
+    this.config[key] = detail.current;
   },
   openEditConfig() {
-    this.$child('popup').show()
+    this.$child("popup").show();
   },
   closeEditConfig() {
-    this.$child('popup').hide()
+    this.$child("popup").hide();
   },
   selectShow(id) {
-    let options
+    let options;
     switch (id) {
-      case 'selectXDataType':
-        options = ['正数', '负数', '正负数']
-        break
-      case 'selectYDataType':
-        options = ['正数', '负数', '正负数']
-        break
-      case 'selectSeriesLength':
-        options = ['1', '2', '3', '4', '5']
-        break
-      case 'selectLabelRotate':
-        options = ['0', '-45', '45']
-        break
-      case 'selectXAxisMax':
-        options = ['400', '300', 'auto', '-300', '-400']
-        break
-      case 'selectXAxisMin':
-        options = ['400', '300', 'auto', '-300', '-400']
-        break
-      case 'selectYAxisMax':
-        options = ['400', '300', 'auto', '-300', '-400']
-        break
-      case 'selectYAxisMin':
-        options = ['400', '300', 'auto', '-300', '-400']
-        break
-      case 'selectSeriesItemRadius':
-        options = ['20', '15', '10', '5', '2']
-        break
-      case 'selectSeriesItemOpacity':
-        options = ['1', '0.5']
-        break
+      case "selectXDataType":
+        options = ["正数", "负数", "正负数"];
+        break;
+      case "selectYDataType":
+        options = ["正数", "负数", "正负数"];
+        break;
+      case "selectSeriesLength":
+        options = ["1", "2", "3", "4", "5"];
+        break;
+      case "selectXAxisLabelRotate":
+        options = ["0", "-45", "45"];
+        break;
+      case "selectXAxisMax":
+        options = ["400", "300", "auto", "-300", "-400"];
+        break;
+      case "selectXAxisMin":
+        options = ["400", "300", "auto", "-300", "-400"];
+        break;
+      case "selectYAxisMax":
+        options = ["400", "300", "auto", "-300", "-400"];
+        break;
+      case "selectYAxisMin":
+        options = ["400", "300", "auto", "-300", "-400"];
+        break;
+      case "selectSeriesItemRadius":
+        options = ["20", "15", "10", "5", "2"];
+        break;
+      case "selectSeriesItemOpacity":
+        options = ["1", "0.5"];
+        break;
     }
 
     this.$child(id).showSelect({
-      options,
-    })
+      options
+    });
   },
   selectClose(key, event) {
-    this.config[key] = event.detail.data || '请选择'
+    this.config[key] = event.detail.data || "请选择";
   },
   getMockData() {
-    let digits = 0
-    let seriesLength = Number(this.config.seriesLength)
-    let dataLength = 20
-    let mockSeries = []
+    let digits = 0;
+    let seriesLength = Number(this.config.seriesLength);
+    let dataLength = 20;
+    let mockSeries = [];
 
     for (let i = 0; i < seriesLength; i++) {
-      let mockData = []
-      let mockY = []
-      let mockX = []
+      let mockData = [];
+      let mockY = [];
+      let mockX = [];
 
       switch (this.config.yDataType) {
-        case '正数':
-          mockY = this.$app.$def.getMockData(dataLength, 0, 500, 0, digits)
-          break
-        case '负数':
-          mockY = this.$app.$def.getMockData(dataLength, -500, 0, 0, digits)
-          break
-        case '正负数':
-          mockY = this.$app.$def.getMockData(dataLength, -500, 500, 0, digits)
-          break
+        case "正数":
+          mockY = this.$app.$def.getMockData(dataLength, 0, 500, 0, digits);
+          break;
+        case "负数":
+          mockY = this.$app.$def.getMockData(dataLength, -500, 0, 0, digits);
+          break;
+        case "正负数":
+          mockY = this.$app.$def.getMockData(dataLength, -500, 500, 0, digits);
+          break;
       }
       switch (this.config.xDataType) {
-        case '正数':
-          mockX = this.$app.$def.getMockData(dataLength, 0, 500, 0, digits)
-          break
-        case '负数':
-          mockX = this.$app.$def.getMockData(dataLength, -500, 0, 0, digits)
-          break
-        case '正负数':
-          mockX = this.$app.$def.getMockData(dataLength, -500, 500, 0, digits)
-          break
+        case "正数":
+          mockX = this.$app.$def.getMockData(dataLength, 0, 500, 0, digits);
+          break;
+        case "负数":
+          mockX = this.$app.$def.getMockData(dataLength, -500, 0, 0, digits);
+          break;
+        case "正负数":
+          mockX = this.$app.$def.getMockData(dataLength, -500, 500, 0, digits);
+          break;
       }
       for (let i = 0; i < dataLength; i++) {
         mockData.push({
           x: mockX[i],
-          y: mockY[i],
-        })
+          y: mockY[i]
+        });
       }
 
       mockSeries.push({
         name: `scatter${i + 1}`,
-        data: mockData,
-      })
+        type: "scatter",
+        data: mockData
+      });
     }
 
     return {
-      mockSeries,
-    }
+      mockSeries
+    };
   },
   updateChart() {
-    if (!$chart) return
+    if (!$chart) return;
 
-    let { mockSeries } = this.getMockData()
+    let { mockSeries } = this.getMockData();
 
     mockSeries = mockSeries.map(seriesItem => {
-      seriesItem.radius = Number(this.config.seriesItemRadius)
-      seriesItem.opacity = Number(this.config.seriesItemOpacity)
+      seriesItem.radius = Number(this.config.seriesItemRadius);
+      seriesItem.opacity = Number(this.config.seriesItemOpacity);
 
-      return seriesItem
-    })
+      return seriesItem;
+    });
 
     let opts = {
       animation: this.config.animation,
-      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+      backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
       legend: {
-        show: this.config.legendShow,
+        show: this.config.legendShow
       },
       label: {
-        show: this.config.labelShow,
+        show: this.config.labelShow
       },
       yAxis: {
         show: this.config.yAxisShow,
         max: this.config.yAxisMax,
         min: this.config.yAxisMin,
         axisName: {
-          show: this.config.yAxisNameShow,
+          show: this.config.yAxisNameShow
         },
         axisLabel: {
-          show: this.config.yAxisLabelShow,
+          show: this.config.yAxisLabelShow
         },
         axisTick: {
-          show: this.config.yAxisTickShow,
+          show: this.config.yAxisTickShow
         },
         axisLine: {
-          show: this.config.yAxisLineShow,
+          show: this.config.yAxisLineShow
         },
         axisSplitLine: {
-          show: this.config.yAxisSplitLineShow,
-        },
+          show: this.config.yAxisSplitLineShow
+        }
       },
       xAxis: {
         show: this.config.xAxisShow,
         max: this.config.xAxisMax,
         min: this.config.xAxisMin,
         axisName: {
-          show: this.config.xAxisNameShow,
+          show: this.config.xAxisNameShow
         },
         axisLabel: {
           show: this.config.xAxisLabelShow,
-          rotate: Number(this.config.xAxisLabelRotate),
+          rotate: Number(this.config.xAxisLabelRotate)
         },
         axisTick: {
-          show: this.config.xAxisTickShow,
+          show: this.config.xAxisTickShow
         },
         axisLine: {
-          show: this.config.xAxisLineShow,
+          show: this.config.xAxisLineShow
         },
         axisSplitLine: {
-          show: this.config.xAxisSplitLineShow,
-        },
+          show: this.config.xAxisSplitLineShow
+        }
       },
-      series: mockSeries,
-    }
+      series: mockSeries
+    };
 
-    $chart.updateData(opts)
+    $chart.updateData(opts);
   },
   initChart() {
-    this.resetConfig()
+    this.resetConfig();
 
-    let { mockSeries } = this.getMockData()
+    let { mockSeries } = this.getMockData();
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartScatter2'),
-        type: 'scatter',
+        element: this.$element("chartScatter2"),
         width: this.width,
         height: this.height,
-        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+        backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
         animation: this.config.animation,
         animationDuration: 1000,
-        animationTiming: 'default', // default, easeIn, easeOut, easeInOut, linear
+        animationTiming: "easeInOut", // easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
           show: this.config.legendShow,
-          type: 'default',
+          type: "default",
           marginTop: 8,
           itemGap: 15,
           shapeWidth: 15,
           shapeHeight: 15,
           textStyle: {
             fontSize: 15,
-            color: '#333333',
-            padding: 5,
-          },
+            color: "#333333",
+            padding: 5
+          }
         },
         label: {
           show: this.config.labelShow,
           fontSize: 10,
-          color: 'auto',
-          margin: 5,
+          color: "auto",
+          margin: 5
         },
         yAxis: {
           show: this.config.yAxisShow,
-          type: 'value',
+          type: "value",
           max: this.config.yAxisMax,
           min: this.config.yAxisMin,
           boundaryGap: this.config.axisBoundaryGap,
           splitNumber: 4,
           axisName: {
             show: this.config.yAxisNameShow,
-            text: 'y轴名称',
+            text: "y轴名称",
             gap: 10,
             textStyle: {
-              color: '#666666',
+              color: "#666666",
               fontSize: 15,
-              align: 'center',
-            },
+              align: "center"
+            }
           },
           axisLabel: {
             show: this.config.yAxisLabelShow,
             gap: 5,
             textStyle: {
-              color: '#666666',
-              fontSize: 12,
-            },
+              color: "#666666",
+              fontSize: 12
+            }
           },
           axisTick: {
             show: this.config.yAxisTickShow,
             length: 5,
             lineStyle: {
               lineWidth: 1,
-              color: '#666666',
-            },
+              color: "#666666"
+            }
           },
           axisLine: {
             show: this.config.yAxisLineShow,
             lineStyle: {
               lineWidth: 1,
-              color: '#666666',
-            },
+              color: "#666666"
+            }
           },
           axisSplitLine: {
             show: this.config.yAxisSplitLineShow,
             lineStyle: {
               lineWidth: 1,
-              color: '#dddddd',
-            },
-          },
+              color: "#dddddd"
+            }
+          }
         },
         xAxis: {
           show: this.config.xAxisShow,
-          type: 'value',
+          type: "value",
           max: this.config.xAxisMax,
           min: this.config.xAxisMin,
           splitNumber: 5,
           axisName: {
             show: this.config.xAxisNameShow,
-            text: 'x轴名称',
+            text: "x轴名称",
             gap: 10,
             textStyle: {
-              color: '#666666',
+              color: "#666666",
               fontSize: 15,
-              align: 'center',
-            },
+              align: "center"
+            }
           },
           axisLabel: {
             show: this.config.xAxisLabelShow,
             rotate: Number(this.config.xAxisLabelRotate),
             gap: 5,
             textStyle: {
-              color: '#666666',
-              fontSize: 12,
-            },
+              color: "#666666",
+              fontSize: 12
+            }
           },
           axisTick: {
             show: this.config.xAxisTickShow,
             length: 5,
             lineStyle: {
               lineWidth: 1,
-              color: '#666666',
-            },
+              color: "#666666"
+            }
           },
           axisLine: {
             show: this.config.xAxisLineShow,
             lineStyle: {
               lineWidth: 1,
-              color: '#666666',
-            },
+              color: "#666666"
+            }
           },
           axisSplitLine: {
             show: this.config.xAxisSplitLineShow,
             lineStyle: {
               lineWidth: 1,
-              color: '#dddddd',
-            },
-          },
+              color: "#dddddd"
+            }
+          }
         },
         series: [
           {
+            type: "scatter",
             name: mockSeries[0].name,
             data: mockSeries[0].data,
-            color: 'auto',
+            color: "auto",
             radius: Number(this.config.seriesItemRadius),
             opacity: Number(this.config.seriesItemOpacity),
             label: {
               show: true,
               fontSize: 10,
-              color: 'auto',
-              margin: 5,
-            },
-          },
+              color: "auto",
+              margin: 5
+            }
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartScatter3 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartScatter3 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartScatter3 touchstart`)
-  },
-}
+    console.log(`chartScatter3 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>
