@@ -2194,31 +2194,34 @@ $chart = new Charts({
     series: [{
         name: '词云图',
         type: 'tagCloud',
-        padding: 1,
-        timeInterval: 500,
+        canvas: this.$element('hideCanvas'),
+        size: [600, 400],
         font: 'Serif',
-        fontSize: 15,
-        rotate: 0,
-        spiral: 'archimedean', // archimedean rectangular {function}
+        fontSize,
+        padding: 0,
+        rotate,
+        spiral: 'archimedean',
+        timeInterval: 5000,
+        data: []
     }],
     ...
     ...
 })
 ```
 
-### seriesItem.padding
+### seriesItem.canvas
 
-- 参数类型：Number
+- 参数类型：Object
 - 是否必填：否
-- 默认值：`1`
-- 描述：词云图字体间隔
+- 默认值：`null`
+- 描述：词云图计算用 canvas 对象，未配置默认图表 canvas 对象
 
-### seriesItem.timeInterval
+### seriesItem.size
 
-- 参数类型：Number
+- 参数类型：Array
 - 是否必填：否
-- 默认值：`500`
-- 描述：词云图计算时间间隔
+- 默认值：`[width, height]`
+- 描述：词云图长宽, 未配置默认图表长宽
 
 ### seriesItem.font
 
@@ -2234,12 +2237,33 @@ $chart = new Charts({
 - 默认值：`15`
 - 描述：词云图字体大小
 
+### seriesItem.padding
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：词云图字体间隔
+
 ### seriesItem.rotate
 
 - 参数类型：Number
 - 是否必填：否
 - 默认值：`0`
 - 描述：词云图字体旋转角度
+
+### seriesItem.spiral
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`archimedean`
+- 描述：词云图螺旋类型，可选值：'archimedean', 'rectangular'
+
+### seriesItem.timeInterval
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`500`
+- 描述：词云图计算时间间隔
 
 ### seriesItem.imageMask
 

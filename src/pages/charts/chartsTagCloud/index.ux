@@ -14,8 +14,8 @@
 <script>
 export default {
   private: {
-    chartWidth: 375,
-    chartHeight: 260
+    chartWidth: 600,
+    chartHeight: 400
   },
   async onShow() {
     try {

@@ -15,6 +15,11 @@
       id="chart"
       style="width: {{width}}px; height: {{height}}px;"
     ></canvas>
+    <canvas
+      id="hideCharts"
+      style="width: {{width}}px; height: {{height}}px;"
+      show="{{false}}"
+    ></canvas>
   </div>
 </template>
 
@@ -46,6 +51,26 @@
       const MAX_FONTSIZE = 36; // 最大的字体
       const MIN_FONTSIZE = 12; // 最小的字体
 
+      const fontSize = function fontSize(d) {
+        if (d.value) {
+          return ((d.value - min) / (max - min)) * (MAX_FONTSIZE - MIN_FONTSIZE) + MIN_FONTSIZE
+        }
+        return 0
+      }
+
+      const rotate = function rotate() {
+        let random = ~~(Math.random() * 4) % 4
+        if (random === 2) {
+          random = 0
+        }
+        return random * 90 // 0, 90, 270
+      }
+
+      const data = worldPopulation.map(item => {
+        item.size = fontSize(item)
+        return { ...item }
+      })
+
       return new Promise((resolve, reject) => {
         $chart = new Charts({
           element: this.$element("chart"),
@@ -56,31 +81,17 @@
           },
           series: [
             {
-              name: "词云图",
-              type: "tagCloud",
+              name: '词云图',
+              type: 'tagCloud',
+              canvas: this.$element('hideCanvas'),
+              size: [this.width, this.height],
+              font: 'Serif',
+              fontSize,
               padding: 0,
+              rotate,
+              spiral: 'archimedean',
               timeInterval: 5000,
-              font: "Serif",
-              spiral: "archimedean",
-              imageMask,
-              rotate: function rotate() {
-                let random = ~~(Math.random() * 4) % 4;
-                if (random === 2) {
-                  random = 0;
-                }
-                return random * 90; // 0, 90, 270
-              },
-              fontSize: function fontSize(d) {
-                if (d.value) {
-                  return (
-                    ((d.value - min) / (max - min)) *
-                      (MAX_FONTSIZE - MIN_FONTSIZE) +
-                    MIN_FONTSIZE
-                  );
-                }
-                return 0;
-              },
-              data: worldPopulation
+              data,
             }
           ],
           onRenderComplete: () => {
