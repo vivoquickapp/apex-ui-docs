@@ -1,16 +1,9 @@
-<import
-  name="chart-candlestick1"
-  src="./components/chartCandlestick1.ux"
-></import>
+<import name="chart-candlestick1" src="./components/chartCandlestick1.ux"></import>
 
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
-    <chart-candlestick1
-      id="chart-candlestick1"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-candlestick1>
+    <chart-candlestick1 id="chart-candlestick1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-candlestick1>
   </div>
 </template>
 
@@ -18,16 +11,16 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400
+    chartHeight: 400,
   },
   async onShow() {
     try {
-      await this.$child("chart-candlestick1").initChart();
+      await this.$child('chart-candlestick1').initChart()
     } catch (error) {
-      console.error("catch error", error);
+      console.error('catch error', error)
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="less">

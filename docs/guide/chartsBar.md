@@ -16,8 +16,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -34,27 +33,25 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          xAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'bar',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
           },
-          series: [
-            {
-              name: '数据',
-              type: 'bar',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartBar renderComplete')
-            resolve()
-          },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartBar renderComplete')
+          resolve()
+        },
       })
     },
   }
@@ -77,8 +74,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -95,30 +91,28 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          yAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        yAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        xAxis: {
+          type: 'value',
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'bar',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
           },
-          xAxis: {
-            type: 'value',
-          },
-          series: [
-            {
-              name: '数据',
-              type: 'bar',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartBar renderComplete')
-            resolve()
-          },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartBar renderComplete')
+          resolve()
+        },
       })
     },
   }
@@ -141,8 +135,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -159,45 +152,43 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          type: 'bar',
-          width: this.width,
-          height: this.height,
-          yAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
+      $chart = new Charts({
+        element: this.$element('chart'),
+        type: 'bar',
+        width: this.width,
+        height: this.height,
+        yAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        xAxis: {
+          type: 'value',
+        },
+        series: [
+          {
+            name: '数据1',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
           },
-          xAxis: {
-            type: 'value',
+          {
+            name: '数据2',
+            stack: '层叠数据',
+            data: [82, 93, 90, 93, 129, 133, 132],
           },
-          series: [
-            {
-              name: '数据1',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-            },
-            {
-              name: '数据2',
-              stack: '层叠数据',
-              data: [82, 93, 90, 93, 129, 133, 132],
-            },
-            {
-              name: '数据3',
-              stack: '层叠数据',
-              data: [82, 93, 90, 93, 129, 133, 132],
-            },
-            {
-              name: '数据4',
-              stack: '层叠数据',
-              data: [82, 93, 90, 93, 129, 133, 132],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartBar renderComplete')
-            resolve()
+          {
+            name: '数据3',
+            stack: '层叠数据',
+            data: [82, 93, 90, 93, 129, 133, 132],
           },
-        })
+          {
+            name: '数据4',
+            stack: '层叠数据',
+            data: [82, 93, 90, 93, 129, 133, 132],
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartBar renderComplete')
+          resolve()
+        },
       })
     },
   }

@@ -16,8 +16,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
   let $chart;
 
@@ -34,24 +33,22 @@
       return {};
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          category: [1,2,3,4,5,6,7]
-          series: [
-            {
-              name: "数据",
-              type: "radar",
-              data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-          ],
-          onRenderComplete: () => {
-            console.log("chartRadar renderComplete");
-            resolve();
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        category: [1,2,3,4,5,6,7]
+        series: [
+          {
+            name: "数据",
+            type: "radar",
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
           }
-        });
+        ],
+        onRenderComplete: () => {
+          console.log("chartRadar renderComplete");
+          resolve();
+        }
       });
     }
   };
@@ -74,8 +71,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
   let $chart;
 
@@ -92,30 +88,28 @@
       return {};
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          radarAxis: {
-            shape: 'circle'
-          },
-          category: [1,2,3,4,5,6,7]
-          series: [
-            {
-              name: "数据",
-              type: "radar",
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-              area: {
-                show: true
-              }
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        radarAxis: {
+          shape: 'circle'
+        },
+        category: [1,2,3,4,5,6,7]
+        series: [
+          {
+            name: "数据",
+            type: "radar",
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            area: {
+              show: true
             }
-          ],
-          onRenderComplete: () => {
-            console.log("chartRadar renderComplete");
-            resolve();
           }
-        });
+        ],
+        onRenderComplete: () => {
+          console.log("chartRadar renderComplete");
+          resolve();
+        }
       });
     }
   };
@@ -138,8 +132,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
   let $chart;
 
@@ -156,27 +149,25 @@
       return {};
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          category: [1,2,3,4,5,6,7]
-          series: [
-            {
-              name: "数据",
-              type: "radar",
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-              area: {
-                show: true
-              }
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        category: [1,2,3,4,5,6,7]
+        series: [
+          {
+            name: "数据",
+            type: "radar",
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            area: {
+              show: true
             }
-          ],
-          onRenderComplete: () => {
-            console.log("chartRadar renderComplete");
-            resolve();
           }
-        });
+        ],
+        onRenderComplete: () => {
+          console.log("chartRadar renderComplete");
+          resolve();
+        }
       });
     }
   };

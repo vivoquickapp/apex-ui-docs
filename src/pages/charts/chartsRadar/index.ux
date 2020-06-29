@@ -5,21 +5,9 @@
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
-    <chart-radar1
-      id="chart-radar1"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-radar1>
-    <chart-radar2
-      id="chart-radar2"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-radar2>
-    <chart-radar3
-      id="chart-radar3"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-radar3>
+    <chart-radar1 id="chart-radar1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar1>
+    <chart-radar2 id="chart-radar2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar2>
+    <chart-radar3 id="chart-radar3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-radar3>
   </div>
 </template>
 
@@ -27,18 +15,18 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400
+    chartHeight: 400,
   },
   async onShow() {
     try {
-      await this.$child("chart-radar1").initChart();
-      await this.$child("chart-radar2").initChart();
-      await this.$child("chart-radar3").initChart();
+      await this.$child('chart-radar1').initChart()
+      await this.$child('chart-radar2').initChart()
+      await this.$child('chart-radar3').initChart()
     } catch (error) {
-      console.error("catch error", error);
+      console.error('catch error', error)
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="less">

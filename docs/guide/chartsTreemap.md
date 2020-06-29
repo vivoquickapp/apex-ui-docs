@@ -19,8 +19,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
   let $chart = null;
 
@@ -37,61 +36,59 @@
       return {};
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          legend: {
-            show: false
-          },
-          series: [
-            {
-              name: "矩形树图",
-              type: "treemap",
-              tile: "treemapResquarify", // treemapBinary treemapDice treemapSlice treemapSliceDice treemapResquarify treemapSquarify
-              splitLine: {
-                show: true,
-                lineWidth: 5,
-                color: "#ffffff"
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        legend: {
+          show: false
+        },
+        series: [
+          {
+            name: "矩形树图",
+            type: "treemap",
+            tile: "treemapResquarify", // treemapBinary treemapDice treemapSlice treemapSliceDice treemapResquarify treemapSquarify
+            splitLine: {
+              show: true,
+              lineWidth: 5,
+              color: "#ffffff"
+            },
+            data: [
+              {
+                name: "分类 1",
+                value: 3
               },
-              data: [
-                {
-                  name: "分类 1",
-                  value: 3
-                },
-                {
-                  name: "分类 2",
-                  value: 2
-                },
-                {
-                  name: "分类 3",
-                  value: 6
-                },
-                {
-                  name: "分类 4",
-                  value: 4
-                },
-                {
-                  name: "分类 5",
-                  value: 1
-                },
-                {
-                  name: "分类 6",
-                  value: 2
-                },
-                {
-                  name: "分类 7",
-                  value: 6
-                }
-              ]
-            }
-          ],
-          onRenderComplete: () => {
-            console.log("chartTreemap renderComplete");
-            resolve();
+              {
+                name: "分类 2",
+                value: 2
+              },
+              {
+                name: "分类 3",
+                value: 6
+              },
+              {
+                name: "分类 4",
+                value: 4
+              },
+              {
+                name: "分类 5",
+                value: 1
+              },
+              {
+                name: "分类 6",
+                value: 2
+              },
+              {
+                name: "分类 7",
+                value: 6
+              }
+            ]
           }
-        });
+        ],
+        onRenderComplete: () => {
+          console.log("chartTreemap renderComplete");
+          resolve();
+        }
       });
     }
   };

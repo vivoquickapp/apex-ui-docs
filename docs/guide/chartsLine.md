@@ -16,8 +16,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -34,31 +33,29 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          legend: {
-            shapeWidth: 30,
-            shapeHeight: 15,
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        legend: {
+          shapeWidth: 30,
+          shapeHeight: 15,
+        },
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'line',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
           },
-          xAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
-          },
-          series: [
-            {
-              name: '数据',
-              type: 'line',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartLine renderComplete')
-            resolve()
-          },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartLine renderComplete')
+          resolve()
+        },
       })
     },
   }
@@ -81,8 +78,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -99,33 +95,31 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          legend: {
-            shapeWidth: 30,
-            shapeHeight: 15,
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        legend: {
+          shapeWidth: 30,
+          shapeHeight: 15,
+        },
+        xAxis: {
+          type: 'category',
+          boundaryGap: false,
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'line',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            smooth: true,
           },
-          xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: ['1', '2', '3', '4', '5', '6', '7'],
-          },
-          series: [
-            {
-              name: '数据',
-              type: 'line',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-              smooth: true,
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartLine renderComplete')
-            resolve()
-          },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartLine renderComplete')
+          resolve()
+        },
       })
     },
   }
@@ -148,8 +142,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -166,34 +159,32 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          legend: {
-            shapeWidth: 30,
-            shapeHeight: 15,
-          },
-          xAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
-          },
-          series: [
-            {
-              name: '数据',
-              type: 'line',
-              data: [820, 932, 901, 934, 1290, 1330, 1320],
-              area: {
-                show: true,
-              },
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        legend: {
+          shapeWidth: 30,
+          shapeHeight: 15,
+        },
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'line',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+            area: {
+              show: true,
             },
-          ],
-          onRenderComplete: () => {
-            console.log('chartLine renderComplete')
-            resolve()
           },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartLine renderComplete')
+          resolve()
+        },
       })
     },
   }
@@ -217,8 +208,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from 'apex/components/charts/qacharts-min.js'
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
   let $chart
 
@@ -235,32 +225,30 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          legend: {
-            shapeWidth: 30,
-            shapeHeight: 15,
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        legend: {
+          shapeWidth: 30,
+          shapeHeight: 15,
+        },
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'line',
+            connectNulls: true,
+            data: [820, 932, null, 934, 1290, 1330, 1320],
           },
-          xAxis: {
-            type: 'category',
-            data: ['1', '2', '3', '4', '5', '6', '7'],
-          },
-          series: [
-            {
-              name: '数据',
-              type: 'line',
-              connectNulls: true,
-              data: [820, 932, null, 934, 1290, 1330, 1320],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartLine renderComplete')
-            resolve()
-          },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartLine renderComplete')
+          resolve()
+        },
       })
     },
   }

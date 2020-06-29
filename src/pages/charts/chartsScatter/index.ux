@@ -5,26 +5,10 @@
 
 <template>
   <div class="page">
-    <chart-scatter1
-      id="chart-scatter1"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-scatter1>
-    <chart-scatter2
-      id="chart-scatter2"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-scatter2>
-    <chart-scatter3
-      id="chart-scatter3"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-scatter3>
-    <chart-scatter4
-      id="chart-scatter4"
-      width="{{chartWidth}}"
-      height="{{chartHeight}}"
-    ></chart-scatter4>
+    <chart-scatter1 id="chart-scatter1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-scatter1>
+    <chart-scatter2 id="chart-scatter2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-scatter2>
+    <chart-scatter3 id="chart-scatter3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-scatter3>
+    <chart-scatter4 id="chart-scatter4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-scatter4>
   </div>
 </template>
 
@@ -32,19 +16,19 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400
+    chartHeight: 400,
   },
   async onShow() {
     try {
-      await this.$child("chart-scatter1").initChart();
-      await this.$child("chart-scatter2").initChart();
-      await this.$child("chart-scatter3").initChart();
-      await this.$child("chart-scatter4").initChart();
+      await this.$child('chart-scatter1').initChart()
+      await this.$child('chart-scatter2').initChart()
+      await this.$child('chart-scatter3').initChart()
+      await this.$child('chart-scatter4').initChart()
     } catch (error) {
-      console.error("catch error", error);
+      console.error('catch error', error)
     }
-  }
-};
+  },
+}
 </script>
 
 <style lang="less">
