@@ -1,71 +1,65 @@
 <template>
   <div class="chart-wrap">
-    <canvas
-      id="chartLine2"
-      class="chart"
-      style="width: {{width}}px; height: {{height}}px;"
-      ontouchstart="ontouchstart"
-    ></canvas>
+    <canvas id="chartLine2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
   </div>
 </template>
 
 <script>
-import Charts from "apex-ui/components/charts/qacharts.js";
-// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null;
+let $chart = null
 
 export default {
   props: {
     width: {
-      default: 600
+      default: 600,
     },
     height: {
-      default: 400
-    }
+      default: 400,
+    },
   },
   data() {
-    return {};
+    return {}
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element("chartLine2"),
+        element: this.$element('chartLine2'),
         width: this.width,
         height: this.height,
         legend: {
           shapeWidth: 30,
-          shapeHeight: 15
+          shapeHeight: 15,
         },
         xAxis: {
-          type: "category",
+          type: 'category',
           boundaryGap: false,
-          data: ["1", "2", "3", "4", "5", "6", "7"]
+          data: ['1', '2', '3', '4', '5', '6', '7'],
         },
         series: [
           {
-            name: "数据",
-            type: "line",
+            name: '数据',
+            type: 'line',
             smooth: true,
             area: {
-              show: true
+              show: true,
             },
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          }
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+          },
         ],
         onRenderComplete: () => {
-          console.log("chartLine2 renderComplete");
-          resolve();
-        }
-      });
-    });
+          console.log('chartLine2 renderComplete')
+          resolve()
+        },
+      })
+    })
   },
   ontouchstart(e) {
-    console.log(`chartLine2 touchstart`);
-  }
-};
+    console.log(`chartLine2 touchstart`)
+  },
+}
 </script>
 
 <style lang="less">
-@import "../../../../common/styles/common.less";
+@import '../../../../common/styles/common.less';
 </style>

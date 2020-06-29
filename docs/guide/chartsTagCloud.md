@@ -24,8 +24,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
   import worldPopulation from "./world-population.js";
 
   let $chart = null;
@@ -71,34 +70,32 @@
         return { ...item }
       })
 
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          legend: {
-            show: false
-          },
-          series: [
-            {
-              name: '词云图',
-              type: 'tagCloud',
-              canvas: this.$element('hideCanvas'),
-              size: [this.width, this.height],
-              font: 'Serif',
-              fontSize,
-              padding: 0,
-              rotate,
-              spiral: 'archimedean',
-              timeInterval: 5000,
-              data,
-            }
-          ],
-          onRenderComplete: () => {
-            console.log("chartTagCloud renderComplete");
-            resolve();
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        legend: {
+          show: false
+        },
+        series: [
+          {
+            name: '词云图',
+            type: 'tagCloud',
+            canvas: this.$element('hideCanvas'),
+            size: [this.width, this.height],
+            font: 'Serif',
+            fontSize,
+            padding: 0,
+            rotate,
+            spiral: 'archimedean',
+            timeInterval: 5000,
+            data,
           }
-        });
+        ],
+        onRenderComplete: () => {
+          console.log("chartTagCloud renderComplete");
+          resolve();
+        }
       });
     }
   };

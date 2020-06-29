@@ -1,62 +1,56 @@
 <template>
   <div class="chart-wrap">
-    <canvas
-      id="chartBar1"
-      class="chart"
-      style="width: {{width}}px; height: {{height}}px;"
-      ontouchstart="ontouchstart"
-    ></canvas>
+    <canvas id="chartBar1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
   </div>
 </template>
 
 <script>
-import Charts from "apex-ui/components/charts/qacharts.js";
-// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
-let $chart = null;
+let $chart = null
 
 export default {
   props: {
     width: {
-      default: 600
+      default: 600,
     },
     height: {
-      default: 400
-    }
+      default: 400,
+    },
   },
   data() {
-    return {};
+    return {}
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element("chartBar1"),
+        element: this.$element('chartBar1'),
         width: this.width,
         height: this.height,
         xAxis: {
-          type: "category",
-          data: ["1", "2", "3", "4", "5", "6", "7"]
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
         },
         series: [
           {
-            name: "数据",
-            type: "bar",
-            data: [820, 932, 901, 934, 1290, 1330, 1320]
-          }
+            name: '数据',
+            type: 'bar',
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+          },
         ],
         onRenderComplete: () => {
-          console.log("chartBar1 renderComplete");
-          resolve();
-        }
-      });
-    });
+          console.log('chartBar1 renderComplete')
+          resolve()
+        },
+      })
+    })
   },
   ontouchstart(e) {
-    console.log(`chartBar1 touchstart`);
-  }
-};
+    console.log(`chartBar1 touchstart`)
+  },
+}
 </script>
 
 <style lang="less">
-@import "../../../../common/styles/common.less";
+@import '../../../../common/styles/common.less';
 </style>

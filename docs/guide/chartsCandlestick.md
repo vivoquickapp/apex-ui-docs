@@ -19,8 +19,7 @@
 </template>
 
 <script>
-  // import Charts from 'apex/components/charts/qacharts.js'
-  import Charts from "apex/components/charts/qacharts-min.js";
+  import Charts from "apex-ui/components/charts/qacharts-min.js";
 
   let $chart = null;
 
@@ -249,97 +248,95 @@
       let dataMA10 = calculateMA(10, data);
       let dataMA20 = calculateMA(20, data);
 
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element("chart"),
-          width: this.width,
-          height: this.height,
-          yAxis: {
-            min: 17000,
-            splitNumber: 3,
-            axisName: {
-              show: false
-            }
-          },
-          xAxis: {
-            type: "category",
-            data: dates,
-            axisName: {
-              show: false
-            },
-            axisLabel: {
-              showIndex: [
-                0,
-                Math.floor((dates.length - 1) / 3),
-                Math.floor(((dates.length - 1) * 2) / 3),
-                dates.length - 1
-              ]
-            },
-            axisTick: {
-              show: false
-            },
-            axisSplitLine: {
-              show: false
-            }
-          },
-          series: [
-            {
-              name: "数据",
-              type: "k",
-              data: data,
-              highLine: {
-                show: true
-              },
-              lowLine: {
-                show: true
-              },
-              bar: {
-                show: true,
-                data: volumes
-              }
-            },
-            {
-              name: "MA5",
-              type: "line",
-              data: dataMA5,
-              smooth: true,
-              label: {
-                show: false
-              },
-              symbol: {
-                show: false
-              }
-            },
-            {
-              name: "MA10",
-              type: "line",
-              data: dataMA10,
-              smooth: true,
-              label: {
-                show: false
-              },
-              symbol: {
-                show: false
-              }
-            },
-            {
-              name: "MA20",
-              type: "line",
-              data: dataMA20,
-              smooth: true,
-              label: {
-                show: false
-              },
-              symbol: {
-                show: false
-              }
-            }
-          ],
-          onRenderComplete: () => {
-            console.log("chartCandlestick renderComplete");
-            resolve();
+      $chart = new Charts({
+        element: this.$element("chart"),
+        width: this.width,
+        height: this.height,
+        yAxis: {
+          min: 17000,
+          splitNumber: 3,
+          axisName: {
+            show: false
           }
-        });
+        },
+        xAxis: {
+          type: "category",
+          data: dates,
+          axisName: {
+            show: false
+          },
+          axisLabel: {
+            showIndex: [
+              0,
+              Math.floor((dates.length - 1) / 3),
+              Math.floor(((dates.length - 1) * 2) / 3),
+              dates.length - 1
+            ]
+          },
+          axisTick: {
+            show: false
+          },
+          axisSplitLine: {
+            show: false
+          }
+        },
+        series: [
+          {
+            name: "数据",
+            type: "k",
+            data: data,
+            highLine: {
+              show: true
+            },
+            lowLine: {
+              show: true
+            },
+            bar: {
+              show: true,
+              data: volumes
+            }
+          },
+          {
+            name: "MA5",
+            type: "line",
+            data: dataMA5,
+            smooth: true,
+            label: {
+              show: false
+            },
+            symbol: {
+              show: false
+            }
+          },
+          {
+            name: "MA10",
+            type: "line",
+            data: dataMA10,
+            smooth: true,
+            label: {
+              show: false
+            },
+            symbol: {
+              show: false
+            }
+          },
+          {
+            name: "MA20",
+            type: "line",
+            data: dataMA20,
+            smooth: true,
+            label: {
+              show: false
+            },
+            symbol: {
+              show: false
+            }
+          }
+        ],
+        onRenderComplete: () => {
+          console.log("chartCandlestick renderComplete");
+          resolve();
+        }
       });
     }
   };

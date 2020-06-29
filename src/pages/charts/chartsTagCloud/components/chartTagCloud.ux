@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts.js'
-// import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
 import worldPopulation from './world-population.js'
 
 let $chart = null
@@ -54,35 +53,42 @@ export default {
     })
 
     return new Promise((resolve, reject) => {
-      $chart = new Charts({
-        element: this.$element('chartTagCloud'),
-        width: this.width,
-        height: this.height,
-        animation: false,
-        backgroundColor: '#eeeeee',
-        legend: {
-          show: false,
-        },
-        series: [
-          {
-            name: '词云图',
-            type: 'tagCloud',
-            canvas: this.$element('hideCanvas'),
-            size: [this.width, this.height],
-            font: 'Serif',
-            fontSize,
-            padding: 0,
-            rotate,
-            spiral: 'archimedean',
-            timeInterval: 5000,
-            data,
+      let canvas = this.$element('chartTagCloud')
+      let imageMask = new Image()
+      imageMask.crossOrigin = ''
+      imageMask.src = 'https://gw.alipayobjects.com/mdn/rms_2274c3/afts/img/A*07tdTIOmvlYAAAAAAAAAAABkARQnAQ'
+      imageMask.onload = () => {
+        $chart = new Charts({
+          element: canvas,
+          width: this.width,
+          height: this.height,
+          animation: false,
+          backgroundColor: '#eeeeee',
+          legend: {
+            show: false,
           },
-        ],
-        onRenderComplete: () => {
-          console.log('chartTagCloud renderComplete')
-          resolve()
-        },
-      })
+          series: [
+            {
+              name: '词云图',
+              type: 'tagCloud',
+              canvas: this.$element('hideCanvas'),
+              size: [this.width, this.height],
+              font: 'Serif',
+              fontSize,
+              padding: 0,
+              rotate,
+              spiral: 'archimedean',
+              timeInterval: 5000,
+              // imageMask, // 带图片遮罩的词云
+              data,
+            },
+          ],
+          onRenderComplete: () => {
+            console.log('chartTagCloud renderComplete')
+            resolve()
+          },
+        })
+      }
     })
   },
   ontouchstart(e) {
@@ -92,5 +98,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../../../common/styles/common.less";
+@import '../../../../common/styles/common.less';
 </style>
