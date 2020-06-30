@@ -9,6 +9,7 @@ node_modules/
 src/.DS_Store
 src/images/.DS_Store
 
+dist/
 build/
 docs/*/dist/
 com.apex.ui.quickapp.debug.rpk
