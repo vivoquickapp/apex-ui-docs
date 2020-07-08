@@ -5,7 +5,7 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chartScatter2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas id="chartScatter4" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -459,7 +459,7 @@ export default {
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartScatter2'),
+        element: this.$element('chartScatter4'),
         width: this.width,
         height: this.height,
         backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
@@ -599,14 +599,14 @@ export default {
           },
         ],
         onRenderComplete: () => {
-          console.log('chartScatter3 renderComplete')
+          console.log('chartScatter4 renderComplete')
           resolve()
         },
       })
     })
   },
   ontouchstart(e) {
-    console.log(`chartScatter3 touchstart`)
+    console.log(`chartScatter4 touchstart`)
   },
 }
 </script>
