@@ -118,7 +118,7 @@
 ## 气泡图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-scatter-b-1.jpg" alt="charts-scatter-b-1" style="width:300px" />
+  <img src="../assets/charts-scatter-b-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -298,7 +298,7 @@
 ## 使用量对比图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-scatter-c-1.jpg" alt="charts-scatter-c-1" style="width:300px" />
+  <img src="../assets/charts-scatter-c-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码

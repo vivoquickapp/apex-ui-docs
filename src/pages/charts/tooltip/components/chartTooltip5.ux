@@ -1,0 +1,79 @@
+<template>
+  <div class="chart-wrap">
+    <canvas
+      id="chartTooltip5"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+      ontouchmove="ontouchmove"
+      ontouchend="ontouchend"
+    ></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {}
+  },
+  initChart() {
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartTooltip5'),
+        width: this.width,
+        height: this.height,
+        animation: false,
+        backgroundColor: '#eeeeee',
+        tooltip: {
+          show: true,
+        },
+        categories: ['1', '2', '3', '4', '5', '6', '7'],
+        series: [
+          {
+            name: '数据1',
+            type: 'radar',
+            data: [820, 932, 901, 934, 1050, 1000, 1150],
+          },
+          {
+            name: '数据2',
+            type: 'radar',
+            data: [1150, 1000, 1050, 934, 901, 932, 820],
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartTooltip5 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartTooltip5 touchstart`)
+    $chart.showTooltip(e)
+  },
+  ontouchmove(e) {
+    console.log(`chartTooltip5 ontouchmove`)
+    // $chart.showTooltip(e)
+  },
+  ontouchend() {
+    console.log(`chartTooltip5 touchend`)
+    // $chart.hideTooltip()
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

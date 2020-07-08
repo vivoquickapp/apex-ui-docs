@@ -43,6 +43,13 @@ export default {
             smooth: true,
             area: {
               show: true,
+              color: {
+                linearGradient: [0, 0, 0, 1],
+                colors: [
+                  { offset: 0, color: 'red' },
+                  { offset: 1, color: 'blue' },
+                ],
+              },
             },
             data: [820, 932, 901, 934, 1290, 1330, 1320],
           },

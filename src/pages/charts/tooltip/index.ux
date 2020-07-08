@@ -1,0 +1,43 @@
+<import name="chart-tooltip1" src="./components/chartTooltip1.ux"></import>
+<import name="chart-tooltip2" src="./components/chartTooltip2.ux"></import>
+<import name="chart-tooltip3" src="./components/chartTooltip3.ux"></import>
+<import name="chart-tooltip4" src="./components/chartTooltip4.ux"></import>
+<import name="chart-tooltip5" src="./components/chartTooltip5.ux"></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="page">
+    <chart-tooltip1 id="chart-tooltip1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tooltip1>
+    <chart-tooltip2 id="chart-tooltip2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tooltip2>
+    <chart-tooltip3 id="chart-tooltip3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tooltip3>
+    <chart-tooltip4 id="chart-tooltip4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tooltip4>
+    <chart-tooltip5 id="chart-tooltip5" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tooltip5>
+  </div>
+</template>
+
+<script>
+export default {
+  private: {
+    chartWidth: 600,
+    chartHeight: 400,
+  },
+  async onShow() {
+    try {
+      await this.$child('chart-tooltip1').initChart()
+      await this.$child('chart-tooltip2').initChart()
+      await this.$child('chart-tooltip3').initChart()
+      await this.$child('chart-tooltip4').initChart()
+      await this.$child('chart-tooltip5').initChart()
+    } catch (error) {
+      console.error('catch error', error)
+    }
+  },
+}
+</script>
+
+<style lang="less">
+.page {
+  flex-direction: column;
+  align-items: center;
+}
+</style>

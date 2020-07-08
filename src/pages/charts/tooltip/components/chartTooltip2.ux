@@ -1,0 +1,133 @@
+<template>
+  <div class="chart-wrap">
+    <canvas
+      id="chartTooltip2"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+      ontouchmove="ontouchmove"
+      ontouchend="ontouchend"
+    ></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {}
+  },
+  initChart() {
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartTooltip2'),
+        width: this.width,
+        height: this.height,
+        animation: false,
+        backgroundColor: '#eeeeee',
+        tooltip: {
+          show: true,
+          axisPointer: {
+            type: 'shadow',
+          },
+        },
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+          axisLabel: {
+            format: function (val) {
+              return `${val}月`
+            },
+          },
+        },
+        series: [
+          {
+            name: '数据1',
+            type: 'bar',
+            data: [820, 932, -901, 934, 1290, 1330, 1320],
+            label: {
+              format: function (val) {
+                return `$ ${val}`
+              },
+            },
+          },
+          {
+            name: '数据2',
+            type: 'bar',
+            stack: 'stack',
+            data: [120, 130, 130, -80, 92, 91, 94],
+            label: {
+              format: function (val) {
+                return `￥${val}`
+              },
+            },
+          },
+          {
+            name: '数据3',
+            type: 'bar',
+            stack: 'stack',
+            data: [129, 133, -132, 82, 93, 90, 93],
+            label: {
+              format: function (val) {
+                return `￥${val}`
+              },
+            },
+          },
+          {
+            name: '数据4',
+            type: 'bar',
+            stack: 'stack',
+            data: [129, 133, 132, 82, 93, -90, 93],
+            label: {
+              format: function (val) {
+                return `￥${val}`
+              },
+            },
+          },
+          {
+            name: '数据5',
+            type: 'line',
+            data: [1290, 1330, 1320, -820, 932, 901, 934],
+            label: {
+              format: function (val) {
+                return `￥${val}`
+              },
+            },
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartTooltip2 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartTooltip2 touchstart`)
+    $chart.showTooltip(e)
+  },
+  ontouchmove(e) {
+    console.log(`chartTooltip2 ontouchmove`)
+    $chart.showTooltip(e)
+  },
+  ontouchend() {
+    console.log(`chartTooltip2 touchend`)
+    // $chart.hideTooltip()
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>

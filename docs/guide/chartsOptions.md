@@ -93,6 +93,256 @@ $chart = new Charts({
 - 默认值：`[20,20,20,20]`
 - 描述：canvas 边界到图表的距离，最小值为 0
 
+## tooltip
+
+- 参数类型：Object
+- 是否必填：否
+- 默认值：`null`
+- 描述：tooltip配置，支持柱状图，线图，饼图，雷达图，蜡烛图
+
+```js
+$chart = new Charts({
+        tooltip: {
+            show: false,
+            data: [],
+            maxTextWidth: 0,
+            backgroundColor: '#000000',
+            backgroundRadius: 5,
+            backgroundOpacity: 0.7,
+            padding: 10,
+            itemGap: 5,
+            iconRadius: 5,
+            iconGap: 5,
+        textStyle: {
+            fontSize: 15,
+            color: '#ffffff',
+            lineHeight: 15,
+        },
+        axisPointer: {
+            type: 'line', // line shadow
+            lineStyle: {
+                lineWidth: 1,
+                color: '#808080',
+                opacity: 1,
+            },
+            shadowStyle: {
+                color: '#969696',
+                opacity: 0.3,
+            },
+            cross: {
+                show: true,
+                lineWidth: 1,
+                lineColor: '#808080',
+                lineDash: [5, 10],
+                lineOpacity: 1,
+                backgroundColor: '#999999',
+                backgroundOpacity: 1,
+                fontColor: '#ffffff',
+                fontPadding: 5,
+            },
+        },
+    },
+    ...
+    ...
+})
+```
+
+### tooltip.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否显示tooltip
+
+### tooltip.backgroundColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#000000`
+- 描述：tooltip容器背景颜色
+
+### tooltip.backgroundRadius
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：tooltip容器圆角
+
+### tooltip.backgroundOpacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`0.7`
+- 描述：tooltip容器背景透明度
+
+### tooltip.padding
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`10`
+- 描述：tooltip容器padding
+
+### tooltip.itemGap
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：tooltip内容间距
+
+### tooltip.iconRadius
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：tooltip内容标识圆角
+
+### tooltip.iconGap
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：tooltip内容标识与文字的间距
+
+### tooltip.textStyle
+
+- 参数类型：Object
+- 是否必填：否
+- 默认值：`null`
+- 描述：tooltip内容文字样式
+
+#### tooltip.textStyle.fontSize
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`15`
+- 描述：tooltip内容文字大小
+
+#### tooltip.textStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ffffff`
+- 描述：tooltip内容文字颜色
+
+#### tooltip.textStyle.lineHeight
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`15`
+- 描述：tooltip内容文字行高
+
+### tooltip.axisPointer
+
+- 参数类型：轴指示器配置
+- 是否必填：否
+- 默认值：`null`
+- 描述：tooltip轴指示器配置，在柱状图，线图，蜡烛图中使用
+
+#### tooltip.axisPointer.type
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`line`
+- 描述：tooltip轴指示器类型，可选值：line，shadow
+
+#### tooltip.axisPointer.lineStyle.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：tooltip轴指示器，线宽
+
+#### tooltip.axisPointer.lineStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#808080`
+- 描述：tooltip轴指示器，线颜色
+
+#### tooltip.axisPointer.lineStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：tooltip轴指示器，线透明度
+
+#### tooltip.axisPointer.shadowStyle.color
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#969696`
+- 描述：tooltip轴指示器，阴影颜色
+
+#### tooltip.axisPointer.shadowStyle.opacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`0.3`
+- 描述：tooltip轴指示器，阴影透明度
+
+#### tooltip.axisPointer.cross.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`true`
+- 描述：是否显示tooltip标签交叉轴
+
+#### tooltip.axisPointer.cross.lineWidth
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：tooltip标签交叉轴线宽
+
+#### tooltip.axisPointer.cross.lineColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#808080`
+- 描述：tooltip标签交叉轴颜色
+
+#### tooltip.axisPointer.cross.lineDash
+
+- 参数类型：Array
+- 是否必填：否
+- 默认值：`[5,10]`
+- 描述：tooltip标签交叉轴虚线配置
+
+#### tooltip.axisPointer.cross.lineOpacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：tooltip标签交叉轴线透明度
+
+#### tooltip.axisPointer.cross.backgroundColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#999999`
+- 描述：tooltip标签交叉轴标签背景颜色
+
+#### tooltip.axisPointer.cross.backgroundOpacity
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`1`
+- 描述：tooltip标签交叉轴标签背景透明度
+
+#### tooltip.axisPointer.cross.fontColor
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`#ffffff`
+- 描述：tooltip标签交叉轴标签文字颜色
+
+#### tooltip.axisPointer.cross.fontPadding
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：tooltip标签交叉轴标签文字padding
+
 ## legend
 
 - 参数类型：Object
@@ -1316,6 +1566,27 @@ $chart = new Charts({
 - 默认值：`5`
 - 描述：柱状图柱体间隙
 
+### seriesItem.itemStyle.color
+
+- 参数类型：String | Object
+- 是否必填：否
+- 默认值：`auto`
+- 描述：柱体颜色
+
+### seriesItem.itemStyle.color.linearGradient
+
+- 参数类型：Array
+- 是否必填：是
+- 默认值：`[x0, y0, x1, y1]`
+- 描述：渐变色方向
+
+### seriesItem.itemStyle.color.colors
+
+- 参数类型：Array
+- 是否必填：是
+- 默认值：`[{offser, color},{offser, color}]`
+- 描述：渐变色颜色配置
+
 ## 线图 series
 
 ```js
@@ -1448,10 +1719,24 @@ $chart = new Charts({
 
 #### seriesItem.area.color
 
-- 参数类型：String
+- 参数类型：String | Object
 - 是否必填：否
 - 默认值：`auto`
 - 描述：折线图区域颜色
+
+#### seriesItem.itemStyle.color.linearGradient
+
+- 参数类型：Array
+- 是否必填：是
+- 默认值：`[x0, y0, x1, y1]`
+- 描述：渐变色方向
+
+#### seriesItem.itemStyle.color.colors
+
+- 参数类型：Array
+- 是否必填：是
+- 默认值：`[{offser, color},{offser, color}]`
+- 描述：渐变色颜色配置
 
 #### seriesItem.area.opacity
 
@@ -1545,6 +1830,83 @@ $chart = new Charts({
 - 是否必填：否
 - 默认值：`15`
 - 描述：饼图引导线二段长度
+
+### seriesItem.title
+
+- 参数类型：Object
+- 是否必填：否
+- 默认值：`null`
+- 描述：饼图圆心标题配置
+
+#### seriesItem.title.show
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否饼图圆心标题
+
+#### seriesItem.title.text
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`主标题`
+- 描述：饼图圆心主标题
+
+#### seriesItem.title.subtext
+
+- 参数类型：String
+- 是否必填：否
+- 默认值：`副标题`
+- 描述：饼图圆心副标题
+
+#### seriesItem.title.itemGap
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`5`
+- 描述：饼图圆心标题间距离
+
+#### seriesItem.title.textStyle.fontSize
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`30`
+- 描述：饼图圆心主标题文字大小
+
+#### seriesItem.title.textStyle.fontColor
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`#666666`
+- 描述：饼图圆心主标题文字颜色
+
+#### seriesItem.title.textStyle.lineHeight
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`30`
+- 描述：饼图圆心主标题文字行高
+
+#### seriesItem.title.subtextStyle.fontSize
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`20`
+- 描述：饼图圆心副标题文字大小
+
+#### seriesItem.title.subtextStyle.fontColor
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`#999999`
+- 描述：饼图圆心副标题文字颜色
+
+#### seriesItem.title.subtextStyle.lineHeight
+
+- 参数类型：Number
+- 是否必填：否
+- 默认值：`20`
+- 描述：饼图圆心副标题文字行高
 
 ## 雷达图 series
 

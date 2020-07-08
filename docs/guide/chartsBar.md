@@ -58,6 +58,73 @@
 </script>
 ```
 
+<div style="text-align: center; margin: 40px;">
+  <img src="../assets/charts-bar-a-2.jpg" style="width:300px" />
+</div>
+
+### 示例代码
+
+```html
+<template>
+  <div class="chart-wrap">
+    <canvas id="chart" style="width: {{width}}px; height: {{height}}px;"></canvas>
+  </div>
+</template>
+
+<script>
+  import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+  let $chart
+
+  export default {
+    props: {
+      width: {
+        default: 600,
+      },
+      height: {
+        default: 400,
+      },
+    },
+    data() {
+      return {}
+    },
+    initChart() {
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'bar',
+            barWidth: 30,
+            barMaxWidth: 100,
+            itemStyle: {
+              color: {
+                linearGradient: [0, 0, 0, 1],
+                colors: [
+                  { offset: 0, color: '#1890ff' },
+                  { offset: 1, color: '#70cdd0' },
+                ],
+              },
+            },
+            data: [820, 932, 901, 934, 1290, 1330, 1320],
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartBar renderComplete')
+          resolve()
+        },
+      })
+    },
+  }
+</script>
+```
+
 ## 条形图
 
 <div style="text-align: center; margin: 40px;">
@@ -122,7 +189,7 @@
 ## 层叠柱状图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-bar-c-1.jpg" alt="charts-bar-b-1" style="width:300px" />
+  <img src="../assets/charts-bar-c-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码

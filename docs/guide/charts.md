@@ -11,8 +11,13 @@
 - 饼图 pie
 - 雷达图 radar
 - 点图 scatter
+- 漏斗图/金字塔图 funnel
+- 蜡烛图/K线图 candlestick/k
+- 热力图 heatmap
+- 矩形树图 treemap  
+- 词云图 tagCloud  
 
-## 使用效果
+## 图表展示
 
 <div style="text-align: center;margin: 40px;">
   <img src="../assets/charts-bar-a-1.jpg" style="width:200px" />
@@ -29,6 +34,15 @@
   <img src="../assets/charts-heatmap.jpg" style="width:200px" />
   <img src="../assets/charts-treemap.jpg" style="width:200px" />
   <img src="../assets/charts-tagcloud.jpg" style="width:200px" />
+</div>
+
+## tooltip展示
+<div style="text-align: center;margin: 40px;">
+  <img src="../assets/charts-tooltip-line.jpg" style="width:200px" />
+  <img src="../assets/charts-tooltip-bar.jpg" style="width:200px" />
+  <img src="../assets/charts-tooltip-candlestick.jpg" style="width:200px" />
+  <img src="../assets/charts-tooltip-pie.jpg" style="width:200px" />
+  <img src="../assets/charts-tooltip-radar.jpg" style="width:200px" />
 </div>
 
 ## 使用方法

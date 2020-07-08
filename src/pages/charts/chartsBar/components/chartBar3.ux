@@ -27,18 +27,33 @@ export default {
         element: this.$element('chartBar3'),
         width: this.width,
         height: this.height,
-        yAxis: {
+        xAxis: {
           type: 'category',
           data: ['1', '2', '3', '4', '5', '6', '7'],
         },
-        xAxis: {
-          type: 'value',
-        },
         series: [
           {
-            name: '数据',
+            name: '数据1',
             type: 'bar',
             data: [820, 932, 901, 934, 1290, 1330, 1320],
+          },
+          {
+            name: '数据2',
+            type: 'bar',
+            stack: '堆叠',
+            data: [82, 93, 90, 93, 129, 133, 132],
+          },
+          {
+            name: '数据3',
+            type: 'bar',
+            stack: '堆叠',
+            data: [82, 93, 90, 93, 129, 133, 132],
+          },
+          {
+            name: '数据4',
+            type: 'bar',
+            stack: '堆叠',
+            data: [82, 93, 90, 93, 129, 133, 132],
           },
         ],
         onRenderComplete: () => {
