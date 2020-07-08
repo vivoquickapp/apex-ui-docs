@@ -95,6 +95,9 @@
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
       <div class="item">
+        <a href="/pages/charts/tooltip">图表/tooltip</a>
+      </div>
+      <div class="item">
         <a href="/pages/charts/chartsBar">图表/柱状图 charts/bar</a>
       </div>
       <div class="item">

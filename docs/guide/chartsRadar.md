@@ -58,7 +58,7 @@
 ## 圆形面积图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-radar-a-3.jpg" alt="charts-radar-a-3" style="width:300px" />
+  <img src="../assets/charts-radar-a-3.jpg" style="width:300px" />
 </div>
 
 ### 示例代码
@@ -119,7 +119,7 @@
 ## 雷达面积图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-radar-b-1.jpg" alt="charts-radar-b-1" style="width:300px" />
+  <img src="../assets/charts-radar-b-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码

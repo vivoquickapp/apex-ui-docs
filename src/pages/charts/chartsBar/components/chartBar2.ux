@@ -33,27 +33,20 @@ export default {
         },
         series: [
           {
-            name: '数据1',
+            name: '数据',
             type: 'bar',
+            barWidth: 30,
+            barMaxWidth: 100,
+            itemStyle: {
+              color: {
+                linearGradient: [0, 0, 0, 1],
+                colors: [
+                  { offset: 0, color: '#1890ff' },
+                  { offset: 1, color: '#70cdd0' },
+                ],
+              },
+            },
             data: [820, 932, 901, 934, 1290, 1330, 1320],
-          },
-          {
-            name: '数据2',
-            type: 'bar',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
-          },
-          {
-            name: '数据3',
-            type: 'bar',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
-          },
-          {
-            name: '数据4',
-            type: 'bar',
-            stack: '堆叠',
-            data: [82, 93, 90, 93, 129, 133, 132],
           },
         ],
         onRenderComplete: () => {

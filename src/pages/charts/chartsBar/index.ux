@@ -2,6 +2,7 @@
 <import name="chart-bar2" src="./components/chartBar2.ux"></import>
 <import name="chart-bar3" src="./components/chartBar3.ux"></import>
 <import name="chart-bar4" src="./components/chartBar4.ux"></import>
+<import name="chart-bar5" src="./components/chartBar5.ux"></import>
 
 <template>
   <!-- template里只能有一个根节点 -->
@@ -10,6 +11,7 @@
     <chart-bar2 id="chart-bar2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar2>
     <chart-bar3 id="chart-bar3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar3>
     <chart-bar4 id="chart-bar4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar4>
+    <chart-bar5 id="chart-bar5" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar5>
   </div>
 </template>
 
@@ -25,6 +27,7 @@ export default {
       await this.$child('chart-bar2').initChart()
       await this.$child('chart-bar3').initChart()
       await this.$child('chart-bar4').initChart()
+      await this.$child('chart-bar5').initChart()
     } catch (error) {
       console.error('catch error', error)
     }

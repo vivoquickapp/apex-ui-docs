@@ -80,7 +80,7 @@
 ## 环形图
 
 <div style="text-align: center; margin: 40px;">
-  <img src="../assets/charts-pie-b-1.jpg" alt="charts-pie-b-1" style="width:300px" />
+  <img src="../assets/charts-pie-b-1.jpg" style="width:300px" />
 </div>
 
 ### 示例代码

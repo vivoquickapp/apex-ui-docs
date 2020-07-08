@@ -1,12 +1,18 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartPie2" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartTooltip4"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+      ontouchmove="ontouchmove"
+      ontouchend="ontouchend"
+    ></canvas>
   </div>
 </template>
 
 <script>
-// import Charts from 'apex-ui/components/charts/qacharts-min.js'
-import Charts from 'apex-ui/components/charts/qacharts.js'
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
 
 let $chart = null
 
@@ -25,30 +31,19 @@ export default {
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartPie2'),
+        element: this.$element('chartTooltip4'),
         width: this.width,
         height: this.height,
+        animation: false,
+        backgroundColor: '#eeeeee',
+        tooltip: {
+          show: true,
+        },
         series: [
           {
-            name: '环形图',
+            name: '饼图',
             type: 'pie',
-            radius: ['60%', '80%'],
-            title: {
-              show: true,
-              text: '主标题',
-              textStyle: {
-                fontSize: 30,
-                color: '#666666',
-                lineHeight: 30,
-              },
-              subtext: '副标题',
-              subtextStyle: {
-                fontSize: 20,
-                color: '#999999',
-                lineHeight: 20,
-              },
-              itemGap: 5,
-            },
+            offsetAngle: 0,
             data: [
               {
                 name: 'cat1',
@@ -60,11 +55,11 @@ export default {
               },
               {
                 name: 'cat3',
-                value: 1,
+                value: 15,
               },
               {
                 name: 'cat4',
-                value: 1,
+                value: 15,
               },
               {
                 name: 'cat5',
@@ -74,14 +69,23 @@ export default {
           },
         ],
         onRenderComplete: () => {
-          console.log('chartPie2 renderComplete')
+          console.log('chartTooltip4 renderComplete')
           resolve()
         },
       })
     })
   },
   ontouchstart(e) {
-    console.log(`chartPie2 touchstart`)
+    console.log(`chartTooltip4 touchstart`)
+    $chart.showTooltip(e)
+  },
+  ontouchmove(e) {
+    console.log(`chartTooltip4 ontouchmove`)
+    // $chart.showTooltip(e)
+  },
+  ontouchend() {
+    console.log(`chartTooltip4 touchend`)
+    // $chart.hideTooltip()
   },
 }
 </script>
