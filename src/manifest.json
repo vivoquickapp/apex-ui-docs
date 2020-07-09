@@ -1,6 +1,6 @@
 {
   "package": "com.apex.ui.quickapp",
-  "name": "apex-ui",
+  "name": "APEX-UI组件库示例",
   "versionName": "1.0.0",
   "versionCode": "1",
   "minPlatformVersion": "1050",
