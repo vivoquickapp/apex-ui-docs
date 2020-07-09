@@ -87,7 +87,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartTreemap renderComplete");
-          resolve();
         }
       });
     }

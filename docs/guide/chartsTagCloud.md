@@ -94,7 +94,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartTagCloud renderComplete");
-          resolve();
         }
       });
     }

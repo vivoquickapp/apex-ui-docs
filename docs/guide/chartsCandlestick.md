@@ -335,7 +335,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartCandlestick renderComplete");
-          resolve();
         }
       });
     }

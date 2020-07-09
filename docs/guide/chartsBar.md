@@ -50,7 +50,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartBar renderComplete')
-          resolve()
         },
       })
     },
@@ -117,7 +116,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartBar renderComplete')
-          resolve()
         },
       })
     },
@@ -178,7 +176,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartBar renderComplete')
-          resolve()
         },
       })
     },
@@ -254,7 +251,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartBar renderComplete')
-          resolve()
         },
       })
     },

@@ -33,44 +33,41 @@
       return {}
     },
     initChart() {
-      return new Promise((resolve, reject) => {
-        $chart = new Charts({
-          element: this.$element('chart'),
-          width: this.width,
-          height: this.height,
-          series: [
-            {
-              name: "饼图",
-              type: 'pie',
-              data: [
-                {
-                  name: 'cat1',
-                  value: 50,
-                },
-                {
-                  name: 'cat2',
-                  value: 30,
-                },
-                {
-                  name: 'cat3',
-                  value: 1,
-                },
-                {
-                  name: 'cat4',
-                  value: 1,
-                },
-                {
-                  name: 'cat5',
-                  value: 46,
-                },
-              ],
-            },
-          ],
-          onRenderComplete: () => {
-            console.log('chartPie renderComplete')
-            resolve()
+      $chart = new Charts({
+        element: this.$element('chart'),
+        width: this.width,
+        height: this.height,
+        series: [
+          {
+            name: "饼图",
+            type: 'pie',
+            data: [
+              {
+                name: 'cat1',
+                value: 50,
+              },
+              {
+                name: 'cat2',
+                value: 30,
+              },
+              {
+                name: 'cat3',
+                value: 1,
+              },
+              {
+                name: 'cat4',
+                value: 1,
+              },
+              {
+                name: 'cat5',
+                value: 46,
+              },
+            ],
           },
-        })
+        ],
+        onRenderComplete: () => {
+          console.log('chartPie renderComplete')
+        },
       })
     },
   }
@@ -144,7 +141,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartPie renderComplete");
-          resolve();
         }
       });
     }

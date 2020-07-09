@@ -121,7 +121,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartHeatmap renderComplete");
-          resolve();
         }
       });
     }
