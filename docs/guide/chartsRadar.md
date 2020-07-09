@@ -47,7 +47,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartRadar renderComplete");
-          resolve();
         }
       });
     }
@@ -108,7 +107,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartRadar renderComplete");
-          resolve();
         }
       });
     }
@@ -166,7 +164,6 @@
         ],
         onRenderComplete: () => {
           console.log("chartRadar renderComplete");
-          resolve();
         }
       });
     }
