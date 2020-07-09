@@ -1,7 +1,7 @@
 # Apex-UI组件库示例
 示例源码，欢迎使用浏览器或调试器扫描二维码体验。
 
-<img width="200" src="https://quickapp.vivo.com.cn/content/images/2020/06/qrcode-1.png" alt="qrcode" />
+<img width="200" src="https://raw.githubusercontent.com/vivoquickapp/apex-ui-docs/master/docs/assets/qrcode.png" alt="qrcode" />
 
 ## 使用
 - [Apex-UI组件库官方文档](https://vivoquickapp.github.io/apex-ui-docs/)
