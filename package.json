@@ -1,6 +1,6 @@
 {
   "name": "apex-ui-docs",
-  "version": "1.0.0",
+  "version": "1.8.1",
   "description": "apex-ui document vuepress quickapp",
   "subversion": {
     "toolkit": "0.6.2"
