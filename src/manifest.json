@@ -1,8 +1,8 @@
 {
   "package": "com.apex.ui.quickapp",
   "name": "APEX-UI组件库示例",
-  "versionName": "1.8.1",
-  "versionCode": "3",
+  "versionName": "1.9.0",
+  "versionCode": "4",
   "minPlatformVersion": "1050",
   "icon": "/images/logo-d.png",
   "features": [

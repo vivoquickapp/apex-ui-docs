@@ -1,46 +1,75 @@
-<import name="my-input" src="apex-ui/components/input/index.ux"></import>
-<import name="my-barcode" src="apex-ui/components/barcode/index"></import>
+<import src="apex-ui/components/barcode/index" name="my-barcode"></import>
+<import src="apex-ui/components/icon/index" name="my-icon"></import>
+<import src="apex-ui/components/input/index" name="my-input"></import>
+<import src="apex-ui/components/select/index" name="my-select"></import>
+<import src="apex-ui/components/message/index" name="my-message"></import>
 <template>
-  <div class="wrap">
-    <div class="panel">
-      <my-input
-        value="{{ number }}"
-        type="number"
-        maxlength="13"
-        onchange="changeHandler()"
-        placeholder="请输入13位有效条形码编码"
-      ></my-input>
-      <text>提示：扫描只能识别有效的条形码</text>
-      <div class="barcode">
-        <my-barcode number="{{ number }}"></my-barcode>
-      </div>
+    <!-- template里只能有一个根节点 -->
+    <div class="apex-wrap">
+        <div class="item" onclick="singleSelect">
+            <text class="type">条形码类型</text>
+            <div class="icon">
+                <text>{{format}}</text>
+                <my-icon type="arrow-down" size="40"></my-icon>
+            </div>
+        </div>
+        <my-input title="条码值" value="{{ text }}" type="text" onchange="changeHandler()" placeholder="请输入13位有效条形码编码">
+        </my-input>
+        <my-barcode height="260" width="600" font-size="50" value="{{ text }}" format="{{format}}" onValid="valid"></my-barcode>
+        <my-select id="select" oncomfirm="singleClose"></my-select>
+        <text class="tip">提醒：选择不同的条码类型会有不同要求，请按照条码类型要求输入数据。</text>
+        <my-message id="message"></my-message>
     </div>
-  </div>
 </template>
-<style lang="less">
-.wrap {
-  flex-direction: column;
-  .panel {
-    padding: 20px;
-    flex-direction: column;
-    .barcode {
-      padding: 20px 0;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-}
-</style>
+
 <script>
-export default {
-  data() {
-    return {
-      number: 6256325654126
-    };
-  },
-  changeHandler({ detail }) {
-    console.log("number changed", detail);
-    this.number = detail.value;
-  }
-};
+    export default {
+        data() {
+            return {
+                format: 'EAN13',
+                text: '6914068020945'
+            }
+        },
+        singleSelect() {
+            let opt = ["CODE128", "EAN13", "UPC", "EAN8", "EAN5", "EAN2", "CODE39", "ITF14", "MSI", "MSI10", "MSI11", "MSI1010", "MSI1110", "pharmacode", "codabar"]
+            this.$child('select').showSelect({
+                options: opt,
+            })
+        },
+        singleClose(evt) {
+            this.format = evt.detail.data || "请选择"
+        },
+        changeHandler(e) {
+            this.text = e.detail.text;
+        },
+        valid(valid) {
+            if (!valid.detail) {
+                this.$child('message').showMessage({
+                    content: '数据校验失败，请修改条码输入值！',
+                    type: 'error',
+                    duration: 3
+                });
+            }
+        }
+    }
 </script>
+
+<style lang="less">
+    .apex-wrap {
+        flex-direction: column;
+
+        .item {
+            height: 100px;
+            padding: 20px;
+
+            .type {
+                margin-right: 20px;
+            }
+        }
+
+        .tip {
+            padding: 50px 20px;
+            color: black;
+        }
+    }
+</style>
