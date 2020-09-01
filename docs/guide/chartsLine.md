@@ -54,7 +54,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartLine renderComplete')
-          resolve()
         },
       })
     },
@@ -118,7 +117,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartLine renderComplete')
-          resolve()
         },
       })
     },
@@ -183,7 +181,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartLine renderComplete')
-          resolve()
         },
       })
     },
@@ -253,7 +250,6 @@
         ],
         onRenderComplete: () => {
           console.log('chartLine renderComplete')
-          resolve()
         },
       })
     },
@@ -317,7 +313,6 @@
           ],
           onRenderComplete: () => {
             console.log('chartLine renderComplete')
-            resolve()
           },
         })
     },
