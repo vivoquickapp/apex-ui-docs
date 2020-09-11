@@ -93,6 +93,101 @@ $chart = new Charts({
 - 默认值：`[20,20,20,20]`
 - 描述：canvas 边界到图表的距离，最小值为 0
 
+## enableScroll
+
+- 参数类型：Boolean
+- 是否必填：否
+- 默认值：`false`
+- 描述：是否开启滑动图表能力，当前仅支持线图和柱状图
+
+```html
+<template>
+  <div class="chart-wrap">
+    <canvas
+      id="chartTooltip2"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+      ontouchmove="ontouchmove"
+      ontouchend="ontouchend"
+    ></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {}
+  },
+  initChart() {
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartTooltip2'),
+        width: this.width,
+        height: this.height,
+        animation: false,
+        backgroundColor: '#eeeeee',
+        enableScroll: true, // 开启滑动图表
+        tooltip: {
+          show: true,
+          axisPointer: {
+            type: 'shadow',
+          },
+        },
+        xAxis: {
+          type: 'category',
+          data: ['1', '2', '3', '4', '5', '6', '7'],
+          axisLabel: {
+            format: function (val) {
+              return `${val}月`
+            },
+          },
+        },
+        series: [
+          {
+            name: '数据1',
+            type: 'bar',
+            data: [820, 932, -901, 934, 1290, 1330, 1320],
+            label: {
+              format: function (val) {
+                return `$ ${val}`
+              },
+            },
+          },
+          ... // 省略数据
+        ],
+        onRenderComplete: () => {
+          console.log('chartTooltip2 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    $chart.scrollStart(e)
+  },
+  ontouchmove(e) {
+    $chart.scroll(e)
+  },
+  ontouchend(e) {
+    $chart.scrollEnd(e)
+  },
+}
+</script>
+```
+
 ## tooltip
 
 - 参数类型：Object

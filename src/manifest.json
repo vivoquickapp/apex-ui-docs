@@ -1,8 +1,8 @@
 {
   "package": "com.apex.ui.quickapp",
   "name": "APEX-UI组件库示例",
-  "versionName": "1.9.0",
-  "versionCode": "4",
+  "versionName": "1.9.1",
+  "versionCode": "5",
   "minPlatformVersion": "1050",
   "icon": "/images/logo-d.png",
   "features": [
@@ -197,6 +197,9 @@
         "component": "index"
       },
       "pages/charts/tooltip": {
+        "component": "index"
+      },
+      "pages/charts/scrollChart": {
         "component": "index"
       },
       "pages/charts/chartsBar": {
@@ -454,6 +457,10 @@
       },
       "pages/charts/tooltip": {
         "titleBarText": "图表/tooltip",
+        "menu": false
+      },
+      "pages/charts/scrollChart": {
+        "titleBarText": "图表/滑动图表 scroll",
         "menu": false
       },
       "pages/charts/chartsBar": {

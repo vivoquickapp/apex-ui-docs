@@ -94,8 +94,16 @@
       <div class="item"><a href="/pages/keyboard">数字键盘 keyboard</a></div>
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
+    </div>
+    <div class="type">
+      <text>图表</text>
+    </div>
+    <div class="component">
       <div class="item">
         <a href="/pages/charts/tooltip">图表/tooltip</a>
+      </div>
+      <div class="item">
+        <a href="/pages/charts/scrollChart">图表/滑动图表 scroll</a>
       </div>
       <div class="item">
         <a href="/pages/charts/chartsBar">图表/柱状图 charts/bar</a>
@@ -116,9 +124,7 @@
         <a href="/pages/charts/chartsFunnel">图表/漏斗图 charts/funnel</a>
       </div>
       <div class="item">
-        <a href="/pages/charts/chartsCandlestick"
-          >图表/蜡烛图 charts/candlestick</a
-        >
+        <a href="/pages/charts/chartsCandlestick">图表/蜡烛图 charts/candlestick</a>
       </div>
       <div class="item">
         <a href="/pages/charts/chartsHeatmap">图表/热力图 charts/heatmap</a>
@@ -133,50 +139,57 @@
   </div>
 </template>
 <style lang="less">
-.wrap {
-  flex-direction: column;
-  background-color: #f7f7f7;
-  .logo {
-    justify-content: center;
-    padding: 50px 0;
-    image {
-      height: 100px;
-    }
-  }
-  .type {
-    padding: 20px;
-  }
-  .component {
-    background-color: #ffffff;
-    border-style: solid;
-    border-top-width: 1px;
-    border-top-color: #dddee1;
-    border-bottom-width: 1px;
+  .wrap {
     flex-direction: column;
-    .item {
-      height: 100px;
-      justify-content: space-between;
-      margin-left: 20px;
-      border-bottom-width: 1px;
-      border-bottom-color: #dddee1;
-      border-style: solid;
-      a {
-        width: 100%;
+    background-color: #f7f7f7;
+
+    .logo {
+      justify-content: center;
+      padding: 50px 0;
+
+      image {
+        height: 100px;
       }
-      a :active {
-        width: 100%;
+    }
+
+    .type {
+      padding: 20px;
+    }
+
+    .component {
+      background-color: #ffffff;
+      border-style: solid;
+      border-top-width: 1px;
+      border-top-color: #dddee1;
+      border-bottom-width: 1px;
+      flex-direction: column;
+
+      .item {
+        height: 100px;
+        justify-content: space-between;
+        margin-left: 20px;
+        border-bottom-width: 1px;
+        border-bottom-color: #dddee1;
+        border-style: solid;
+
+        a {
+          width: 100%;
+        }
+
+        a :active {
+          width: 100%;
+        }
       }
     }
   }
-}
 </style>
 <script>
-export default {
-  data() {
-    return {};
-  },
-  onInit() {
-    console.log("home page init!!");
-  }
-};
+  export default {
+    data() {
+      return {};
+    },
+    onInit() {
+      console.log("home page init!!");
+    }
+  };
 </script>

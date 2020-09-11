@@ -8,7 +8,9 @@
 
 使用`浏览器`或者`快应用调试器`扫码快速预览组件库效果：
 
-<img src="https://raw.githubusercontent.com/vivoquickapp/apex-ui-docs/master/docs/assets/qrcode.png" alt="qrcode" />
+<div style="text-align: left;margin: 10px;">
+  <img src="../assets/qrcode.png" style="width:300px" />
+</div>
 
 ### 使用组件库
 

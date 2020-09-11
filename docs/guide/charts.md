@@ -4,6 +4,12 @@
 
 来源于 [wx-charts](https://github.com/xiaolin3303/wx-charts)，基于 canvas 绘制，体积小巧。
 
+<div style="text-align: left;margin: 10px;">
+  <img src="../assets/qrcode-charts.png" style="width:300px" />
+</div>
+
+浏览器或调试器扫码可体验图表组件示例。
+
 ## 支持的图表类型
 
 - 柱状图 bar
@@ -14,8 +20,8 @@
 - 漏斗图/金字塔图 funnel
 - 蜡烛图/K线图 candlestick/k
 - 热力图 heatmap
-- 矩形树图 treemap  
-- 词云图 tagCloud  
+- 矩形树图 treemap
+- 词云图 tagCloud
 
 ## 图表展示
 
@@ -43,6 +49,13 @@
   <img src="../assets/charts-tooltip-candlestick.jpg" style="width:200px" />
   <img src="../assets/charts-tooltip-pie.jpg" style="width:200px" />
   <img src="../assets/charts-tooltip-radar.jpg" style="width:200px" />
+</div>
+
+## 滑动图表展示
+
+<div style="text-align: center;margin: 40px;">
+  <img src="../assets/charts-scroll-1.gif" style="width:325px" />
+  <img src="../assets/charts-scroll-2.gif" style="width:325px" />
 </div>
 
 ## 使用方法
@@ -92,3 +105,4 @@
   };
 </script>
 ```
+

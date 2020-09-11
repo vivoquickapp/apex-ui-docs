@@ -1,0 +1,98 @@
+<template>
+  <div class="chart-wrap">
+    <canvas
+      id="chartLine1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+      ontouchmove="ontouchmove"
+      ontouchend="ontouchend"
+    ></canvas>
+  </div>
+</template>
+
+<script>
+import Charts from 'apex-ui/components/charts/qacharts-min.js'
+
+let $chart = null
+
+export default {
+  props: {
+    width: {
+      default: 600,
+    },
+    height: {
+      default: 400,
+    },
+  },
+  data() {
+    return {}
+  },
+  createSimulationData() {
+    var categories = []
+    var data = []
+    for (var i = 0; i < 15; i++) {
+      categories.push('2020-' + (i + 1))
+      data.push(Math.floor(Math.random() * (20 - 10) + 10))
+    }
+    return {
+      categories: categories,
+      data: data,
+    }
+  },
+  initChart() {
+    const simulationData = this.createSimulationData()
+    return new Promise((resolve, reject) => {
+      $chart = new Charts({
+        element: this.$element('chartLine1'),
+        width: this.width,
+        height: this.height,
+        enableScroll: true,
+        // backgroundColor: 'orange',
+        legend: {
+          shapeWidth: 30,
+          shapeHeight: 15,
+        },
+        tooltip: {
+          show: true,
+        },
+        xAxis: {
+          type: 'category',
+          data: simulationData.categories,
+          axisName: {
+            show: false,
+          },
+        },
+        series: [
+          {
+            name: '数据',
+            type: 'line',
+            data: simulationData.data,
+          },
+        ],
+        onRenderComplete: () => {
+          console.log('chartLine1 renderComplete')
+          resolve()
+        },
+      })
+    })
+  },
+  ontouchstart(e) {
+    console.log(`chartTooltip1 touchstart`)
+    $chart.scrollStart(e)
+  },
+  ontouchmove(e) {
+    console.log(`chartTooltip1 ontouchmove`)
+    $chart.scroll(e)
+  },
+  ontouchend(e) {
+    console.log(`chartTooltip1 touchend`)
+    $chart.showTooltip(e)
+    $chart.scrollEnd(e)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../../../common/styles/common.less';
+</style>
