@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/countdown.gif" style="width:300px" alt="countdown"/></div>
+<preview page="countdown"/>
 
 ### 使用方法
 

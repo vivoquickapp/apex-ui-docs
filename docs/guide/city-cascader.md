@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center; margin: 40px; "><img src="../assets/city-cascader.gif" alt="dialog" style="width:300px" /></div>
+<preview page="city-cascader"/>
 
 ### 使用方法
 

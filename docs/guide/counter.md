@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/counter.gif" style="width:300px" /></div>
+<preview page="counter"/>
 
 ### 示例
 

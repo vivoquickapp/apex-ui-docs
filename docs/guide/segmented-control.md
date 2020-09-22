@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/segment.gif" alt="segmented-control" style="width:300px" /></div>
+<preview page="segmented-control"/>
 
 ### 使用方法
 

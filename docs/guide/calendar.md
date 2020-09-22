@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/calendar.gif" alt="calender" style="width:300px" /></div>
+<preview page="calendar"/>
 
 ### 使用方法
 

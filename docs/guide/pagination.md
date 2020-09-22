@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/pagination.gif" alt="pagination" style="width:300px" /></div>
+<preview page="pagination"/>
 
 ### 使用方法
 

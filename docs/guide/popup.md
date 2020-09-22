@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/popup.gif" alt="popup" style="width:300px" /></div>
+<preview page="popup"/>
 
 ### 使用方法
 

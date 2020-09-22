@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/mask.gif" style="width:300px" alt="mask"/></div>
+<preview page="mask"/>
 
 ### 使用方法
 

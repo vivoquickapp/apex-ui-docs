@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/switch.gif" alt="switch" style="width:300px" /></div>
+<preview page="switch"/>
 
 ### 使用方法
 

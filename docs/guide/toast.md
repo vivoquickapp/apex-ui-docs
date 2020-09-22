@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/toast.gif" alt="toast" style="width:300px" /></div>
+<preview page="toast"/>
 
 ### 使用方法
 

@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center; margin: 40px; "><img src="../assets/actionSheet.gif" alt="actionSheet" style="width:300px" /></div>
+<preview page="action-sheet"/>
 
 ### 使用方法
 

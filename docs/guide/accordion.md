@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/accordion.gif" style="width:300px" alt="accordion"/></div>
+<preview page="accordion"/>
 
 ### 使用方法
 

@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<div style="text-align: center;margin: 40px;"><img src="../assets/alert.gif" style="width:300px" alt="alert"/></div>
+<preview page="alert"/>
 
 ### 使用方法
 
