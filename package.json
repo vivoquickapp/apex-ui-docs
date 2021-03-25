@@ -1,41 +1,29 @@
 {
   "name": "apex-ui-docs",
-  "version": "1.9.1",
+  "version": "1.9.4",
   "description": "apex-ui document vuepress quickapp",
-  "subversion": {
-    "toolkit": "0.6.2"
-  },
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "build": "hap build",
     "release": "hap release",
-    "server": "hap server",
-    "watch": "hap watch",
-    "dev": "vuepress dev docs",
-    "build:docs": "vuepress build docs",
-    "prettier:sample": "prettier --write \"**/*.ux\""
+    "server": "hap server --watch",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "prettier": "prettier --write \"**/*.ux\""
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/quickapp": "git+https://github.com/vivoquickapp/quickapp-types.git",
-    "@vuepress/plugin-back-to-top": "^1.0.0-rc.1",
-    "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
-    "@vuepress/plugin-register-components": "^1.7.1",
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-google-analytics": "^1.8.2",
+    "@vuepress/plugin-register-components": "^1.8.2",
     "apex-ui": "latest",
-    "babel-eslint": "^10.0.1",
     "clipboard": "^2.0.4",
-    "copy-webpack-plugin": "^5.1.1",
-    "eslint": "^5.12.1",
-    "eslint-plugin-hybrid": "0.0.5",
-    "hap-toolkit": "0.6.15",
     "less": "^3.13.1",
-    "less-loader": "^4.1.0",
+    "less-loader": "^7.0.2",
     "prettier": "^1.19.1",
-    "prettier-plugin-quickapp": "0.1.0",
-    "vue-feedback-component": "^1.0.0",
-    "vuepress": "^1.0.0-rc.1"
+    "vuepress-plugin-feedback": "^1.0.0",
+    "vuepress": "^1.8.2"
   },
   "browserslist": [
     "chrome 65"

@@ -129,6 +129,7 @@ module.exports = {
                     '/guide/keyboard',
                     '/guide/result',
                     '/guide/filterbar',
+                    '/guide/ad',
                 ]
             },
             {

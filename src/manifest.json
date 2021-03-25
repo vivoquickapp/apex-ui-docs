@@ -1,8 +1,8 @@
 {
   "package": "com.apex.ui.quickapp",
   "name": "APEX-UI组件库示例",
-  "versionName": "1.9.1",
-  "versionCode": "5",
+  "versionName": "1.9.4",
+  "versionCode": "6",
   "minPlatformVersion": "1050",
   "icon": "/images/logo-d.png",
   "features": [
@@ -230,6 +230,9 @@
         "component": "index"
       },
       "pages/charts/chartsTagCloud": {
+        "component": "index"
+      },
+      "pages/ad": {
         "component": "index"
       }
     }
@@ -501,6 +504,10 @@
       },
       "pages/charts/chartsTagCloud": {
         "titleBarText": "图表/词云图 tagCloud",
+        "menu": false
+      },
+      "pages/ad": {
+        "titleBarText": "广告组件 ad",
         "menu": false
       }
     }

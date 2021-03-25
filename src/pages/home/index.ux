@@ -94,6 +94,7 @@
       <div class="item"><a href="/pages/keyboard">数字键盘 keyboard</a></div>
       <div class="item"><a href="/pages/result">结果页 result</a></div>
       <div class="item"><a href="/pages/filter-bar">筛选栏 filterBar</a></div>
+      <div class="item"><a href="/pages/ad">广告 ad</a></div>
     </div>
     <div class="type">
       <text>图表</text>
