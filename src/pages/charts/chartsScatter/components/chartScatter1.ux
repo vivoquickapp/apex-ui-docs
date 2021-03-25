@@ -1,108 +1,113 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartScatter1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartScatter1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import { scatter } from './scatter.js'
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import { scatter } from "./scatter.js";
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
     return {
-      myScatter: scatter.arr,
-    }
+      myScatter: scatter.arr
+    };
   },
   initChart() {
     //获取男性身高与体重的模拟数据
-    const male = []
+    const male = [];
     this.myScatter.forEach(item => {
-      if (item.gender === 'male') {
+      if (item.gender === "male") {
         male.push({
           x: item.x,
-          y: item.y,
-        })
+          y: item.y
+        });
       }
-    })
+    });
     //获取女性身高与体重的模拟数据
-    const female = []
+    const female = [];
     this.myScatter.forEach(item => {
-      if (item.gender === 'female') {
+      if (item.gender === "female") {
         female.push({
           x: item.x,
-          y: item.y,
-        })
+          y: item.y
+        });
       }
-    })
+    });
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartScatter1'),
+        element: this.$element("chartScatter1"),
         width: this.width,
         height: this.height,
         label: {
-          show: false,
+          show: false
         },
         yAxis: {
-          type: 'value',
+          type: "value",
           max: 120,
           min: 40,
           splitNumber: 4,
           axisName: {
             show: false,
-            text: '体重/kg',
-          },
+            text: "体重/kg"
+          }
         },
         xAxis: {
-          type: 'value',
+          type: "value",
           max: 210,
           min: 135,
           splitNumber: 5,
           axisName: {
             show: false,
-            text: '身高/cm',
-          },
+            text: "身高/cm"
+          }
         },
         series: [
           {
-            name: 'male',
-            type: 'scatter',
+            name: "male",
+            type: "scatter",
             data: male,
             radius: 5,
-            opacity: 0.6,
+            opacity: 0.6
           },
           {
-            name: 'female',
-            type: 'scatter',
+            name: "female",
+            type: "scatter",
             data: female,
             radius: 5,
-            opacity: 0.6,
-          },
+            opacity: 0.6
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartScatter1 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartScatter1 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartScatter1 touchstart`)
-  },
-}
+    console.log(`chartScatter1 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

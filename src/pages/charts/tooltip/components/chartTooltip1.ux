@@ -12,85 +12,85 @@
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartTooltip1'),
+        element: this.$element("chartTooltip1"),
         width: this.width,
         height: this.height,
         animation: false,
-        backgroundColor: '#eeeeee',
+        backgroundColor: "#eeeeee",
         tooltip: {
-          show: true,
+          show: true
         },
         legend: {
           shapeWidth: 30,
-          shapeHeight: 15,
+          shapeHeight: 15
         },
         xAxis: {
-          type: 'category',
-          data: ['1', '2', '3', '4', '5', '6', '7'],
+          type: "category",
+          data: ["1", "2", "3", "4", "5", "6", "7"]
         },
         series: [
           {
-            name: '数据1',
-            type: 'line',
+            name: "数据1",
+            type: "line",
             data: [820, 932, -901, 934, -1290, 1330, 1320],
             label: {
-              format: function (val) {
-                return `$ ${val}`
-              },
-            },
+              format: function(val) {
+                return `$ ${val}`;
+              }
+            }
           },
           {
-            name: '数据2',
-            type: 'line',
+            name: "数据2",
+            type: "line",
             data: [1290, 1330, 1320, 820, 932, 901, 934],
             label: {
-              format: function (val) {
-                return `￥${val}`
-              },
-            },
-          },
+              format: function(val) {
+                return `￥${val}`;
+              }
+            }
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartTooltip1 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartTooltip1 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartTooltip1 touchstart`)
-    $chart.showTooltip(e)
+    console.log(`chartTooltip1 touchstart`);
+    $chart.showTooltip(e);
   },
   ontouchmove(e) {
-    console.log(`chartTooltip1 ontouchmove`)
-    $chart.showTooltip(e)
+    console.log(`chartTooltip1 ontouchmove`);
+    $chart.showTooltip(e);
   },
   ontouchend() {
-    console.log(`chartTooltip1 touchend`)
+    console.log(`chartTooltip1 touchend`);
     // $chart.hideTooltip()
-  },
-}
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

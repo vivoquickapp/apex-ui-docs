@@ -12,65 +12,65 @@
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartBar4'),
+        element: this.$element("chartBar4"),
         width: this.width,
         height: this.height,
         enableScroll: true,
         xAxis: {
-          type: 'category',
-          data: ['1', '2', '3', '4', '5', '6', '7'],
+          type: "category",
+          data: ["1", "2", "3", "4", "5", "6", "7"]
         },
         yAxis: {
-          type: 'value',
+          type: "value"
         },
         series: [
           {
-            name: '数据',
-            type: 'bar',
-            data: [820, 932, 901, 934, 1290, 1330, 1320],
-          },
+            name: "数据",
+            type: "bar",
+            data: [820, 932, 901, 934, 1290, 1330, 1320]
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartBar4 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartBar4 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartTooltip1 touchstart`)
-    $chart.scrollStart(e)
+    console.log(`chartTooltip1 touchstart`);
+    $chart.scrollStart(e);
   },
   ontouchmove(e) {
-    console.log(`chartTooltip1 ontouchmove`)
-    $chart.scroll(e)
+    console.log(`chartTooltip1 ontouchmove`);
+    $chart.scroll(e);
   },
   ontouchend(e) {
-    console.log(`chartTooltip1 touchend`)
-    $chart.scrollEnd(e)
-  },
-}
+    console.log(`chartTooltip1 touchend`);
+    $chart.scrollEnd(e);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

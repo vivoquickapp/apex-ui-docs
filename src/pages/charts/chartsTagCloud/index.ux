@@ -3,7 +3,11 @@
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
-    <chart-tag-cloud id="chart-tag-cloud" width="{{chartWidth}}" height="{{chartHeight}}"></chart-tag-cloud>
+    <chart-tag-cloud
+      id="chart-tag-cloud"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-tag-cloud>
   </div>
 </template>
 
@@ -11,16 +15,16 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400,
+    chartHeight: 400
   },
   async onShow() {
     try {
-      await this.$child('chart-tag-cloud').initChart()
+      await this.$child("chart-tag-cloud").initChart();
     } catch (error) {
-      console.error('catch error', error)
+      console.error("catch error", error);
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="less">

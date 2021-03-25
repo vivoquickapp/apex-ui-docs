@@ -6,10 +6,26 @@
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
-    <chart-pie1 id="chart-pie1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie1>
-    <chart-pie2 id="chart-pie2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie2>
-    <chart-pie3 id="chart-pie3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie3>
-    <chart-pie4 id="chart-pie4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-pie4>
+    <chart-pie1
+      id="chart-pie1"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-pie1>
+    <chart-pie2
+      id="chart-pie2"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-pie2>
+    <chart-pie3
+      id="chart-pie3"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-pie3>
+    <chart-pie4
+      id="chart-pie4"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-pie4>
   </div>
 </template>
 
@@ -17,19 +33,19 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400,
+    chartHeight: 400
   },
   async onShow() {
     try {
-      await this.$child('chart-pie1').initChart()
-      await this.$child('chart-pie2').initChart()
-      await this.$child('chart-pie3').initChart()
-      await this.$child('chart-pie4').initChart()
+      await this.$child("chart-pie1").initChart();
+      await this.$child("chart-pie2").initChart();
+      await this.$child("chart-pie3").initChart();
+      await this.$child("chart-pie4").initChart();
     } catch (error) {
-      console.error('catch error', error)
+      console.error("catch error", error);
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="less">

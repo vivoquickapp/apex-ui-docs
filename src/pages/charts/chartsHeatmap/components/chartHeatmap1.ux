@@ -1,61 +1,66 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartHeatmap1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartHeatmap1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartHeatmap1'),
+        element: this.$element("chartHeatmap1"),
         width: this.width,
         height: this.height,
         legend: {
-          show: false,
+          show: false
         },
         yAxis: {
-          type: 'category',
-          data: ['Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.'],
+          type: "category",
+          data: ["Mon.", "Tue.", "Wed.", "Thu.", "Fri."],
           axisName: {
-            show: false,
+            show: false
           },
           axisSplitLine: {
-            show: false,
-          },
+            show: false
+          }
         },
         xAxis: {
-          type: 'category',
-          data: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+          type: "category",
+          data: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
           axisName: {
-            show: false,
+            show: false
           },
           axisSplitLine: {
-            show: false,
-          },
+            show: false
+          }
         },
         series: [
           {
-            name: '热力图',
-            type: 'heatmap',
+            name: "热力图",
+            type: "heatmap",
             label: {
-              show: true,
+              show: true
             },
             data: [
               [0, 0, 10],
@@ -107,27 +112,27 @@ export default {
               [9, 1, 114],
               [9, 2, 31],
               [9, 3, 48],
-              [9, 4, 91],
-            ],
+              [9, 4, 91]
+            ]
             // itemStyle: {
             //   color: ['#BAE7FF', '#0050B3'],
             //   useSplit: false,
             // },
-          },
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartHeatmap1 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartHeatmap1 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartHeatmap1 touchstart`)
-  },
-}
+    console.log(`chartHeatmap1 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

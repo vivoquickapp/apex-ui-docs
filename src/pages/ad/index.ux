@@ -1,42 +1,107 @@
 <import name="ad" src="apex-ui/components/ad/index"></import>
-<import name="my-segmented-control" src="apex-ui/components/segmented-control/index"></import>
+<import
+  name="my-segmented-control"
+  src="apex-ui/components/segmented-control/index"
+></import>
 <template>
   <div class="wrap">
-    <ad if="index === 0" type="pure-pic" ad-unit-id="{{adUnitId}}" onload="loadHandler" onerror="errorHandler" onclose="closeHandler"></ad>
-    <ad if="index === 1" type="left-pic-right-text" ad-unit-id="{{adUnitId}}" onload="loadHandler" onerror="errorHandler" onclose="closeHandler"></ad>
-    <ad if="index === 2" type="left-text-right-pic" ad-unit-id="{{adUnitId}}" onload="loadHandler" onerror="errorHandler" onclose="closeHandler"></ad>
-    <ad if="index === 3" type="top-pic-bottom-text" ad-unit-id="{{adUnitId}}" onload="loadHandler" onerror="errorHandler" onclose="closeHandler"></ad>
-    <ad if="index === 4" type="top-text-bottom-pic" ad-unit-id="{{adUnitId}}" onload="loadHandler" onerror="errorHandler" onclose="closeHandler"></ad>
+    <ad
+      if="index === 0"
+      type="pure-pic"
+      ad-unit-id="{{adUnitId}}"
+      onload="loadHandler"
+      onerror="errorHandler"
+      onclose="closeHandler"
+    ></ad>
+    <ad
+      if="index === 1"
+      type="left-pic-right-text"
+      ad-unit-id="{{adUnitId}}"
+      onload="loadHandler"
+      onerror="errorHandler"
+      onclose="closeHandler"
+    ></ad>
+    <ad
+      if="index === 2"
+      type="left-text-right-pic"
+      ad-unit-id="{{adUnitId}}"
+      onload="loadHandler"
+      onerror="errorHandler"
+      onclose="closeHandler"
+    ></ad>
+    <ad
+      if="index === 3"
+      type="top-pic-bottom-text"
+      ad-unit-id="{{adUnitId}}"
+      onload="loadHandler"
+      onerror="errorHandler"
+      onclose="closeHandler"
+    ></ad>
+    <ad
+      if="index === 4"
+      type="top-text-bottom-pic"
+      ad-unit-id="{{adUnitId}}"
+      onload="loadHandler"
+      onerror="errorHandler"
+      onclose="closeHandler"
+    ></ad>
     <div class="control">
-      <my-segmented-control theme="positive" values="{{segments}}" onchange="changeHandler"></my-segmented-control>
+      <my-segmented-control
+        theme="positive"
+        values="{{segments}}"
+        onchange="changeHandler"
+      ></my-segmented-control>
     </div>
   </div>
 </template>
 <script>
+import device from "@system.device";
+
 export default {
   data() {
     return {
       index: 0,
-      segments: [
-          '纯图', '左图右文', '左文右图', '上图下文', '上文下图'
-      ],
-      adUnitId: '9d66217c88614253bd68a291c273f8d5'
+      segments: ["纯图", "左图右文", "左文右图", "上图下文", "上文下图"],
+      adUnitId: "9d66217c88614253bd68a291c273f8d5"
+    };
+  },
+  onInit() {
+    this.switchAdUnitIdByBrand();
+  },
+  async switchAdUnitIdByBrand() {
+    const res = await device.getInfo();
+    const brand = res.data.brand;
+    switch (brand) {
+      case "vivo":
+        this.adUnitId = "9d66217c88614253bd68a291c273f8d5";
+        break;
+      case "oppo":
+        this.adUnitId = "oppo-adUnitId";
+        break;
+      case "xiaomi":
+        this.adUnitId = "xiaomi-adUnitId";
+        break;
+      case "huawei":
+        this.adUnitId = "huawei-adUnitId";
+        break;
+      default:
+        console.warn("此设备不支持广告组件！");
     }
   },
   loadHandler(e) {
-    console.log('ad component load', e);
+    console.log("ad component load", e);
   },
   errorHandler(e) {
-    console.log('ad component error', e);
+    console.log("ad component error", e);
   },
   closeHandler() {
-    console.log('ad component close');
+    console.log("ad component close");
   },
   changeHandler(e) {
     this.index = e.detail.index;
-    console.log('ad change', e);
+    console.log("ad change", e);
   }
-}
+};
 </script>
 <style lang="less">
 .wrap {
@@ -47,7 +112,7 @@ export default {
     border-top-style: solid;
     border-top-color: #999999;
     border-top-width: 1px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     padding: 20px;
   }
 }

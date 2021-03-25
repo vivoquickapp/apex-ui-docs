@@ -125,7 +125,9 @@
         <a href="/pages/charts/chartsFunnel">图表/漏斗图 charts/funnel</a>
       </div>
       <div class="item">
-        <a href="/pages/charts/chartsCandlestick">图表/蜡烛图 charts/candlestick</a>
+        <a href="/pages/charts/chartsCandlestick"
+          >图表/蜡烛图 charts/candlestick</a
+        >
       </div>
       <div class="item">
         <a href="/pages/charts/chartsHeatmap">图表/热力图 charts/heatmap</a>
@@ -140,57 +142,57 @@
   </div>
 </template>
 <style lang="less">
-  .wrap {
+.wrap {
+  flex-direction: column;
+  background-color: #f7f7f7;
+
+  .logo {
+    justify-content: center;
+    padding: 50px 0;
+
+    image {
+      height: 100px;
+    }
+  }
+
+  .type {
+    padding: 20px;
+  }
+
+  .component {
+    background-color: #ffffff;
+    border-style: solid;
+    border-top-width: 1px;
+    border-top-color: #dddee1;
+    border-bottom-width: 1px;
     flex-direction: column;
-    background-color: #f7f7f7;
 
-    .logo {
-      justify-content: center;
-      padding: 50px 0;
-
-      image {
-        height: 100px;
-      }
-    }
-
-    .type {
-      padding: 20px;
-    }
-
-    .component {
-      background-color: #ffffff;
-      border-style: solid;
-      border-top-width: 1px;
-      border-top-color: #dddee1;
+    .item {
+      height: 100px;
+      justify-content: space-between;
+      margin-left: 20px;
       border-bottom-width: 1px;
-      flex-direction: column;
+      border-bottom-color: #dddee1;
+      border-style: solid;
 
-      .item {
-        height: 100px;
-        justify-content: space-between;
-        margin-left: 20px;
-        border-bottom-width: 1px;
-        border-bottom-color: #dddee1;
-        border-style: solid;
+      a {
+        width: 100%;
+      }
 
-        a {
-          width: 100%;
-        }
-
-        a :active {
-          width: 100%;
-        }
+      a :active {
+        width: 100%;
       }
     }
   }
+}
 </style>
 <script>
-  export default {
-    data() {
-      return {};
-    },
-    onInit() {
-      console.log("home page init!!");
-    }
-  };
+export default {
+  data() {
+    return {};
+  },
+  onInit() {
+    console.log("home page init!!");
+  }
+};
 </script>

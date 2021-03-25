@@ -5,7 +5,12 @@
 
 <template>
   <div class="chart-wrap">
-    <canvas id="chartRadar3" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartRadar3"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
 
     <div class="btn-row">
       <text class="btn btn-default" @click="openEditConfig">配置参数</text>
@@ -17,7 +22,12 @@
       <text class="btn btn-primary" @click="updateChart">修改参数</text>
     </div>
 
-    <my-popup id="popup" position="right" mask="{{true}}" onclose="closeEditConfig">
+    <my-popup
+      id="popup"
+      position="right"
+      mask="{{true}}"
+      onclose="closeEditConfig"
+    >
       <list class="config-wrap">
         <list-item type="list-item" class="config-item">
           <text class="config-item-title">data</text>
@@ -36,7 +46,13 @@
             </div>
           </div>
           <text class="config-item-title">opts</text>
-          <my-checkbox value="animation" position="right" shape="square" checked="{{config.animation}}" onchange="changeConfig('animation')"></my-checkbox>
+          <my-checkbox
+            value="animation"
+            position="right"
+            shape="square"
+            checked="{{config.animation}}"
+            onchange="changeConfig('animation')"
+          ></my-checkbox>
           <my-checkbox
             value="backgroundColor"
             position="right"
@@ -44,8 +60,20 @@
             checked="{{config.backgroundColor}}"
             onchange="changeConfig('backgroundColor')"
           ></my-checkbox>
-          <my-checkbox value="legend.show" position="right" shape="square" checked="{{config.legendShow}}" onchange="changeConfig('legendShow')"></my-checkbox>
-          <my-checkbox value="label.show" position="right" shape="square" checked="{{config.labelShow}}" onchange="changeConfig('labelShow')"></my-checkbox>
+          <my-checkbox
+            value="legend.show"
+            position="right"
+            shape="square"
+            checked="{{config.legendShow}}"
+            onchange="changeConfig('legendShow')"
+          ></my-checkbox>
+          <my-checkbox
+            value="label.show"
+            position="right"
+            shape="square"
+            checked="{{config.labelShow}}"
+            onchange="changeConfig('labelShow')"
+          ></my-checkbox>
           <text class="config-item-title">radarAxis</text>
           <div class="select" onclick="selectShow('selectAxisShape')">
             <text>shape</text>
@@ -120,38 +148,47 @@
       </div>
     </my-popup>
 
-    <my-select id="selectDataType" oncomfirm="selectClose('dataType')"></my-select>
-    <my-select id="selectSeriesLength" oncomfirm="selectClose('seriesLength')"></my-select>
-    <my-select id="selectAxisShape" oncomfirm="selectClose('axisShape')"></my-select>
+    <my-select
+      id="selectDataType"
+      oncomfirm="selectClose('dataType')"
+    ></my-select>
+    <my-select
+      id="selectSeriesLength"
+      oncomfirm="selectClose('seriesLength')"
+    ></my-select>
+    <my-select
+      id="selectAxisShape"
+      oncomfirm="selectClose('axisShape')"
+    ></my-select>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
     return {
       config: {
-        dataType: '正数',
-        seriesLength: '1',
+        dataType: "正数",
+        seriesLength: "1",
 
         animation: true,
         backgroundColor: true,
         legendShow: true,
         labelShow: true,
 
-        axisShape: 'polygon',
+        axisShape: "polygon",
         axisNameShow: true,
         axisLineShow: true,
         axisSplitLineShow: true,
@@ -160,21 +197,21 @@ export default {
 
         seriesItemLineShow: true,
         seriesItemSymbolShow: true,
-        seriesItemAreaShow: false,
-      },
-    }
+        seriesItemAreaShow: false
+      }
+    };
   },
   resetConfig() {
     this.config = {
-      dataType: '正数',
-      seriesLength: '1',
+      dataType: "正数",
+      seriesLength: "1",
 
       animation: true,
       backgroundColor: true,
       legendShow: true,
       labelShow: true,
 
-      axisShape: 'polygon',
+      axisShape: "polygon",
       axisNameShow: true,
       axisLineShow: true,
       axisSplitLineShow: true,
@@ -183,257 +220,259 @@ export default {
 
       seriesItemLineShow: true,
       seriesItemSymbolShow: true,
-      seriesItemAreaShow: false,
-    }
+      seriesItemAreaShow: false
+    };
   },
   changeConfig(key, { detail }) {
-    this.config[key] = detail.current
+    this.config[key] = detail.current;
   },
   openEditConfig() {
-    this.$child('popup').show()
+    this.$child("popup").show();
   },
   closeEditConfig() {
-    this.$child('popup').hide()
+    this.$child("popup").hide();
   },
   selectShow(id) {
-    let options
+    let options;
     switch (id) {
-      case 'selectDataType':
-        options = ['正数', '负数', '正负数']
-        break
-      case 'selectSeriesLength':
-        options = ['1', '2', '3', '4', '5']
-        break
-      case 'selectAxisShape':
-        options = ['polygon', 'circle']
-        break
+      case "selectDataType":
+        options = ["正数", "负数", "正负数"];
+        break;
+      case "selectSeriesLength":
+        options = ["1", "2", "3", "4", "5"];
+        break;
+      case "selectAxisShape":
+        options = ["polygon", "circle"];
+        break;
     }
 
     this.$child(id).showSelect({
-      options,
-    })
+      options
+    });
   },
   selectClose(key, event) {
-    this.config[key] = event.detail.data || '请选择'
-    if (key == 'xAxisType') {
-      this.config.yAxisType = this.config.xAxisType == 'category' ? 'value' : 'category'
-      this.config.boundaryGap = true
-    } else if (key == 'yAxisType') {
-      this.config.xAxisType = this.config.yAxisType == 'category' ? 'value' : 'category'
-      this.config.boundaryGap = true
+    this.config[key] = event.detail.data || "请选择";
+    if (key == "xAxisType") {
+      this.config.yAxisType =
+        this.config.xAxisType == "category" ? "value" : "category";
+      this.config.boundaryGap = true;
+    } else if (key == "yAxisType") {
+      this.config.xAxisType =
+        this.config.yAxisType == "category" ? "value" : "category";
+      this.config.boundaryGap = true;
     }
   },
   getMockData() {
-    let categoriesLen = 7
-    let digits = 0
-    let seriesLength = Number(this.config.seriesLength)
+    let categoriesLen = 7;
+    let digits = 0;
+    let seriesLength = Number(this.config.seriesLength);
 
-    let mockCategories = Array.from(new Array(7).keys(), item => item + 1)
-    let mockSeries = []
+    let mockCategories = Array.from(new Array(7).keys(), item => item + 1);
+    let mockSeries = [];
 
     for (let i = 0; i < seriesLength; i++) {
       switch (this.config.dataType) {
-        case '正数':
+        case "正数":
           mockSeries.push({
             name: `正数${i + 1}`,
-            type: 'radar',
-            data: this.$app.$def.getMockData(categoriesLen, 50, 100, digits),
-          })
-          break
-        case '负数':
+            type: "radar",
+            data: this.$app.$def.getMockData(categoriesLen, 50, 100, digits)
+          });
+          break;
+        case "负数":
           mockSeries.push({
             name: `负数${i + 1}`,
-            type: 'radar',
-            data: this.$app.$def.getMockData(categoriesLen, -100, -50, digits),
-          })
-          break
-        case '正负数':
+            type: "radar",
+            data: this.$app.$def.getMockData(categoriesLen, -100, -50, digits)
+          });
+          break;
+        case "正负数":
           mockSeries.push({
             name: `正负数${i + 1}`,
-            type: 'radar',
-            data: this.$app.$def.getMockData(categoriesLen, -50, 50, digits),
-          })
-          break
+            type: "radar",
+            data: this.$app.$def.getMockData(categoriesLen, -50, 50, digits)
+          });
+          break;
       }
     }
 
     return {
       mockCategories,
-      mockSeries,
-    }
+      mockSeries
+    };
   },
   updateChart(type) {
-    if (!$chart) return
+    if (!$chart) return;
 
-    let { mockCategories, mockSeries } = this.getMockData()
+    let { mockCategories, mockSeries } = this.getMockData();
 
     mockSeries = mockSeries.map(seriesItem => {
       seriesItem.line = {
-        show: this.config.seriesItemLineShow,
-      }
+        show: this.config.seriesItemLineShow
+      };
       seriesItem.symbol = {
-        show: this.config.seriesItemSymbolShow,
-      }
+        show: this.config.seriesItemSymbolShow
+      };
       seriesItem.area = {
-        show: this.config.seriesItemAreaShow,
-      }
+        show: this.config.seriesItemAreaShow
+      };
 
-      return seriesItem
-    })
+      return seriesItem;
+    });
 
     let opts = {
       animation: this.config.animation,
-      backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+      backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
       legend: {
-        show: this.config.legendShow,
+        show: this.config.legendShow
       },
       radarAxis: {
         shape: this.config.axisShape,
         axisName: {
-          show: this.config.axisNameShow,
+          show: this.config.axisNameShow
         },
         axisLine: {
-          show: this.config.axisLineShow,
+          show: this.config.axisLineShow
         },
         splitLine: {
-          show: this.config.axisSplitLineShow,
+          show: this.config.axisSplitLineShow
         },
         splitArea: {
           odd: {
-            show: this.config.splitAreaOddShow,
+            show: this.config.splitAreaOddShow
           },
           even: {
-            show: this.config.splitAreaEvenShow,
-          },
-        },
+            show: this.config.splitAreaEvenShow
+          }
+        }
       },
       categories: mockCategories,
-      series: mockSeries,
-    }
+      series: mockSeries
+    };
 
-    $chart.updateData(opts)
+    $chart.updateData(opts);
   },
   initChart() {
-    this.resetConfig()
+    this.resetConfig();
 
-    let { mockCategories, mockSeries } = this.getMockData()
+    let { mockCategories, mockSeries } = this.getMockData();
 
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartRadar3'),
+        element: this.$element("chartRadar3"),
         width: this.width,
         height: this.height,
-        backgroundColor: this.config.backgroundColor ? '#eeeeee' : '#ffffff',
+        backgroundColor: this.config.backgroundColor ? "#eeeeee" : "#ffffff",
         animation: this.config.animation,
         animationDuration: 1000,
-        animationTiming: 'easeInOut', // easeIn, easeOut, easeInOut, linear
+        animationTiming: "easeInOut", // easeIn, easeOut, easeInOut, linear
         padding: [20, 20, 20, 20],
         legend: {
           show: this.config.legendShow,
-          type: 'default',
+          type: "default",
           marginTop: 8,
           itemGap: 15,
           shapeWidth: 15,
           shapeHeight: 15,
           textStyle: {
             fontSize: 15,
-            color: '#333333',
-            padding: 5,
-          },
+            color: "#333333",
+            padding: 5
+          }
         },
         label: {
           show: this.config.labelShow,
           fontSize: 10,
-          color: 'auto',
-          margin: 2,
+          color: "auto",
+          margin: 2
         },
         radarAxis: {
           shape: this.config.shape, // polygon. circle
-          center: ['50%', '50%'],
-          radius: '80%',
-          max: 'auto',
+          center: ["50%", "50%"],
+          radius: "80%",
+          max: "auto",
           splitNumber: 4,
           axisName: {
             show: this.config.axisNameShow,
             textStyle: {
               fontSize: 15,
-              color: '#666666',
-              margin: 10,
-            },
+              color: "#666666",
+              margin: 10
+            }
           },
           axisLine: {
             show: this.config.axisLineShow,
             lineStyle: {
               lineWidth: 2,
-              color: '#cccccc',
-              opacity: 1,
-            },
+              color: "#cccccc",
+              opacity: 1
+            }
           },
           splitLine: {
             show: this.config.axisSplitLineShow,
             lineStyle: {
               lineWidth: 1,
-              color: '#cccccc',
-              opacity: 1,
-            },
+              color: "#cccccc",
+              opacity: 1
+            }
           },
           splitArea: {
             odd: {
               show: this.config.splitAreaOddShow,
-              color: '#f5f5f5', // 奇数区域颜色与背景色相同
-              opacity: 1,
+              color: "#f5f5f5", // 奇数区域颜色与背景色相同
+              opacity: 1
             },
             even: {
               show: this.config.splitAreaEvenShow,
-              color: '#e6e6e6', // 奇数区域颜色与背景色相同
-              opacity: 1,
-            },
-          },
+              color: "#e6e6e6", // 奇数区域颜色与背景色相同
+              opacity: 1
+            }
+          }
         },
         categories: mockCategories,
         series: [
           {
-            type: 'radar',
+            type: "radar",
             name: mockSeries[0].name,
             data: mockSeries[0].data,
             line: {
               show: this.config.seriesItemLineShow,
               lineWidth: 2,
-              color: 'auto',
-              opacity: 1,
+              color: "auto",
+              opacity: 1
             },
             symbol: {
               show: this.config.seriesItemSymbolShow,
-              type: 'circle', // circle
+              type: "circle", // circle
               size: 7,
-              color: 'auto',
+              color: "auto"
             },
             area: {
               show: this.config.seriesItemAreaShow,
-              color: 'auto',
-              opacity: 0.5,
+              color: "auto",
+              opacity: 0.5
             },
             label: {
               show: true,
               fontSize: 10,
-              color: 'auto',
-              margin: 5,
-            },
-          },
+              color: "auto",
+              margin: 5
+            }
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartRadar3 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartRadar3 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartRadar3 touchstart`)
-  },
-}
+    console.log(`chartRadar3 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

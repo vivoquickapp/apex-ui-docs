@@ -7,11 +7,31 @@
 <template>
   <!-- template里只能有一个根节点 -->
   <div class="page">
-    <chart-bar1 id="chart-bar1" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar1>
-    <chart-bar2 id="chart-bar2" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar2>
-    <chart-bar3 id="chart-bar3" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar3>
-    <chart-bar4 id="chart-bar4" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar4>
-    <chart-bar5 id="chart-bar5" width="{{chartWidth}}" height="{{chartHeight}}"></chart-bar5>
+    <chart-bar1
+      id="chart-bar1"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-bar1>
+    <chart-bar2
+      id="chart-bar2"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-bar2>
+    <chart-bar3
+      id="chart-bar3"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-bar3>
+    <chart-bar4
+      id="chart-bar4"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-bar4>
+    <chart-bar5
+      id="chart-bar5"
+      width="{{chartWidth}}"
+      height="{{chartHeight}}"
+    ></chart-bar5>
   </div>
 </template>
 
@@ -19,20 +39,20 @@
 export default {
   private: {
     chartWidth: 600,
-    chartHeight: 400,
+    chartHeight: 400
   },
   async onShow() {
     try {
-      await this.$child('chart-bar1').initChart()
-      await this.$child('chart-bar2').initChart()
-      await this.$child('chart-bar3').initChart()
-      await this.$child('chart-bar4').initChart()
-      await this.$child('chart-bar5').initChart()
+      await this.$child("chart-bar1").initChart();
+      await this.$child("chart-bar2").initChart();
+      await this.$child("chart-bar3").initChart();
+      await this.$child("chart-bar4").initChart();
+      await this.$child("chart-bar5").initChart();
     } catch (error) {
-      console.error('catch error', error)
+      console.error("catch error", error);
     }
-  },
-}
+  }
+};
 </script>
 
 <style lang="less">

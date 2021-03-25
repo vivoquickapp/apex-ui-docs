@@ -1,90 +1,95 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartTreemap1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartTreemap1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartTreemap1'),
+        element: this.$element("chartTreemap1"),
         width: this.width,
         height: this.height,
         legend: {
-          show: false,
+          show: false
         },
         series: [
           {
-            name: '矩形树图',
-            type: 'treemap',
-            tile: 'treemapResquarify', // treemapBinary treemapDice treemapSlice treemapSliceDice treemapResquarify treemapSquarify
+            name: "矩形树图",
+            type: "treemap",
+            tile: "treemapResquarify", // treemapBinary treemapDice treemapSlice treemapSliceDice treemapResquarify treemapSquarify
             splitLine: {
               show: true,
               lineWidth: 5,
-              color: '#ffffff',
+              color: "#ffffff"
             },
             data: [
               {
-                name: '分类 1',
-                value: 3,
+                name: "分类 1",
+                value: 3
               },
               {
-                name: '分类 2',
-                value: 2,
+                name: "分类 2",
+                value: 2
               },
               {
-                name: '分类 3',
-                value: 6,
+                name: "分类 3",
+                value: 6
               },
               {
-                name: '分类 4',
-                value: 4,
+                name: "分类 4",
+                value: 4
               },
               {
-                name: '分类 5',
-                value: 1,
+                name: "分类 5",
+                value: 1
               },
               {
-                name: '分类 6',
-                value: 2,
+                name: "分类 6",
+                value: 2
               },
               {
-                name: '分类 7',
-                value: 6,
-              },
-            ],
-          },
+                name: "分类 7",
+                value: 6
+              }
+            ]
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartTreemap1 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartTreemap1 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartTreemap1 touchstart`)
-  },
-}
+    console.log(`chartTreemap1 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>

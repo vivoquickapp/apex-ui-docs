@@ -1,58 +1,63 @@
 <template>
   <div class="chart-wrap">
-    <canvas id="chartRadar1" class="chart" style="width: {{width}}px; height: {{height}}px;" ontouchstart="ontouchstart"></canvas>
+    <canvas
+      id="chartRadar1"
+      class="chart"
+      style="width: {{width}}px; height: {{height}}px;"
+      ontouchstart="ontouchstart"
+    ></canvas>
   </div>
 </template>
 
 <script>
-import Charts from 'apex-ui/components/charts/qacharts-min.js'
+import Charts from "apex-ui/components/charts/qacharts-min.js";
 
-let $chart = null
+let $chart = null;
 
 export default {
   props: {
     width: {
-      default: 600,
+      default: 600
     },
     height: {
-      default: 400,
-    },
+      default: 400
+    }
   },
   data() {
-    return {}
+    return {};
   },
   initChart() {
     return new Promise((resolve, reject) => {
       $chart = new Charts({
-        element: this.$element('chartRadar1'),
+        element: this.$element("chartRadar1"),
         width: this.width,
         height: this.height,
-        categories: ['1', '2', '3', '4', '5', '6', '7'],
+        categories: ["1", "2", "3", "4", "5", "6", "7"],
         series: [
           {
-            name: '数据1',
-            type: 'radar',
-            data: [820, 932, 901, 934, 1050, 1000, 1150],
+            name: "数据1",
+            type: "radar",
+            data: [820, 932, 901, 934, 1050, 1000, 1150]
           },
           {
-            name: '数据2',
-            type: 'radar',
-            data: [1150, 1000, 1050, 934, 901, 932, 820],
-          },
+            name: "数据2",
+            type: "radar",
+            data: [1150, 1000, 1050, 934, 901, 932, 820]
+          }
         ],
         onRenderComplete: () => {
-          console.log('chartRadar1 renderComplete')
-          resolve()
-        },
-      })
-    })
+          console.log("chartRadar1 renderComplete");
+          resolve();
+        }
+      });
+    });
   },
   ontouchstart(e) {
-    console.log(`chartRadar1 touchstart`)
-  },
-}
+    console.log(`chartRadar1 touchstart`);
+  }
+};
 </script>
 
 <style lang="less">
-@import '../../../../common/styles/common.less';
+@import "../../../../common/styles/common.less";
 </style>
