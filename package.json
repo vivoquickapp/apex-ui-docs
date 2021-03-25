@@ -20,7 +20,7 @@
   },
   "lint-staged": {
     "**/*.{ux,less,js,md}": [
-      "npm run pretty"
+      "npm run prettier"
     ]
   },
   "devDependencies": {
