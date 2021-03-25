@@ -13,10 +13,22 @@
     "prettier": "prettier --write \"**/*.ux\""
   },
   "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ux,less,js,md}": [
+      "npm run pretty"
+    ]
+  },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "@vuepress/plugin-google-analytics": "^1.8.2",
     "@vuepress/plugin-register-components": "^1.8.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
     "apex-ui": "latest",
     "clipboard": "^2.0.4",
     "less": "^3.13.1",
