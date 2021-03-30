@@ -69,9 +69,6 @@
         case "oppo":
           this.adUnitId = "oppo-adUnitId";
           break;
-        case "xiaomi":
-          this.adUnitId = "xiaomi-adUnitId";
-          break;
         case "huawei":
           this.adUnitId = "huawei-adUnitId";
           break;
