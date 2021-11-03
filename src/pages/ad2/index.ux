@@ -1,0 +1,58 @@
+<import name="ad2" src="apex-ui/components/ad2/index"></import>
+<import name="button" src="apex-ui/components/button/index"></import>
+
+<template>
+  <div class="wrap">
+    <ad2
+      if="!refresh"
+      ad-unit-id="{{adUnitId}}"
+      onerror="errorHandler"
+      onclose="closeHandler"
+      debug="true"
+    ></ad2>
+    <ad2
+      if="refresh"
+      ad-unit-id="{{adUnitId}}"
+      onerror="errorHandler"
+      onclose="closeHandler"
+      debug="true"
+    ></ad2>
+    <div class="control">
+      <button type="info" icon="sync" onclick="changeHandler">切换广告</button>
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      adUnitId: "1008c39065fb454a8c90911673ed88e8",
+      refresh: false
+    };
+  },
+  errorHandler(e) {
+    console.log("ad component error", e);
+  },
+  closeHandler() {
+    console.log("ad component close");
+  },
+  changeHandler() {
+    this.refresh = !this.refresh;
+  }
+};
+</script>
+<style lang="less">
+.wrap {
+  background-color: #ffffff;
+  flex-direction: column;
+
+  .control {
+    border-top-style: solid;
+    border-top-color: #999999;
+    border-top-width: 1px;
+    background-color: #ffffff;
+    padding: 20px;
+    flex-direction: column;
+  }
+}
+</style>

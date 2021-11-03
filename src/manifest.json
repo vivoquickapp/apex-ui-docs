@@ -1,9 +1,9 @@
 {
-  "package": "com.apex.ui.quickapp",
+  "package": "com.awsome.player",
   "name": "APEX-UI组件库示例",
-  "versionName": "1.9.4",
-  "versionCode": "6",
-  "minPlatformVersion": "1050",
+  "versionName": "1.9.5",
+  "versionCode": 100,
+  "minPlatformVersion": 1050,
   "icon": "/images/logo-d.png",
   "features": [
     {
@@ -17,6 +17,9 @@
     },
     {
       "name": "system.image"
+    },
+    {
+      "name": "service.ad"
     }
   ],
   "permissions": [
@@ -29,7 +32,7 @@
     "designWidth": 750
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/ad2",
     "pages": {
       "pages/home": {
         "component": "index"
@@ -233,6 +236,9 @@
         "component": "index"
       },
       "pages/ad": {
+        "component": "index"
+      },
+      "pages/ad2": {
         "component": "index"
       }
     }
