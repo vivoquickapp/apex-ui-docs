@@ -44,30 +44,11 @@
   </div>
 </template>
 <script>
-  import device from "@system.device";
   export default {
     data() {
       return {
-        adUnitId: ""
+        adUnitId: "9d66217c88614253bd68a291c273f8d5" // 这个id是vivo的com.quickapp.center创建的，需要修改manifest的package才能预览出效果
       };
-    },
-    onInit() {
-      this.switchAdUnitIdByBrand();
-    },
-    async switchAdUnitIdByBrand() {
-      // 这个方法的作用是适配不同厂商的adUnitId
-      const res = await device.getInfo();
-      const brand = res.data.brand;
-      switch (brand) {
-        case "vivo":
-          this.adUnitId = "9d66217c88614253bd68a291c273f8d5"; // 这个id是vivo的com.quickapp.center创建的，需要修改manifest的package才能预览出效果
-          break;
-        case "oppo":
-          this.adUnitId = "oppo-adUnitId";
-          break;
-        default:
-          console.warn("此设备不支持广告组件！");
-      }
     },
     loadHandler(e) {
       console.log("ad component load", e);
